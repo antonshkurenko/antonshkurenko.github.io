@@ -1,48 +1,33 @@
-var MAX_IMAGES = 26;
+var MAX_IMAGES = 25;
 
 function randomBackground () {
 
-	nextImage = $('#next-image');
-	currImage = $('#current-image');
+	var active = $('#background .active');
+	var next = ($('#background .active').next().length > 0) ? $('#background .active').next() : $('#background img:first');
+	next.attr('src', getRandomName());
 
-	var name = nextImage.css('background-image');
+	var imgHeight = next.height();
+	var windowHeight = $(window).height();
 
-	if(name == 'none') {
-		name = getRandomName();
-		currImage.css("background-image", name).fadeIn(2000, function() {
-			nextImage.css("background-image", "url('" + getRandomName() + "')");
-		});
-	} else {
-		currImage.fadeOut(
-	    	2000,
-	    	function() {
-	    		currImage.css("background-image", name).fadeIn(2000, function() {
-	    			name = getRandomName();
-	    			nextImage.css("background-image", "url('" + name + "')");
-	    		}); 
-			}
-		);
+	var diff = imgHeight - windowHeight;
+
+	if(diff > 0) {
+		next.css('top', -diff*0.6);
 	}
 
-	var images = document.getElementsByClassName("swapped");
-	for (var i = images.length - 1; i >= 0; i--) {
-	
-		images[i].style.backgroundRepeat = "no-repeat";
+	next.css('z-index', 2);
 
-		var cover = "cover";
-		images[i].style['-webkit-background-size'] = cover;
-		images[i].style['-moz-background-size'] = cover;
-		images[i].style['-o-background-size'] = cover;
-		images[i].style['background-size'] = cover;
-
-		images[i].style.backgroundAttachment = "fixed";
-
-		images[i].style.backgroundPosition = "left bottom";
-	};
+	active.fadeOut(1500, function() {
+		active.css('z-index', 1).show().removeClass('active');
+		next.css('z-index', 3).addClass('active');
+	})
 }
 
-window.onload = randomBackground;
-window.setInterval(randomBackground, 15000);
+window.onload = function() {
+	$('#background .active').attr('src', getRandomName());
+	$('#background').fadeIn(1500);
+	setInterval(randomBackground, 5000)
+}
 
 var arrayOfRandomBackgrounds = [];
 function findInArray (name) {
