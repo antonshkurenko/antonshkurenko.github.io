@@ -1,32 +1,11 @@
 var MAX_IMAGES = 25;
 
-function randomBackground () {
-
-	var active = $('#background .active');
-	var next = ($('#background .active').next().length > 0) ? $('#background .active').next() : $('#background img:first');
-	next.attr('src', getRandomName());
-
-	var imgHeight = next.height();
-	var windowHeight = $(window).height();
-
-	var diff = imgHeight - windowHeight;
-
-	if(diff > 0) {
-		next.css('top', -diff*0.6);
-	}
-
-	next.css('z-index', 2);
-
-	active.fadeOut(1500, function() {
-		active.css('z-index', 1).show().removeClass('active');
-		next.css('z-index', 3).addClass('active');
-	})
-}
-
 window.onload = function() {
-	$('#background .active').attr('src', getRandomName());
-	$('#background').fadeIn(1500);
-	setInterval(randomBackground, 5000)
+	for (var i = 0; i < 25; i++) {
+		getRandomName();
+	};
+
+	$.backstretch(arrayOfRandomBackgrounds, {duration: 3000, fade: 1500});
 }
 
 var arrayOfRandomBackgrounds = [];
@@ -51,14 +30,15 @@ function getRandomName() {
 			imageName = imageName + "0" + random;
 		}
 	} while(findInArray(imageName) != -1)
+
+	imageName = "img/" + imageName + ".jpg";
 	
 	arrayOfRandomBackgrounds[arrayOfRandomBackgrounds.length] = imageName;
 
-	if(arrayOfRandomBackgrounds.length == MAX_IMAGES) {
+	if(arrayOfRandomBackgrounds.length == MAX_IMAGES + 1) {
 		arrayOfRandomBackgrounds = [];
+		arrayOfRandomBackgrounds[0] = imageName;
 	}
-
-	imageName = "img/" + imageName + ".jpg";
 
 	return imageName;
 }
