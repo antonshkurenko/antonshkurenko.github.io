@@ -5,7 +5,7 @@ window.onload = function() {
 		getRandomName();
 	};
 
-	$.backstretch(arrayOfRandomBackgrounds, {duration: 3000, fade: 1500});
+	$('#bg').backstretch(arrayOfRandomBackgrounds, {duration: 3000, fade: 1500});
 }
 
 var arrayOfRandomBackgrounds = [];

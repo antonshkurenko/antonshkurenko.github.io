@@ -1,31 +1,20 @@
-#background {
-	padding: 0;
-	margin: 0;
+#amazing {
+	z-index: 999;
+	color: white;
+	margin: 15px;
+	padding: 15px;
+	width: 400px;
+	background: rgba(34,34,34,0.25);
+	border: solid 1px black;
+}
+
+#bg {
 	width: 100%;
 	height: 100%;
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
-	z-index: -1;
-
-	overflow: hidden;
-}
-
-#background img {
-	position: absolute;
-	z-index: 1;
-	float: left;
-	bottom: 0px;
-	left: 0px;
-  	top: 0px;
-  	height: auto;
- 	width: 100%;
-}
-
-#background img.active {
-	z-index: 3;
-}
-
-#amazing-block {
-	z-index: 777;
+	right: 0;
+	bottom: 0;
+	z-index: -999;
 }
