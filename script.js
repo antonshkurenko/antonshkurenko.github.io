@@ -5,7 +5,7 @@ window.onload = function() {
 		getRandomName();
 	};
 
-	$('#bg').backstretch(arrayOfRandomBackgrounds, {duration: 3000, fade: 1500});
+	$('#bg').backstretch(arrayOfRandomBackgrounds, {duration: 10000, fade: 1500});
 
 	// Tooltip only Text
 	$('.hovered').hover(function(){
