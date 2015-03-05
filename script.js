@@ -8,7 +8,7 @@ window.onload = function() {
 	$('#bg').backstretch(arrayOfRandomBackgrounds, {duration: 3000, fade: 1500});
 
 	$('.target').blurjs({
-    	source: '#bg',
+    	source: '#bg .backstretch img',
     	radius: 7,
    		overlay: 'rgba(255,255,255,0.4)'
 	});
