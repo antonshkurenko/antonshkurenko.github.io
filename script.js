@@ -6,6 +6,12 @@ window.onload = function() {
 	};
 
 	$('#bg').backstretch(arrayOfRandomBackgrounds, {duration: 3000, fade: 1500});
+
+	$('.target').blurjs({
+    	source: 'body',
+    	radius: 7,
+   		overlay: 'rgba(255,255,255,0.4)'
+	});
 }
 
 var arrayOfRandomBackgrounds = [];
