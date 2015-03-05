@@ -1,11 +1,26 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro);
+
+body {
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
 #amazing {
 	z-index: 999;
-	color: white;
+	color: rgba(255, 255, 255, .8);
 	margin: 15px;
-	padding: 15px;
+	padding: 10px;
 	width: 400px;
-	/*background: rgba(34,34,34,0.25);*/
-	border: solid 1px black;
+	height: 220px;
+
+    background: rgba(0, 0, 0, 0.5);
+	border: 1px solid rgba(0,0,0,.2);
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+
+    -moz-box-shadow: 0 0 13px 3px rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0 13px 3px rgba(0,0,0,.5);
+    box-shadow: 0 0 13px 3px rgba(0,0,0,.5);
 }
 
 #bg {
@@ -19,6 +34,14 @@
 	z-index: -999;
 }
 
-.target {
-	background-size: 100% 100%;
+.tooltip {
+	display:none;
+	position:absolute;
+	border:1px solid #333;
+	box-shadow: 0 0 20px 1px rgba(0,0,0,.5);
+	background-color: rgba(22, 22, 22, .75);
+	border-radius:5px;
+	padding:3px;
+	color: rgba(255, 255, 255, .8);
+	font-size:12px Arial;
 }
