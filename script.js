@@ -43,19 +43,12 @@ window.onload = function() {
         localStorage.setItem("left", left);
         localStorage.setItem("top", top);
 
-        }
+        }, 
+        scroll: 'false'
     });
 }
 
 var arrayOfRandomBackgrounds = [];
-function findInArray (name) {
-	for (var i = arrayOfRandomBackgrounds.length - 1; i >= 0; i--) {
-		if(name == arrayOfRandomBackgrounds[i]) {
-			return name;
-		}
-	};
-	return -1;
-}
 
 function getRandomName() {
 	var imageName;
@@ -68,7 +61,7 @@ function getRandomName() {
 		} else if (random < 100) {
 			imageName = imageName + "0" + random;
 		}
-	} while(findInArray(imageName) != -1)
+	} while(arrayOfRandomBackgrounds.indexOf(imageName) != -1)
 
 	imageName = "img/" + imageName + ".jpg";
 	
