@@ -1,6 +1,14 @@
 var MAX_IMAGES = 25;
 
 window.onload = function() {
+
+	var left = localStorage.getItem("left") - 8; // magic numbers, it moved right for 8 px, I don't know why
+    var top = localStorage.getItem("top");
+    
+    $('#amazing').css({ left: left + "px", top: top + "px", visibility: "visible" });
+
+
+
 	for (var i = 0; i < 25; i++) {
 		getRandomName();
 	};
@@ -26,6 +34,17 @@ window.onload = function() {
         $('.tooltip')
         	.css({ top: mousey, left: mousex })
 	});
+
+	$('#amazing').draggable({ stop: function () {
+
+        var left = $(this).position().left;
+        var top = $(this).position().top;
+
+        localStorage.setItem("left", left);
+        localStorage.setItem("top", top);
+
+        }
+    });
 }
 
 var arrayOfRandomBackgrounds = [];

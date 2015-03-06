@@ -5,10 +5,10 @@
 	background-image:url(icons/icons_sprite.png);
 	opacity:0.4;
 
-	transition: opacity 1s ease-out;
-	-moz-transition: opacity 1s ease-out;
-	-webkit-transition: opacity 1s ease-out;
-	-o-transition: opacity 1s ease-out;
+	transition: opacity .3s ease-out;
+	-moz-transition: opacity .3s ease-out;
+	-webkit-transition: opacity .3s ease-out;
+	-o-transition: opacity .3s ease-out;
 }
 
 .askfm {width:32px; height:32px; background-position: -2px -2px}
