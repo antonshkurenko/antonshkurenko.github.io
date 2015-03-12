@@ -55,8 +55,8 @@ window.onload = function() {
     });
 
 
-	$('#songs').load('songs/songs.html');
-	$('#songs').perfectScrollbar({
+	$('#songs-content').load('songs/songs.html');
+	$('#songs-content').perfectScrollbar({
 		suppressScrollX: true
 	});
 }

@@ -104,14 +104,41 @@ hr {
 
 #songs {
 	position: absolute;
-	height: 120px;
-	min-width: 220px;
-	max-width: 400px;
+	height: 220px;
+	width: 300px;
+}
+
+#songs-content {
+
+	height: 70%;
+	position: absolute;
+	overflow: hidden;
+}
+
+#guitar-hero {
+	background-image: url('icons/guitar_hero.png');
+	opacity: 0.4;
+	height: 32px;
+	width: 32px;
+	display:inline-block; 
+	overflow:hidden; 
+	background-repeat: no-repeat;
+	float: right;
+	margin-top: 5px;
+}
+
+.songs-header {
+	display: inline-block;
+	margin: 10px 0px 5px 5px;
 }
 
 ul {
 	list-style-type: none;
 	padding: 0px;
+}
+
+li {
+	margin: 5px;
 }
 
 li a {
