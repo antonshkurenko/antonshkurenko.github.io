@@ -106,13 +106,15 @@ hr {
 	position: absolute;
 	height: 220px;
 	width: 300px;
+	list-style-type: decimal;
 }
 
 #songs-content {
 
 	height: 70%;
-	position: absolute;
+	position: relative;
 	overflow: hidden;
+	margin-top: 0px;
 }
 
 #guitar-hero {
@@ -132,8 +134,7 @@ hr {
 	margin: 10px 0px 5px 5px;
 }
 
-ul {
-	list-style-type: none;
+ol {
 	padding: 0px;
 }
 
