@@ -1,7 +1,15 @@
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro);
+@font-face {
+    font-family: "SourceSansProRegular";
+    src: url("../fonts/SourceSansProRegular/SourceSansProRegular.eot");
+    src: url("../fonts/SourceSansProRegular/SourceSansProRegular.eot?#iefix")format("embedded-opentype"),
+    url("../fonts/SourceSansProRegular/SourceSansProRegular.woff") format("woff"),
+    url("../fonts/SourceSansProRegular/SourceSansProRegular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
 
 body {
-	font-family: 'Source Sans Pro', sans-serif;
+	font-family: 'SourceSansProRegular', sans-serif;
 	overflow: hidden;
 }
 
@@ -99,7 +107,6 @@ hr {
 	height: 120px;
 	min-width: 220px;
 	max-width: 400px;
-	overflow-y: auto;
 }
 
 ul {
@@ -111,7 +118,7 @@ li a {
 	color: rgba(255, 255, 255, .65);
 	text-decoration: none;
 
-	font-size: 16px;
+	font-size: 14px;
 	font-family: 'Source Sans Pro', sans-serif;
 
 	transition: color .3s;
