@@ -107,6 +107,7 @@ hr {
 	height: 220px;
 	width: 300px;
 	list-style-type: decimal;
+	padding: 0px;
 }
 
 #songs-content {
@@ -131,11 +132,11 @@ hr {
 
 .songs-header {
 	display: inline-block;
-	margin: 10px 0px 5px 5px;
+	margin: 10px 0px 5px 15px;
 }
 
 ol {
-	padding: 0px;
+	padding-left: 30px;
 }
 
 li {
