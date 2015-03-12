@@ -5,9 +5,8 @@ window.onload = function() {
 	var left = localStorage.getItem("left") - 8; // magic numbers, it moved right for 8 px, I don't know why
     var top = localStorage.getItem("top");
     
-    $('#amazing').css({ left: left + "px", top: top + "px", visibility: "visible" });
-
-
+    $('.draggable').css({ left: left + "px", top: top + "px", visibility: "visible" });
+    $('.follower').css({ left: (left + 482)+ "px", top: top + "px", visibility: "visible" }); //more magic numbers
 
 	for (var i = 0; i < 25; i++) {
 		getRandomName();
@@ -35,10 +34,18 @@ window.onload = function() {
         	.css({ top: mousey, left: mousex })
 	});
 
-	$('#amazing').draggable({ stop: function () {
+	$('.draggable').draggable({ 
+		drag: function () {
+			$('.follower').css('left', ($(this).position().left + 474));
+			$('.follower').css('top', $(this).position().top);
+		},
+		stop: function () {
 
         var left = $(this).position().left;
         var top = $(this).position().top;
+
+        $('.follower').css('left', (left + 474));
+		$('.follower').css('top', top);
 
         localStorage.setItem("left", left);
         localStorage.setItem("top", top);
@@ -46,6 +53,12 @@ window.onload = function() {
         }, 
         scroll: 'false'
     });
+
+
+	$('#songs').load('songs/songs.html');
+	$('#songs').perfectScrollbar({
+		suppressScrollX: true
+	});
 }
 
 var arrayOfRandomBackgrounds = [];

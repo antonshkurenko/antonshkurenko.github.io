@@ -5,12 +5,13 @@ body {
 	overflow: hidden;
 }
 
-#amazing {
+.amazing {
 	z-index: 777;
 	color: rgba(255, 255, 255, .85);
 	margin: 15px;
-	padding: 10px;
-	width: 444px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
 
     background: rgba(0, 0, 0, 0.5);
 	border: 1px solid rgba(0,0,0,.2);
@@ -23,6 +24,17 @@ body {
     box-shadow: 0 0 13px 3px rgba(0,0,0,.5);
 
     visibility: hidden;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.amazing:hover {
+	cursor: default;
 }
 
 #bg {
@@ -74,3 +86,40 @@ hr {
     background-image:      -o-linear-gradient(left, rgba(255, 255, 255, 0), rgba(255, 255, 255,0.75), rgba(255, 255, 255, 0));
 }
 
+.draggable {
+	width: 444px;
+}
+
+.follower {
+	position: absolute;
+}
+
+#songs {
+	position: absolute;
+	height: 120px;
+	min-width: 220px;
+	max-width: 400px;
+	overflow-y: auto;
+}
+
+ul {
+	list-style-type: none;
+	padding: 0px;
+}
+
+li a {
+	color: rgba(255, 255, 255, .65);
+	text-decoration: none;
+
+	font-size: 16px;
+	font-family: 'Source Sans Pro', sans-serif;
+
+	transition: color .3s;
+	-moz-transition: color .3s;
+	-webkit-transition: color .3s;
+	-o-transition: color .3s;
+}
+
+li a:hover {
+	color: rgba(255, 255, 255, .85);
+}
