@@ -6,7 +6,7 @@ window.onload = function() {
     var top = localStorage.getItem("top");
     
     $('.draggable').css({ left: left + "px", top: top + "px", visibility: "visible" });
-    $('.follower').css({ left: (left + 482)+ "px", top: top + "px", visibility: "visible" }); //more magic numbers
+    //$('.follower').css({ left: (left + 482)+ "px", top: top + "px", visibility: "visible" }); //more magic numbers
 
 	for (var i = 0; i < 25; i++) {
 		getRandomName();
@@ -44,8 +44,8 @@ window.onload = function() {
         var left = $(this).position().left;
         var top = $(this).position().top;
 
-        $('.follower').css('left', (left + 474));
-		$('.follower').css('top', top);
+        //$('.follower').css('left', (left + 474));
+		//$('.follower').css('top', top);
 
         localStorage.setItem("left", left);
         localStorage.setItem("top", top);
