@@ -1,28 +1,28 @@
+
+
 .sprite {
-	display:inline-block; 
-	overflow:hidden; 
+	display:inline-block;
+	overflow:hidden;
 	background-repeat: no-repeat;
 	background-image:url(icons/icons_sprite.png);
+
 	opacity:0.4;
 
 	transition: opacity .3s ease-out;
 	-moz-transition: opacity .3s ease-out;
 	-webkit-transition: opacity .3s ease-out;
-	-o-transition: opacity .3s ease-out;
-}
-
-.askfm {width:32px; height:32px; background-position: -2px -2px}
-.at {width:32px; height:32px; background-position: -36px -2px}
-.facebook {width:32px; height:32px; background-position: -70px -2px}
-.github {width:32px; height:32px; background-position: -104px -2px}
-.heart {width:32px; height:32px; background-position: -138px -2px}
-.instagram {width:32px; height:32px; background-position: -172px -2px}
-.skype {width:32px; height:32px; background-position: -206px -2px}
-.tumblr {width:32px; height:32px; background-position: -240px -2px}
-.twitter {width:32px; height:32px; background-position: -274px -2px}
-.vk {width:32px; height:32px; background-position: -308px -2px}
-.youtube {width:32px; height:32px; background-position: -342px -2px}
+	-o-transition: opacity .3s ease-out;}
 
 .sprite:hover {
 	opacity: .8;
 }
+
+.at {width:32px; height:32px; background-position: -2px -2px}
+.facebook {width:32px; height:32px; background-position: -36px -2px}
+.github {width:32px; height:32px; background-position: -70px -2px}
+.instagram {width:32px; height:32px; background-position: -2px -36px}
+.linkedin {width:32px; height:32px; background-position: -36px -36px}
+.skype {width:32px; height:32px; background-position: -70px -36px}
+.tumblr {width:32px; height:32px; background-position: -2px -70px}
+.twitter {width:32px; height:32px; background-position: -36px -70px}
+.vk {width:32px; height:32px; background-position: -70px -70px}
