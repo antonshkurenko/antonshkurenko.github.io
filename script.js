@@ -34,10 +34,6 @@ window.onload = function() {
 	});
 
 	$('.draggable').draggable({ 
-		drag: function () {
-			$('.follower').css('left', ($(this).position().left + 474));
-			$('.follower').css('top', $(this).position().top);
-		},
 		stop: function () {
 
         var left = $(this).position().left;
@@ -49,12 +45,6 @@ window.onload = function() {
         }, 
         scroll: 'false'
     });
-
-
-	$('#songs-content').load('songs/songs.html');
-	$('#songs-content').perfectScrollbar({
-		suppressScrollX: true
-	});
 }
 
 var arrayOfRandomBackgrounds = [];

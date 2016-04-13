@@ -1,3 +1,3 @@
 # cullycross.github.io
 
-hello, world!
+Hello, world!
