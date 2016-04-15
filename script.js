@@ -1,17 +1,8 @@
-var MAX_IMAGES = 25;
-
 window.onload = function() {
 
-	var left = localStorage.getItem("left") - 8; // magic numbers, it moved right for 8 px, I don't know why
-    var top = localStorage.getItem("top");
-    
-    $('.draggable').css({ left: left + "px", top: top + "px", visibility: "visible" });
- 
 	for (var i = 0; i < 25; i++) {
 		getRandomName();
 	};
-
-	$('#bg').backstretch(arrayOfRandomBackgrounds, {duration: 10000, fade: 1500});
 
 	// Tooltip only Text
 	$('.hovered').hover(function(){
@@ -32,44 +23,4 @@ window.onload = function() {
         $('.tooltip')
         	.css({ top: mousey, left: mousex })
 	});
-
-	$('.draggable').draggable({ 
-		stop: function () {
-
-        var left = $(this).position().left;
-        var top = $(this).position().top;
-
-        localStorage.setItem("left", left);
-        localStorage.setItem("top", top);
-
-        }, 
-        scroll: 'false'
-    });
-}
-
-var arrayOfRandomBackgrounds = [];
-
-function getRandomName() {
-	var imageName;
-
-	do{
-		var random = Math.floor(Math.random() * MAX_IMAGES)  + 1;
-		imageName = "image_";
-		if (random < 10) {
-			imageName = imageName + "00" + random;
-		} else if (random < 100) {
-			imageName = imageName + "0" + random;
-		}
-	} while(arrayOfRandomBackgrounds.indexOf(imageName) != -1)
-
-	imageName = "img/" + imageName + ".jpg";
-	
-	arrayOfRandomBackgrounds[arrayOfRandomBackgrounds.length] = imageName;
-
-	if(arrayOfRandomBackgrounds.length == MAX_IMAGES + 1) {
-		arrayOfRandomBackgrounds = [];
-		arrayOfRandomBackgrounds[0] = imageName;
-	}
-
-	return imageName;
 }

@@ -1,63 +1,55 @@
 @font-face {
-    font-family: "SourceSansProRegular";
-    src: url("../fonts/SourceSansProRegular/SourceSansProRegular.eot");
-    src: url("../fonts/SourceSansProRegular/SourceSansProRegular.eot?#iefix")format("embedded-opentype"),
-    url("../fonts/SourceSansProRegular/SourceSansProRegular.woff") format("woff"),
-    url("../fonts/SourceSansProRegular/SourceSansProRegular.ttf") format("truetype");
-    font-style: normal;
-    font-weight: normal;
+	font-family: "SourceSansProRegular";
+	src: url("../fonts/SourceSansProRegular/SourceSansProRegular.eot");
+	src: url("../fonts/SourceSansProRegular/SourceSansProRegular.eot?#iefix")format("embedded-opentype"),
+	url("../fonts/SourceSansProRegular/SourceSansProRegular.woff") format("woff"),
+	url("../fonts/SourceSansProRegular/SourceSansProRegular.ttf") format("truetype");
+	font-style: normal;
+	font-weight: normal;
 }
 
 body {
+
 	font-family: 'SourceSansProRegular', sans-serif;
 	overflow: hidden;
 }
 
+
+.content {
+	width: 800px;
+	margin: 0 auto;
+	position: relative;
+  	top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
 .amazing {
-	z-index: 777;
 	color: rgba(255, 255, 255, .85);
-	margin: 15px;
-	padding-left: 10px;
-	padding-right: 10px;
-	padding-bottom: 10px;
 
-    background: rgba(0, 0, 0, 0.5);
+	width: 350px;
+
+	background: rgba(0, 0, 0, 0.5);
 	border: 1px solid rgba(0,0,0,.2);
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
 
-    -moz-box-shadow: 0 0 13px 3px rgba(0,0,0,.5);
-    -webkit-box-shadow: 0 0 13px 3px rgba(0,0,0,.5);
-    box-shadow: 0 0 13px 3px rgba(0,0,0,.5);
+	-moz-box-shadow: 0 0 13px 3px rgba(0,0,0,.5);
+	-webkit-box-shadow: 0 0 13px 3px rgba(0,0,0,.5);
+	box-shadow: 0 0 13px 3px rgba(0,0,0,.5);
 
-    visibility: hidden;
-
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 
 .amazing:hover {
 	cursor: default;
-}
-
-#bg {
-	width: 100%;
-	height: 100%;
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	z-index: -999;
-}
-
-.introduce {
-	font-size: 18px;
 }
 
 .tooltip {
@@ -71,6 +63,10 @@ body {
 	color: rgba(255, 255, 255, .8);
 	font-size:12px Arial;
 	z-index: 999;
+}
+
+p {
+	text-align: center;
 }
 
 q {
@@ -87,38 +83,9 @@ q::after{
 
 hr {
 	border: 0;
-    height: 1px;
-    background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, 0), rgba(255, 255, 255,0.75), rgba(255, 255, 255, 0));
-    background-image:    -moz-linear-gradient(left, rgba(255, 255, 255, 0), rgba(255, 255, 255,0.75), rgba(255, 255, 255, 0));
-    background-image:     -ms-linear-gradient(left, rgba(255, 255, 255, 0), rgba(255, 255, 255,0.75), rgba(255, 255, 255, 0));
-    background-image:      -o-linear-gradient(left, rgba(255, 255, 255, 0), rgba(255, 255, 255,0.75), rgba(255, 255, 255, 0));
-}
-
-.draggable {
-	width: 444px;
-}
-
-ol {
-	padding-left: 30px;
-}
-
-li {
-	margin: 5px;
-}
-
-li a {
-	color: rgba(255, 255, 255, .65);
-	text-decoration: none;
-
-	font-size: 14px;
-	font-family: 'Source Sans Pro', sans-serif;
-
-	transition: color .3s;
-	-moz-transition: color .3s;
-	-webkit-transition: color .3s;
-	-o-transition: color .3s;
-}
-
-li a:hover {
-	color: rgba(255, 255, 255, .85);
+	height: 1px;
+	background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, 0), rgba(255, 255, 255,0.75), rgba(255, 255, 255, 0));
+	background-image:    -moz-linear-gradient(left, rgba(255, 255, 255, 0), rgba(255, 255, 255,0.75), rgba(255, 255, 255, 0));
+	background-image:     -ms-linear-gradient(left, rgba(255, 255, 255, 0), rgba(255, 255, 255,0.75), rgba(255, 255, 255, 0));
+	background-image:      -o-linear-gradient(left, rgba(255, 255, 255, 0), rgba(255, 255, 255,0.75), rgba(255, 255, 255, 0));
 }
