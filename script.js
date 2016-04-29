@@ -1,8 +1,19 @@
 window.onload = function() {
 
+
+	// todo customize plug in for custom labels
+	// beautify source js and look at function s(t, e, n, i, o) {
+	// p: setttings
+	// e: current element
+
 	var entries = [ 
 
-	{ label: 'Back to top', url: 'http://www.jqueryscript.net/tags.php?/Back%20to%20top/', target: '_top' },
+	{
+		label: 'Back to top', 
+		url: 'http://www.jqueryscript.net/tags.php?/Back%20to%20top/', 
+		target: '_top'
+
+	},
 	{ label: 'Bootstrap', url: 'http://www.jqueryscript.net/tags.php?/Bootstrap/', target: '_top' },
 	{ label: 'Carousel', url: 'http://www.jqueryscript.net/tags.php?/carousel/', target: '_top' },
 	{ label: 'Countdown', url: 'http://www.jqueryscript.net/tags.php?/countdown/', target: '_top' },
