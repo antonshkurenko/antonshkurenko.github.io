@@ -8,93 +8,69 @@
 	font-weight: normal;
 }
 
-body {
-
-	font-family: 'SourceSansProRegular', sans-serif;
-	overflow: hidden;
-}
-
 .content {
-	width: 800px;
+	width: 100%;
 	margin: 0 auto;
 	position: relative;
   	top: 50%;
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
+	font-family: 'SourceSansProRegular', sans-serif;
+	overflow: hidden;
 }
 
-#tag-cloud {
-	width: 500px;
-	height: 500px;
-	padding-left: 0;
-    padding-right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-}
-
-.amazing {
-	color: rgba(255, 255, 255, .85);
-
-	width: 350px;
-
-	background: rgba(0, 0, 0, 0.5);
-	border: 1px solid rgba(0,0,0,.2);
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
-
-	-moz-box-shadow: 0 0 13px 3px rgba(0,0,0,.5);
-	-webkit-box-shadow: 0 0 13px 3px rgba(0,0,0,.5);
-	box-shadow: 0 0 13px 3px rgba(0,0,0,.5);
-
-	-webkit-touch-callout: none;
-	-webkit-user-select: none;
-	-khtml-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-}
-
-.amazing:hover {
-	cursor: default;
-}
-
-.tooltip {
-	display:none;
-	position:absolute;
-	border:1px solid #333;
-	box-shadow: 0 0 20px 1px rgba(0,0,0,.5);
-	background-color: rgba(22, 22, 22, .75);
-	border-radius:5px;
-	padding:3px;
-	color: rgba(255, 255, 255, .8);
-	font-size:12px Arial;
-	z-index: 999;
-}
-
-p {
+.contacts {
+	margin: 0 auto;
+	padding: 0;
 	text-align: center;
 }
 
-q {
-	font-style: italic;
+.contacts li {
+	display: inline-block;
+	width: 100%;
 }
 
-q::before {
-	content: '«';
+.before-floating::before {
+	float: left;
 }
 
-q::after{
-	content: '»';
+.after-floating::after {
+	float: right;
 }
 
-hr {
-	border: 0;
-	height: 1px;
-	background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, 0), rgba(255, 255, 255,0.75), rgba(255, 255, 255, 0));
-	background-image:    -moz-linear-gradient(left, rgba(255, 255, 255, 0), rgba(255, 255, 255,0.75), rgba(255, 255, 255, 0));
-	background-image:     -ms-linear-gradient(left, rgba(255, 255, 255, 0), rgba(255, 255, 255,0.75), rgba(255, 255, 255, 0));
-	background-image:      -o-linear-gradient(left, rgba(255, 255, 255, 0), rgba(255, 255, 255,0.75), rgba(255, 255, 255, 0));
+.vk::before {
+	content: "vk.com/";
+}
+
+.facebook::before {
+	content: "facebook.com/";
+}
+
+.skype::before {
+	content: "skype:";
+}
+
+.mail::after {
+	content: "@gmail.com";
+}
+
+.twitter::before {
+	content: "twitter.com/";
+}
+
+.instagram::before {
+	content: "instagram.com/";
+}
+
+.tumblr::after {
+	content: ".tumblr.com";
+}
+
+.github::before {
+	content: "github.com/";
+}
+
+.linkedin::before {
+	content: "www.linkedin.com/in/";
 }
