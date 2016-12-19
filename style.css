@@ -1,76 +1,45 @@
-@font-face {
-	font-family: "SourceSansProRegular";
-	src: url("../fonts/SourceSansProRegular/SourceSansProRegular.eot");
-	src: url("../fonts/SourceSansProRegular/SourceSansProRegular.eot?#iefix")format("embedded-opentype"),
-	url("../fonts/SourceSansProRegular/SourceSansProRegular.woff") format("woff"),
-	url("../fonts/SourceSansProRegular/SourceSansProRegular.ttf") format("truetype");
-	font-style: normal;
-	font-weight: normal;
+body {
+	position: relative;
+	font-family: 'Roboto';
 }
 
 .content {
-	width: 100%;
-	margin: 0 auto;
-	position: relative;
-  	top: 50%;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-	font-family: 'SourceSansProRegular', sans-serif;
-	overflow: hidden;
+	position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.contacts {
-	margin: 0 auto;
-	padding: 0;
-	text-align: center;
+.div-table {
+    display: table;
+    width: auto;
+    border-spacing: 0 8px;
 }
 
-.contacts li {
-	display: inline-block;
-	width: 100%;
+.div-table-row {
+    display: table-row;
+    width: auto;
+    clear: both;
 }
 
-.before-floating::before {
-	float: left;
+.div-table-col {
+    display: table-cell;
+    width: 200px;
+    vertical-align: baseline;
 }
 
-.after-floating::after {
-	float: right;
+.left-column {
+    text-align: right;
 }
 
-.vk::before {
-	content: "vk.com/";
+.middle-column {
+    text-align: center;
+    width: auto;
+    background: #cecece; /* debug purposes */
+    font-size: 28px;
 }
 
-.facebook::before {
-	content: "facebook.com/";
-}
-
-.skype::before {
-	content: "skype:";
-}
-
-.mail::after {
-	content: "@gmail.com";
-}
-
-.twitter::before {
-	content: "twitter.com/";
-}
-
-.instagram::before {
-	content: "instagram.com/";
-}
-
-.tumblr::after {
-	content: ".tumblr.com";
-}
-
-.github::before {
-	content: "github.com/";
-}
-
-.linkedin::before {
-	content: "www.linkedin.com/in/";
+.right-column {
+    text-align: left;
+    background: #a8a8a8; /* debug purposes */
 }
