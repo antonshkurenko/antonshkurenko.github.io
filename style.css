@@ -3,6 +3,16 @@ body {
 	font-family: 'Roboto';
 }
 
+#name-scene {
+	list-style-type: none;
+	padding: 0;
+}
+
+.letter {
+	display: inline;
+	font-size: 32px;
+}
+
 .content {
 	position: absolute;
   top: 50%;
@@ -10,10 +20,8 @@ body {
   transform: translate(-50%, -50%);
 }
 
-.div-table {
-    display: table;
-    width: auto;
-    border-spacing: 0 8px;
+.table-wrapper {
+	margin-top: 12px;
 }
 
 .div-table-row {
@@ -30,17 +38,17 @@ body {
 
 .left-column {
     text-align: right;
-    background: #dfdfdf; /* debug purposes */
+    /*background: #dfdfdf; /* debug purposes */
 }
 
 .middle-column {
     text-align: center;
     width: auto;
-    background: #cecece; /* debug purposes */
-    font-size: 28px;
+    /*background: #cecece; /* debug purposes */
+    font-size: 24px;
 }
 
 .right-column {
     text-align: left;
-    background: #a8a8a8; /* debug purposes */
+    /*background: #a8a8a8; /* debug purposes */
 }
