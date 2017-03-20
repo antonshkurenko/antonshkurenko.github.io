@@ -9,11 +9,12 @@ body {
 }
 
 .letter {
-	display: inline;
 	font-size: 32px;
+	cursor: default;
+	user-select: none;
 }
 
-.content {
+.name-centered {
 	position: absolute;
   top: 50%;
   left: 50%;
@@ -21,7 +22,10 @@ body {
 }
 
 .table-wrapper {
-	margin-top: 12px;
+	position: fixed;
+	right: 0px;
+	bottom: 0px;
+	margin: 52px;
 }
 
 .div-table-row {
@@ -32,23 +36,20 @@ body {
 
 .div-table-col {
     display: table-cell;
-    min-width: 150px;
+    min-width: 100px;
     vertical-align: baseline;
 }
 
 .left-column {
     text-align: right;
-    /*background: #dfdfdf; /* debug purposes */
 }
 
 .middle-column {
     text-align: center;
     width: auto;
-    /*background: #cecece; /* debug purposes */
-    font-size: 24px;
+    font-size: 18px;
 }
 
 .right-column {
     text-align: left;
-    /*background: #a8a8a8; /* debug purposes */
 }
