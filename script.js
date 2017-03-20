@@ -50,7 +50,25 @@ window.onload = function(e) {
   for (var i = 0; i < letters.length; i++) {
     var current = letters[i];
 
-    current.style.left = (negativeOffset + offset) + "px";
+    current.parentElement.style.left = (negativeOffset + offset) + "px";
     offset += letterSizes[i].x;
   }
+
+  var body = document.getElementsByTagName('body')[0];
+
+  /**
+  Взять что-то за радиус?
+
+  https://github.com/wagerfield/parallax
+
+  data-depth коеффициент?
+  посмотреть сферу. В нуле все находится изначально,
+  после начинает оборачиваться и менять угол
+  смотреть координаты каждого элемента и крутить его
+  в зависимости от удаления от центра крутить по x, y, z?
+  http://stackoverflow.com/questions/442404/retrieve-the-position-x-y-of-an-html-element
+  */
+  body.onmousemove = function(e) {
+    console.log("Mouse move: " + e.clientX + ", " + e.clientY);
+  };
 }

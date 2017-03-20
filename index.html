@@ -19,21 +19,26 @@
                  sum+=1/16
                  print(sum) -->
         <ul id="name-scene">
-            <li class="layer letter" data-depth="0.5625">A</li>
-            <li class="layer letter" data-depth="0.3125">n</li>
-            <li class="layer letter" data-depth="0.6875">t</li>
-            <li class="layer letter" data-depth="0.125">o</li>
-            <li class="layer letter" data-depth="0.5">n</li>
-            <li class="layer letter" data-depth="0.8125">&nbsp;</li>
-            <li class="layer letter" data-depth="0.75">S</li>
-            <li class="layer letter" data-depth="0.625">h</li>
-            <li class="layer letter" data-depth="0.0625">k</li>
-            <li class="layer letter" data-depth="0.4375">u</li>
-            <li class="layer letter" data-depth="0.875">r</li>
-            <li class="layer letter" data-depth="0.1875">e</li>
-            <li class="layer letter" data-depth="0.375">n</li>
-            <li class="layer letter" data-depth="0.9375">k</li>
-            <li class="layer letter" data-depth="0.25">o</li>
+            <!-- I'd like to use spans,
+            not divs, but it's impossible
+            to use transformations on inline
+            elements
+           -->
+            <li class="layer" data-depth="0.5625"><div class="letter">A</span></li>
+            <li class="layer" data-depth="0.3125"><div class="letter">n</span></li>
+            <li class="layer" data-depth="0.6875"><div class="letter">t</span></li>
+            <li class="layer" data-depth="0.125"><div class="letter">o</span></li>
+            <li class="layer" data-depth="0.5"><div class="letter">n</span></li>
+            <li class="layer" data-depth="0.8125"><div class="letter">&nbsp;</span></li>
+            <li class="layer" data-depth="0.75"><div class="letter">S</span></li>
+            <li class="layer" data-depth="0.625"><div class="letter">h</span></li>
+            <li class="layer" data-depth="0.0625"><div class="letter">k</span></li>
+            <li class="layer" data-depth="0.4375"><div class="letter">u</span></li>
+            <li class="layer" data-depth="0.875"><div class="letter">r</span></li>
+            <li class="layer" data-depth="0.1875"><div class="letter">e</span></li>
+            <li class="layer" data-depth="0.375"><div class="letter">n</span></li>
+            <li class="layer" data-depth="0.9375"><div class="letter">k</span></li>
+            <li class="layer" data-depth="0.25"><div class="letter">o</span></li>
         </ul>
     </div>
 
