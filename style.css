@@ -12,7 +12,6 @@ body {
 	font-size: 32px;
 	cursor: default;
 	user-select: none;
-	transform: rotateY(45deg) rotateX(45deg);
 }
 
 .name-centered {

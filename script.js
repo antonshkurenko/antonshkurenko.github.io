@@ -1,6 +1,34 @@
+var MAX_RADIUS = 400;
+var MAX_RADIUS_SQR = MAX_RADIUS * MAX_RADIUS;
+
 function Point(x, y) {
   this.x = x;
   this.y = y;
+}
+
+Point.prototype.add = function (other) {
+  return new Point(this.x + other.x, this.y + other.y);
+}
+
+Point.prototype.sub = function (other) {
+  return new Point(this.x - other.x, this.y - other.y);
+};
+
+Point.prototype.dist = function(other) {
+  return Math.sqrt(Math.pow(this.x - other.x, 2) +
+   Math.pow(this.y - other.y, 2));
+}
+
+Point.prototype.len = function() {
+  return Math.sqrt(this.x*this.x + this.y*this.y);
+}
+
+Point.prototype.mult = function(k) {
+  return new Point(this.x*k, this.y*k);
+}
+
+Point.prototype.div = function(k) {
+  return new Point(this.x/k, this.y/k);
 }
 
 function getTextSize(text, font) {
@@ -13,6 +41,57 @@ function getTextSize(text, font) {
     return new Point(metrics.width, 32);
 }
 
+function clampToRadius(center, actualPoint, radius) {
+  var offset = actualPoint.sub(center);
+  var distance = offset.len();
+
+  if(distance < radius) {
+    return actualPoint;
+  } else {
+    var direction = offset.div(distance);
+    return center.add(direction.mult(radius));
+  }
+}
+
+function getZ(x, y, radiusSqr) {
+  var zSqr = radiusSqr - x*x - y*y;
+
+  /**
+   * Sometimes in case of decimals Z can be something like -2
+   * ignore such values
+   */
+  if(zSqr > 0) {
+    return Math.sqrt(zSqr);
+  } else {
+    return 0;
+  }
+}
+
+function getKx(y, z) {
+  return -y/z;
+}
+
+function getKy(x, z) {
+  return -x/z;
+}
+
+function getKz(x, y) {
+  return -x/y;
+}
+
+function toDegrees (rad) {
+  return rad * (180 / Math.PI);
+}
+
+function toRadians (angle) {
+  return angle * (Math.PI / 180);
+}
+
+function getActualCoord(element) {
+  var rect = element.getBoundingClientRect();
+  return new Point(rect.left, rect.top);
+}
+
 window.onload = function(e) {
 
   var letters = document.getElementsByClassName('letter');
@@ -23,6 +102,7 @@ window.onload = function(e) {
 
   for (var i = 0; i < letters.length; i++) {
     var current = letters[i];
+
     var size = getTextSize(current.textContent, "32px Roboto");
 
     letterSizes.push(size);
@@ -35,23 +115,45 @@ window.onload = function(e) {
       calibrateY: false,
       invertX: false,
       invertY: false,
-      limitX: false,
-      limitY: false,
+      limitX: MAX_RADIUS, // false
+      limitY: MAX_RADIUS, // false
       scalarX: 2500,
       scalarY: 2500,
       frictionX: 0.2,
       frictionY: 0.2,
       originX: 0.5,
-      originY: 0.5
+      originY: 0.5,
+      clampFunc: function (element, x, y) {
+        var index = parseInt(element.getAttribute("data-index"));
+        return clampToRadius(new Point(0, 0),
+           new Point(x, y), MAX_RADIUS * letterDataDepths[index]);
+      }
   });
+
+  var letterDataDepths = [];
+  var letterRadiusSqrs = [];
 
   var offset = 0;
   var negativeOffset = -totalWidth / 2;
   for (var i = 0; i < letters.length; i++) {
     var current = letters[i];
+    var parent = current.parentElement;
 
-    current.parentElement.style.left = (negativeOffset + offset) + "px";
+    parent.setAttribute("data-index", i);
+
+    parent.style.left = (negativeOffset + offset) + "px";
     offset += letterSizes[i].x;
+
+    var dataDepth = parent.getAttribute("data-depth");
+    letterDataDepths.push(dataDepth);
+    letterRadiusSqrs.push(dataDepth * dataDepth * MAX_RADIUS_SQR);
+  }
+
+  var letterStartPositions = [];
+
+  for (var i = 0; i < letters.length; i++) {
+    var current = letters[i];
+    letterStartPositions.push(getActualCoord(current));
   }
 
   var body = document.getElementsByTagName('body')[0];
@@ -66,9 +168,45 @@ window.onload = function(e) {
   после начинает оборачиваться и менять угол
   смотреть координаты каждого элемента и крутить его
   в зависимости от удаления от центра крутить по x, y, z?
+
+  сделать радиус -- лимит? взять меньшее высота--ширина экрана на 2
+
+  через радиус и координаты на плоскости ХУ вывести З
+
+  угол наклона:
+
+  взять радиус от нуля до точки,
+  http://www.cleverstudents.ru/line_and_plane/line_passes_through_2_points.html
+  через 0 и точку
+  далее угол наклона через проекции на XY, YZ, XZ
+
   http://stackoverflow.com/questions/442404/retrieve-the-position-x-y-of-an-html-element
   */
+
   body.onmousemove = function(e) {
-    console.log("Mouse move: " + e.clientX + ", " + e.clientY);
+
+    for (var i = 0; i < letters.length; i++) {
+      var current = letters[i];
+      var center = letterStartPositions[i];
+      var actualCoord = getActualCoord(current).sub(center);
+
+      var z = getZ(actualCoord.x, actualCoord.y, MAX_RADIUS_SQR * letterDataDepths[i] * letterDataDepths[i]);
+
+      var kx = getKx(actualCoord.y, z);
+      var ky = getKy(actualCoord.x, z);
+      var kz = getKz(actualCoord.x, actualCoord.y);
+
+      var xAngle = Math.atan(kx) + Math.PI;
+      var yAngle = Math.atan(ky) + Math.PI;
+      var zAngle = Math.atan(kz) + Math.PI;
+
+      // todo fix Z rotation flickering
+      // possibly transition?
+
+      current.style.transform = "rotateX(" + toDegrees(xAngle) +
+        "deg) rotateY(" + toDegrees(yAngle) +
+        "deg) rotateZ(" + toDegrees(zAngle) +
+        "deg)";
+    }
   };
 }
