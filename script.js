@@ -1,6 +1,10 @@
 var MAX_RADIUS = 400;
 var MAX_RADIUS_SQR = MAX_RADIUS * MAX_RADIUS;
 
+Number.prototype.clamp = function(min, max) {
+  return Math.min(Math.max(this, min), max);
+};
+
 function Point(x, y) {
   this.x = x;
   this.y = y;
@@ -90,6 +94,18 @@ function toRadians (angle) {
 function getActualCoord(element) {
   var rect = element.getBoundingClientRect();
   return new Point(rect.left, rect.top);
+}
+
+function smallestRotateDirection(current, newAngle) {
+      var aR;
+      current = current || 0; // if rot undefined or 0, make 0, else rot
+      aR = current % 360;
+      if ( aR < 0 ) { aR += 360; }
+      if ( aR < 180 && (newAngle > (aR + 180)) ) { current -= 360; }
+      if ( aR >= 180 && (newAngle <= (aR - 180)) ) { current += 360; }
+      current += (newAngle - aR);
+
+      return current;
 }
 
 window.onload = function(e) {
@@ -183,6 +199,8 @@ window.onload = function(e) {
   http://stackoverflow.com/questions/442404/retrieve-the-position-x-y-of-an-html-element
   */
 
+  var letterZAngles = new Array(letters.length).fill(0);
+
   body.onmousemove = function(e) {
 
     for (var i = 0; i < letters.length; i++) {
@@ -198,14 +216,29 @@ window.onload = function(e) {
 
       var xAngle = Math.atan(kx) + Math.PI;
       var yAngle = Math.atan(ky) + Math.PI;
-      var zAngle = Math.atan(kz) + Math.PI;
+      var zAngle = Math.atan(kz);
 
-      // todo fix Z rotation flickering
-      // possibly transition?
+      if (actualCoord.y > 0) {
+        zAngle += Math.PI;
+      } else {
+        if (actualCoord.x < 0) {
+          zAngle += 2 * Math.PI;
+        }
+      }
 
-      current.style.transform = "rotateX(" + toDegrees(xAngle) +
-        "deg) rotateY(" + toDegrees(yAngle) +
-        "deg) rotateZ(" + toDegrees(zAngle) +
+      xAngle = toDegrees(xAngle);
+      yAngle = toDegrees(yAngle);
+      zAngle = toDegrees(zAngle);
+
+      xAngle = xAngle.clamp(120, 230);
+      yAngle = yAngle.clamp(120, 230);
+
+      zAngle = smallestRotateDirection(letterZAngles[i], zAngle);
+      letterZAngles[i] = zAngle;
+
+      current.style.transform = "rotateX(" + xAngle +
+        "deg) rotateY(" + yAngle +
+        "deg) rotateZ(" + zAngle +
         "deg)";
     }
   };

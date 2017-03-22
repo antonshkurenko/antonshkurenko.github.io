@@ -12,6 +12,7 @@ body {
 	font-size: 32px;
 	cursor: default;
 	user-select: none;
+	transition: 300ms ease all;
 }
 
 .name-centered {
