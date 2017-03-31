@@ -1,7 +1,20 @@
-
 var MAX_RADIUS_KOEF_SQR = 16/9; // 4/3
 var MAX_RADIUS = 300;
 var MAX_RADIUS_SQR = MAX_RADIUS * MAX_RADIUS * MAX_RADIUS_KOEF_SQR;
+
+function throttle(type, name, obj) {
+  obj = obj || window;
+  var running = false;
+  var func = function() {
+      if (running) { return; }
+      running = true;
+       requestAnimationFrame(function() {
+          obj.dispatchEvent(new CustomEvent(name));
+          running = false;
+      });
+  };
+  obj.addEventListener(type, func);
+}
 
 function Point(x, y) {
   this.x = parseFloat(x.toFixed(3));
@@ -17,8 +30,7 @@ Point.prototype.sub = function (other) {
 };
 
 Point.prototype.dist = function(other) {
-  return Math.sqrt(Math.pow(this.x - other.x, 2) +
-   Math.pow(this.y - other.y, 2));
+  return Math.sqrt(Math.pow(this.x - other.x, 2) + Math.pow(this.y - other.y, 2));
 }
 
 Point.prototype.len = function() {
@@ -70,7 +82,6 @@ function getZ(x, y, radiusSqr) {
 }
 
 function getKx(y, z) {
-  console.log(y, z);
   return -y/z;
 }
 
@@ -107,14 +118,22 @@ function smallestRotateDirection(current, newAngle) {
       return current;
 }
 
-window.onload = function(e) {
+window.addEventListener('load', function(e) {
 
   var letters = document.getElementsByClassName('letter');
 
+  var body = document.getElementsByTagName('body')[0];
+
+  // const
   var letterSizes = [];
+  var letterDataDepths = [];
+  var letterRadiusSqrs = new Array(letters.length).fill(0);
+  var letterZAngles = new Array(letters.length).fill(0);
+
+  // mutable
+  var letterStartPositions = new Array(letters.length).fill(0);
 
   var totalWidth = 0;
-
   for (var i = 0; i < letters.length; i++) {
     var current = letters[i];
 
@@ -122,7 +141,22 @@ window.onload = function(e) {
 
     letterSizes.push(size);
     totalWidth += size.x;
+
+    var parent = current.parentElement;
+
+    parent.setAttribute("data-index", i);
+    var dataDepth = parent.getAttribute("data-depth");
+    letterDataDepths.push(dataDepth);
   }
+
+  MAX_RADIUS = (Math.min(body.clientWidth, body.clientHeight) / 2) * 0.8;
+  MAX_RADIUS_SQR = MAX_RADIUS * MAX_RADIUS * MAX_RADIUS_KOEF_SQR;
+
+  for (var i = 0; i < letters.length; i++) {
+    letterRadiusSqrs[i] = letterDataDepths[i] * letterDataDepths[i] * MAX_RADIUS_SQR;
+  }
+
+  var negativeOffset = -totalWidth / 2;
 
   var scene = document.getElementById('name-scene');
   var parallax = new Parallax(scene, {
@@ -130,8 +164,8 @@ window.onload = function(e) {
       calibrateY: false,
       invertX: false,
       invertY: false,
-      limitX: MAX_RADIUS, // false
-      limitY: MAX_RADIUS, // false
+      limitX: MAX_RADIUS,
+      limitY: MAX_RADIUS,
       scalarX: 2500,
       scalarY: 2500,
       frictionX: 0.3,
@@ -145,35 +179,47 @@ window.onload = function(e) {
       }
   });
 
-  var letterDataDepths = [];
-  var letterRadiusSqrs = [];
-
   var offset = 0;
-  var negativeOffset = -totalWidth / 2;
   for (var i = 0; i < letters.length; i++) {
     var current = letters[i];
-    var parent = current.parentElement;
 
-    parent.setAttribute("data-index", i);
-
-    parent.style.left = (negativeOffset + offset) + "px";
+    current.parentElement.style.left = (negativeOffset + offset) + "px";
     offset += letterSizes[i].x;
-
-    var dataDepth = parent.getAttribute("data-depth");
-    letterDataDepths.push(dataDepth);
-    letterRadiusSqrs.push(dataDepth * dataDepth * MAX_RADIUS_SQR);
   }
 
-  var letterStartPositions = [];
+  var init = function() {
 
-  for (var i = 0; i < letters.length; i++) {
-    var current = letters[i];
-    letterStartPositions.push(getActualCoord(current, letterSizes[i]));
+    for (var i = 0; i < letters.length; i++) {
+
+      var values = letters[i].parentElement.style.transform.split('(')[1];
+
+      values = values.split(',');
+      var a = parseFloat(values[0], 10);
+      var b = parseFloat(values[1], 10);
+
+      letterStartPositions[i] = getActualCoord(letters[i], letterSizes[i])
+        .sub(new Point(a, b));
+    }
   }
 
-  var letterZAngles = new Array(letters.length).fill(0);
+  init();
 
-  window.onmousemove = function(e) {
+  throttle("resize", "optimizedResize", window);
+
+  window.addEventListener('optimizedResize', function(e) {
+    init();
+
+    MAX_RADIUS = (Math.min(body.clientWidth, body.clientHeight) / 2) * 0.8;
+    MAX_RADIUS_SQR = MAX_RADIUS * MAX_RADIUS * MAX_RADIUS_KOEF_SQR;
+
+    for (var i = 0; i < letters.length; i++) {
+      letterRadiusSqrs[i] = letterDataDepths[i] * letterDataDepths[i] * MAX_RADIUS_SQR;
+    }
+
+    parallax.limit(MAX_RADIUS, MAX_RADIUS);
+  });
+
+  window.addEventListener('mousemove', function(e) {
 
     for (var i = 0; i < letters.length; i++) {
       var current = letters[i];
@@ -210,5 +256,5 @@ window.onload = function(e) {
         "deg) rotateZ(" + zAngle +
         "deg)";
     }
-  };
-}
+  });
+});
