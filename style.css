@@ -1,32 +1,30 @@
 body {
-	position: relative;
-	font-family: 'Roboto';
+    position: relative;
+    font-family: 'Roboto';
 }
 
 #name-scene {
-	list-style-type: none;
-	padding: 0;
+    list-style-type: none;
+    padding: 0;
 }
 
 .letter {
-	font-size: 32px;
-	cursor: default;
-	user-select: none;
-	transition: 200ms linear all;
+    font-size: 32px;
+    transition: 200ms linear all;
 }
 
 .name-centered {
-	position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .table-wrapper {
-	position: fixed;
-	right: 0px;
-	bottom: 0px;
-	margin: 52px;
+    position: fixed;
+    right: 0px;
+    bottom: 0px;
+    margin: 52px;
 }
 
 .div-table-row {
