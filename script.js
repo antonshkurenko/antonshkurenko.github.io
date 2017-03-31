@@ -120,17 +120,16 @@ function smallestRotateDirection(current, newAngle) {
 window.addEventListener('load', function(e) {
 
   var letters = document.getElementsByClassName('letter');
-
   var body = document.getElementsByTagName('body')[0];
 
   // const
   var letterSizes = [];
   var letterDataDepths = [];
-  var letterRadiusSqrs = new Array(letters.length).fill(0);
-  var letterZAngles = new Array(letters.length).fill(0);
 
   // mutable
+  var letterRadiusSqrs = new Array(letters.length).fill(0);
   var letterStartPositions = new Array(letters.length).fill(0);
+  var letterZAngles = new Array(letters.length).fill(0);
 
   var totalWidth = 0;
   for (var i = 0; i < letters.length; i++) {
