@@ -1,6 +1,5 @@
+var RADIUS_KOEF = 0.8;
 var MAX_RADIUS_KOEF_SQR = 16/9; // 4/3
-var MAX_RADIUS = 300;
-var MAX_RADIUS_SQR = MAX_RADIUS * MAX_RADIUS * MAX_RADIUS_KOEF_SQR;
 
 function throttle(type, name, obj) {
   obj = obj || window;
@@ -17,8 +16,8 @@ function throttle(type, name, obj) {
 }
 
 function Point(x, y) {
-  this.x = parseFloat(x.toFixed(3));
-  this.y = parseFloat(y.toFixed(3));
+  this.x = parseFloat(x.toFixed(4));
+  this.y = parseFloat(y.toFixed(4));
 }
 
 Point.prototype.add = function (other) {
@@ -149,7 +148,7 @@ window.addEventListener('load', function(e) {
     letterDataDepths.push(dataDepth);
   }
 
-  MAX_RADIUS = (Math.min(body.clientWidth, body.clientHeight) / 2) * 0.8;
+  MAX_RADIUS = (Math.min(body.clientWidth, body.clientHeight) / 2) * RADIUS_KOEF;
   MAX_RADIUS_SQR = MAX_RADIUS * MAX_RADIUS * MAX_RADIUS_KOEF_SQR;
 
   for (var i = 0; i < letters.length; i++) {
