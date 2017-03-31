@@ -1,13 +1,11 @@
-var MAX_RADIUS = 400;
-var MAX_RADIUS_SQR = MAX_RADIUS * MAX_RADIUS;
 
-Number.prototype.clamp = function(min, max) {
-  return Math.min(Math.max(this, min), max);
-};
+var MAX_RADIUS_KOEF_SQR = 16/9; // 4/3
+var MAX_RADIUS = 300;
+var MAX_RADIUS_SQR = MAX_RADIUS * MAX_RADIUS * MAX_RADIUS_KOEF_SQR;
 
 function Point(x, y) {
-  this.x = x;
-  this.y = y;
+  this.x = parseFloat(x.toFixed(3));
+  this.y = parseFloat(y.toFixed(3));
 }
 
 Point.prototype.add = function (other) {
@@ -67,11 +65,12 @@ function getZ(x, y, radiusSqr) {
   if(zSqr > 0) {
     return Math.sqrt(zSqr);
   } else {
-    return 0;
+    return 0.01 * Math.sqrt(radiusSqr);
   }
 }
 
 function getKx(y, z) {
+  console.log(y, z);
   return -y/z;
 }
 
@@ -91,9 +90,9 @@ function toRadians (angle) {
   return angle * (Math.PI / 180);
 }
 
-function getActualCoord(element) {
+function getActualCoord(element, elementSize) {
   var rect = element.getBoundingClientRect();
-  return new Point(rect.left, rect.top);
+  return new Point(rect.left + elementSize.x/2, rect.top - elementSize.y/2);
 }
 
 function smallestRotateDirection(current, newAngle) {
@@ -135,8 +134,8 @@ window.onload = function(e) {
       limitY: MAX_RADIUS, // false
       scalarX: 2500,
       scalarY: 2500,
-      frictionX: 0.2,
-      frictionY: 0.2,
+      frictionX: 0.3,
+      frictionY: 0.3,
       originX: 0.5,
       originY: 0.5,
       clampFunc: function (element, x, y) {
@@ -169,46 +168,19 @@ window.onload = function(e) {
 
   for (var i = 0; i < letters.length; i++) {
     var current = letters[i];
-    letterStartPositions.push(getActualCoord(current));
+    letterStartPositions.push(getActualCoord(current, letterSizes[i]));
   }
-
-  var body = document.getElementsByTagName('body')[0];
-
-  /**
-  Взять что-то за радиус?
-
-  https://github.com/wagerfield/parallax
-
-  data-depth коеффициент?
-  посмотреть сферу. В нуле все находится изначально,
-  после начинает оборачиваться и менять угол
-  смотреть координаты каждого элемента и крутить его
-  в зависимости от удаления от центра крутить по x, y, z?
-
-  сделать радиус -- лимит? взять меньшее высота--ширина экрана на 2
-
-  через радиус и координаты на плоскости ХУ вывести З
-
-  угол наклона:
-
-  взять радиус от нуля до точки,
-  http://www.cleverstudents.ru/line_and_plane/line_passes_through_2_points.html
-  через 0 и точку
-  далее угол наклона через проекции на XY, YZ, XZ
-
-  http://stackoverflow.com/questions/442404/retrieve-the-position-x-y-of-an-html-element
-  */
 
   var letterZAngles = new Array(letters.length).fill(0);
 
-  body.onmousemove = function(e) {
+  window.onmousemove = function(e) {
 
     for (var i = 0; i < letters.length; i++) {
       var current = letters[i];
       var center = letterStartPositions[i];
-      var actualCoord = getActualCoord(current).sub(center);
+      var actualCoord = getActualCoord(current, letterSizes[i]).sub(center);
 
-      var z = getZ(actualCoord.x, actualCoord.y, MAX_RADIUS_SQR * letterDataDepths[i] * letterDataDepths[i]);
+      var z = getZ(actualCoord.x, actualCoord.y, letterRadiusSqrs[i]);
 
       var kx = getKx(actualCoord.y, z);
       var ky = getKy(actualCoord.x, z);
@@ -229,9 +201,6 @@ window.onload = function(e) {
       xAngle = toDegrees(xAngle);
       yAngle = toDegrees(yAngle);
       zAngle = toDegrees(zAngle);
-
-      xAngle = xAngle.clamp(120, 230);
-      yAngle = yAngle.clamp(120, 230);
 
       zAngle = smallestRotateDirection(letterZAngles[i], zAngle);
       letterZAngles[i] = zAngle;
