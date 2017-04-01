@@ -25,6 +25,8 @@ body {
     right: 0px;
     bottom: 0px;
     margin: 52px;
+    font-size: 18px;
+    font-style: italic;
 }
 
 .div-table-row {
@@ -46,9 +48,19 @@ body {
 .middle-column {
     text-align: center;
     width: auto;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .right-column {
     text-align: left;
+}
+
+a {
+		color: black;
+    text-shadow: -1px -1px white, -1px 1px white, 1px -1px white, 1px 1px white;
+    text-decoration: none;
+}
+
+a:hover .hover-underline {
+    box-shadow: inset 0 -1.5px 0 white, inset 0 -2.5px 0 black;
 }
