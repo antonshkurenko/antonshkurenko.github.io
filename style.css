@@ -11,6 +11,7 @@ body {
 .letter {
     font-size: 32px;
     transition: 200ms linear all;
+		animation: fadein 2s;
 }
 
 .name-centered {
@@ -63,4 +64,10 @@ a {
 
 a:hover .hover-underline {
     box-shadow: inset 0 -1.5px 0 white, inset 0 -2.5px 0 black;
+}
+
+@keyframes fadein {
+    0% { opacity: 0; }
+    25%   { opacity: 0; }
+		100%   { opacity: 1; }
 }
