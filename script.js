@@ -1,5 +1,5 @@
-var RADIUS_KOEF = 0.8;
-var MAX_RADIUS_KOEF_SQR = 16 / 9; // 4/3
+var RADIUS_COEF = 0.8;
+var MAX_RADIUS_COEF_SQR = 16 / 9; // 4/3
 
 function throttle(type, name, obj) {
     obj = obj || window;
@@ -44,6 +44,10 @@ Point.prototype.mult = function(k) {
 
 Point.prototype.div = function(k) {
     return new Point(this.x / k, this.y / k);
+}
+
+function animateBetween(a, b, u) {
+    return (1 - u) * a + u * b;
 }
 
 function getTextSize(text, font) {
@@ -133,6 +137,8 @@ window.addEventListener('load', function(e) {
     // const
     var letterSizes = [];
     var letterDataDepths = [];
+    // antOn sHkUrENNkO
+    var ohuenno = [3,7,9,11,12,13,15];
 
     // mutable
     var letterRadiusSqrs = new Array(letters.length)
@@ -158,8 +164,8 @@ window.addEventListener('load', function(e) {
         letterDataDepths.push(dataDepth);
     }
 
-    MAX_RADIUS = (Math.min(body.clientWidth, body.clientHeight) / 2) * RADIUS_KOEF;
-    MAX_RADIUS_SQR = MAX_RADIUS * MAX_RADIUS * MAX_RADIUS_KOEF_SQR;
+    MAX_RADIUS = (Math.min(body.clientWidth, body.clientHeight) / 2) * RADIUS_COEF;
+    MAX_RADIUS_SQR = MAX_RADIUS * MAX_RADIUS * MAX_RADIUS_COEF_SQR;
 
     for (var i = 0; i < letters.length; i++) {
         letterRadiusSqrs[i] = letterDataDepths[i] * letterDataDepths[i] * MAX_RADIUS_SQR;
@@ -186,13 +192,23 @@ window.addEventListener('load', function(e) {
         }
     });
 
+    var firstNOffset = 0;
+
     var negativeOffset = -totalWidth / 2;
     var offset = 0;
     for (var i = 0; i < letters.length; i++) {
         var current = letters[i];
 
-        current.parentElement.style.left = (negativeOffset + offset) + "px";
-        offset += letterSizes[i].x;
+        if (current.parentElement.id === "first_n") {
+          firstNOffset = (negativeOffset + offset)
+        }
+
+        if (current.parentElement.id === "second_n") {
+          current.parentElement.style.left = firstNOffset + "px";
+        } else {
+          current.parentElement.style.left = (negativeOffset + offset) + "px";
+          offset += letterSizes[i].x;
+        }
     }
 
     var init = function() {
@@ -218,7 +234,7 @@ window.addEventListener('load', function(e) {
         init();
 
         MAX_RADIUS = (Math.min(body.clientWidth, body.clientHeight) / 2) * 0.8;
-        MAX_RADIUS_SQR = MAX_RADIUS * MAX_RADIUS * MAX_RADIUS_KOEF_SQR;
+        MAX_RADIUS_SQR = MAX_RADIUS * MAX_RADIUS * MAX_RADIUS_COEF_SQR;
 
         for (var i = 0; i < letters.length; i++) {
             letterRadiusSqrs[i] = letterDataDepths[i] * letterDataDepths[i] * MAX_RADIUS_SQR;
@@ -234,6 +250,15 @@ window.addEventListener('load', function(e) {
             var center = letterStartPositions[i];
             var actualCoord = getActualCoord(current, letterSizes[i])
                 .sub(center);
+
+            if (ohuenno.indexOf(i) >= 0) {
+              var percentage = actualCoord.len() / Math.sqrt(letterRadiusSqrs[i]);
+              var r = Math.round(animateBetween(0, 255, percentage));
+              var g = Math.round(animateBetween(0, 0, percentage));
+              var b = Math.round(animateBetween(0, 0, percentage));
+              //current.style.textShadow = "1px 1px 3px rgba(0, 0, 0, " + animateBetween(0, 0.75, percentage) + ")"
+              current.style.color = "rgb(" + r + "," + g + "," + b + ")";
+            }
 
             var z = getZ(actualCoord.x, actualCoord.y, letterRadiusSqrs[i]);
 
