@@ -15,6 +15,9 @@ function throttle(type, name, obj) {
     obj.addEventListener(type, func);
 }
 
+REPEAT_COUNT_INVERSE = -1;
+REPEAT_COUNT_INFINITY = -2;
+
 function animate(options) {
 
     var animation = {
@@ -26,13 +29,36 @@ function animate(options) {
       
       var timeFraction = (time - start) / options.duration;
       if (timeFraction > 1) timeFraction = 1;
+      if (timeFraction < 0) timeFraction = 0;
   
       var progress = options.timing(timeFraction)
   
       options.draw(progress);
   
-      if (timeFraction < 1 && animation.keepAnimating) {
-        requestAnimationFrame(animate);
+      if (animation.keepAnimating) {
+          console.log("animating, fraction: ", timeFraction);
+        if (timeFraction < 1) {
+            requestAnimationFrame(animate);
+        } else {
+            console.log("somehow called: ", timeFraction);
+            var restart = true;
+            if (options.repeatCount == REPEAT_COUNT_INVERSE) {
+                var prevTiming = options.timing;
+                options.timing = function(t) { return prevTiming(1-t); }
+                options.repeatCount = 0;
+            } else if (options.repeatCount == REPEAT_COUNT_INFINITY) {
+                
+            } else if (options.repeatCount > 0) {
+                options.repeatCount--;
+            } else {
+                restart = false;
+            }
+
+            if (restart) {
+                start = performance.now();
+                requestAnimationFrame(animate);
+            }
+        }
       }
     });
 

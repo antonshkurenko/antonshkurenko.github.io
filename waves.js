@@ -34,7 +34,8 @@ function go(ctx) {
         draw: function(fraction) {
             waveOffset = fraction;
             drawCircleWaves(ctx);
-        }
+        },
+        repeatCount: REPEAT_COUNT_INFINITY,
     });
 }
 
