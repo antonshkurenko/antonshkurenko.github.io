@@ -1,0 +1,1 @@
+throttle("resize", "optimizedResize", window);

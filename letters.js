@@ -1,77 +1,6 @@
 var RADIUS_COEF = 0.8;
 var MAX_RADIUS_COEF_SQR = 16 / 9; // 4/3
 
-function throttle(type, name, obj) {
-    obj = obj || window;
-    var running = false;
-    var func = function() {
-        if (running) {
-            return;
-        }
-        running = true;
-        requestAnimationFrame(function() {
-            obj.dispatchEvent(new CustomEvent(name));
-            running = false;
-        });
-    };
-    obj.addEventListener(type, func);
-}
-
-function Point(x, y) {
-    this.x = parseFloat(x.toFixed(4));
-    this.y = parseFloat(y.toFixed(4));
-}
-
-Point.prototype.add = function(other) {
-    return new Point(this.x + other.x, this.y + other.y);
-}
-
-Point.prototype.sub = function(other) {
-    return new Point(this.x - other.x, this.y - other.y);
-};
-
-Point.prototype.dist = function(other) {
-    return Math.sqrt(Math.pow(this.x - other.x, 2) + Math.pow(this.y - other.y, 2));
-}
-
-Point.prototype.len = function() {
-    return Math.sqrt(this.x * this.x + this.y * this.y);
-}
-
-Point.prototype.mult = function(k) {
-    return new Point(this.x * k, this.y * k);
-}
-
-Point.prototype.div = function(k) {
-    return new Point(this.x / k, this.y / k);
-}
-
-function animateBetween(a, b, u) {
-    return (1 - u) * a + u * b;
-}
-
-function getTextSize(text, font) {
-    // re-use canvas object for better performance
-    var canvas = getTextSize.canvas || (getTextSize.canvas = document.createElement("canvas"));
-    var context = canvas.getContext("2d");
-    context.font = font;
-    var metrics = context.measureText(text);
-
-    return new Point(metrics.width, 32);
-}
-
-function clampToRadius(center, actualPoint, radius) {
-    var offset = actualPoint.sub(center);
-    var distance = offset.len();
-
-    if (distance < radius) {
-        return actualPoint;
-    } else {
-        var direction = offset.div(distance);
-        return center.add(direction.mult(radius));
-    }
-}
-
 function getZ(x, y, radiusSqr) {
     var zSqr = radiusSqr - x * x - y * y;
 
@@ -98,35 +27,9 @@ function getKz(x, y) {
     return -x / y;
 }
 
-function toDegrees(rad) {
-    return rad * (180 / Math.PI);
-}
-
-function toRadians(angle) {
-    return angle * (Math.PI / 180);
-}
-
 function getActualCoord(element, elementSize) {
     var rect = element.getBoundingClientRect();
     return new Point(rect.left + elementSize.x / 2, rect.top - elementSize.y / 2);
-}
-
-function smallestRotateDirection(current, newAngle) {
-    var aR;
-    current = current || 0; // if rot undefined or 0, make 0, else rot
-    aR = current % 360;
-    if (aR < 0) {
-        aR += 360;
-    }
-    if (aR < 180 && (newAngle > (aR + 180))) {
-        current -= 360;
-    }
-    if (aR >= 180 && (newAngle <= (aR - 180))) {
-        current += 360;
-    }
-    current += (newAngle - aR);
-
-    return current;
 }
 
 window.addEventListener('load', function(e) {
@@ -228,8 +131,6 @@ window.addEventListener('load', function(e) {
 
     init();
 
-    throttle("resize", "optimizedResize", window);
-
     window.addEventListener('optimizedResize', function(e) {
         init();
 
@@ -256,7 +157,6 @@ window.addEventListener('load', function(e) {
               var r = Math.round(animateBetween(0, 255, percentage));
               var g = Math.round(animateBetween(0, 0, percentage));
               var b = Math.round(animateBetween(0, 0, percentage));
-              //current.style.textShadow = "1px 1px 3px rgba(0, 0, 0, " + animateBetween(0, 0.75, percentage) + ")"
               current.style.color = "rgb(" + r + "," + g + "," + b + ")";
             }
 
