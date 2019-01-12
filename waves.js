@@ -13,9 +13,16 @@ function drawCircleWaves(ctx) {
     ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
     var currentRadius = INIT_RADIUS_WAVES + waveOffset
+
     while (currentRadius < MAX_RADIUS_WAVES) {
+
+        var distanceFromCenter = currentRadius / MAX_RADIUS_WAVES;
+
+        ctx.strokeStyle = 'rgba(0,0,0,' + distanceFromCenter + ')';
+
         ctx.beginPath();
         ctx.arc(CENTER.x, CENTER.y, currentRadius, 0, 2 * Math.PI);
+
         ctx.stroke();
         currentRadius += WAVE_GAP;
     }
