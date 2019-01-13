@@ -1,6 +1,7 @@
 MAX_RADIUS_WAVES = 0;
 INIT_RADIUS_WAVES = 0;
-WAVE_GAP = 50;
+WAVE_GAP = 100;
+WAVE_AMPLITUDE = 30;
 
 CENTER = new Point(0, 0);
 
@@ -20,12 +21,38 @@ function drawCircleWaves(ctx) {
 
         ctx.strokeStyle = 'rgba(0,0,0,' + distanceFromCenter + ')';
 
-        ctx.beginPath();
-        ctx.arc(CENTER.x, CENTER.y, currentRadius, 0, 2 * Math.PI);
+        drawWave(ctx, currentRadius, CENTER, WAVE_AMPLITUDE * distanceFromCenter);
 
-        ctx.stroke();
         currentRadius += WAVE_GAP;
     }
+}
+
+function calculateWaveR(offset, theta, nodeCount, amplitude) {
+    return offset + amplitude * Math.sin(nodeCount * theta);
+}
+
+function drawWave(ctx, radius, offsetPoint, amplitude) {
+    var increase = Math.PI / (180 * 1);
+
+    var counter = 0;
+    x = polarToX(calculateWaveR(radius, counter, 10, amplitude), counter) + offsetPoint.x;
+    y = polarToY(calculateWaveR(radius, counter, 10, amplitude), counter) + offsetPoint.y;
+
+    ctx.lineWidth = 1;
+
+    ctx.beginPath();
+    while (counter < 2 * Math.PI) {
+
+        ctx.moveTo(x,y);
+
+        x = polarToX(calculateWaveR(radius, counter, 10, amplitude), counter) + offsetPoint.x;
+        y = polarToY(calculateWaveR(radius, counter, 10, amplitude), counter) + offsetPoint.y;
+        
+        counter += increase;
+
+        ctx.lineTo(x,y);
+    }
+    ctx.stroke();
 }
 
 function go(ctx) {
@@ -73,3 +100,4 @@ window.addEventListener('load', function(e) {
         resizeCanvas();
     });
 });
+

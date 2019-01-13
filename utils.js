@@ -106,6 +106,14 @@ function toRadians(angle) {
     return angle * (Math.PI / 180);
 }
 
+function polarToX(r, theta) {
+    return r * Math.cos(theta);
+}
+
+function polarToY(r, theta) {
+    return r * Math.sin(theta);
+}
+
 function smallestRotateDirection(current, newAngle) {
     var aR;
     current = current || 0; // if rot undefined or 0, make 0, else rot
