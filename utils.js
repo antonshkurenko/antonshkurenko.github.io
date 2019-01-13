@@ -36,11 +36,9 @@ function animate(options) {
       options.draw(progress);
   
       if (animation.keepAnimating) {
-          console.log("animating, fraction: ", timeFraction);
         if (timeFraction < 1) {
             requestAnimationFrame(animate);
         } else {
-            console.log("somehow called: ", timeFraction);
             var restart = true;
             if (options.repeatCount == REPEAT_COUNT_INVERSE) {
                 var prevTiming = options.timing;
