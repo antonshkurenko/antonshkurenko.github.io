@@ -3,9 +3,7 @@ INIT_RADIUS_WAVES = 0;
 WAVE_GAP = 100;
 WAVE_AMPLITUDE = 30;
 
-var waveOffset = 0;
-
-function drawCircleWaves(ctx, options) {
+function drawCircleWaves(ctx, options, waveOffset) {
     ctx.clearRect(0, 0, options.width, options.height);
 
     var currentRadius = INIT_RADIUS_WAVES + waveOffset
@@ -32,8 +30,6 @@ function drawWave(ctx, radius, offsetPoint, amplitude) {
     var counter = 0;
     x = polarToX(calculateWaveR(radius, counter, 10, amplitude), counter) + offsetPoint.x;
     y = polarToY(calculateWaveR(radius, counter, 10, amplitude), counter) + offsetPoint.y;
-
-    ctx.lineWidth = 1;
 
     ctx.beginPath();
     while (counter < 2 * Math.PI) {
@@ -66,8 +62,7 @@ function launchWaves(ctx, options) {
             return animateBetween(0, WAVE_GAP, Math.abs(t)); 
         },
         draw: function(fraction) {
-            waveOffset = fraction;
-            drawCircleWaves(ctx, options);
+            drawCircleWaves(ctx, options, fraction);
         },
         repeatCount: REPEAT_COUNT_INFINITY,
     });

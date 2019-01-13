@@ -1,5 +1,6 @@
 var animations = [
-    launchWaves,
+    launchWaves, // credits to https://medium.com/s23nyc-tech/geometric-android-animations-using-the-canvas-dd687c43f3f4
+    launchSand, // credits to incovergent
 ];
 
 center = new Point(0, 0);
@@ -15,7 +16,7 @@ window.addEventListener('load', function(e) {
 
     var body = document.getElementsByTagName('body')[0];
 
-    var animation = animations[0];
+    var animation = animations[Math.floor(Math.random() * animations.length)];
 
     function resizeCanvas() {
         canvas.width = canvasWidth = window.innerWidth;

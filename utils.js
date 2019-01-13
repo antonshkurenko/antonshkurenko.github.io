@@ -142,6 +142,16 @@ function clampToRadius(center, actualPoint, radius) {
     }
 }
 
+function clamp(val, min, max) {
+    if (val <= min) {
+        return min;
+    } else if (val >= max) {
+        return max;
+    } else {
+        return val;
+    }
+}
+
 function getTextSize(text, font) {
     // re-use canvas object for better performance
     var canvas = getTextSize.canvas || (getTextSize.canvas = document.createElement("canvas"));

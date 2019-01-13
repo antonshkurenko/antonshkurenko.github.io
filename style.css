@@ -19,7 +19,8 @@ body {
 .letter {
     font-size: 32px;
     transition: 200ms linear all;
-		animation: fadein 2s;
+    animation: fadein 2s;
+    text-shadow: -1px -1px white, -1px 1px white, 1px -1px white, 1px 1px white;
 }
 
 .name-centered {
