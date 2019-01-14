@@ -174,7 +174,7 @@ window.addEventListener('load', function(e) {
                 zAngle += Math.PI;
             } else {
                 if (actualCoord.x < 0) {
-                    zAngle += 2 * Math.PI;
+                    zAngle += FULL_PI;
                 }
             }
 

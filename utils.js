@@ -1,3 +1,4 @@
+FULL_PI = Math.PI * 2;
 
 function throttle(type, name, obj) {
     obj = obj || window;
@@ -94,6 +95,14 @@ Point.prototype.mult = function(k) {
 
 Point.prototype.div = function(k) {
     return new Point(this.x / k, this.y / k);
+}
+
+Point.prototype.isInside = function(center, radius) {
+    return this.dist(center) <= radius;
+}
+
+function angleBetweenTwoDots(first, second) {
+    return Math.atan2(second.y - first.y, second.x - first.x);
 }
 
 function toDegrees(rad) {

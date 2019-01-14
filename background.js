@@ -1,6 +1,7 @@
 var animations = [
     launchWaves, // credits to https://medium.com/s23nyc-tech/geometric-android-animations-using-the-canvas-dd687c43f3f4
     launchSand, // credits to incovergent
+    launchCircles,
 ];
 
 center = new Point(0, 0);

@@ -18,7 +18,7 @@ function drawSand(ctx, options) {
         ctx.arc(
             options.center.x + polarToX(SAND_RADIUS + prevDelta, prevAngle),
             options.center.y + polarToY(SAND_RADIUS + prevDelta, prevAngle),
-            1, 0, 2 * Math.PI);
+            1, 0, FULL_PI);
         ctx.fill();
     
         prevAngle += ANGLE_STEP;
@@ -35,7 +35,7 @@ function launchSand(ctx, options) {
     var lastAnimation = animate({
         duration: 1000.0,
         timing: function(t) {
-            return animateBetween(0, 2 * Math.PI, Math.abs(t)); 
+            return t; 
         },
         draw: function(fraction) {
             drawSand(ctx, options);
