@@ -15,13 +15,15 @@ function drawSand(ctx, options) {
 
         prevDelta = prevDelta + (-1 + Math.random() * 2);
 
+        newR = SAND_RADIUS + prevDelta
+
         ctx.arc(
-            options.center.x + polarToX(SAND_RADIUS + prevDelta, prevAngle),
-            options.center.y + polarToY(SAND_RADIUS + prevDelta, prevAngle),
+            options.center.x + polarToX(newR, prevAngle),
+            options.center.y + polarToY(newR, prevAngle),
             1, 0, FULL_PI);
         ctx.fill();
     
-        prevAngle += ANGLE_STEP;
+        prevAngle += (1 / newR);
     }
 }
 
