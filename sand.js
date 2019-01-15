@@ -32,7 +32,7 @@ function launchSand(ctx, options) {
     if (launchSand.lastAnimation) {
         launchSand.lastAnimation.keepAnimating = false;
     }
-    var lastAnimation = animate({
+    launchSand.lastAnimation = animate({
         duration: 1000.0,
         timing: function(t) {
             return t; 

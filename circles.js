@@ -51,7 +51,7 @@ function launchCircles(ctx, options) {
     if (launchCircles.lastAnimation) {
         launchCircles.lastAnimation.keepAnimating = false;
     }
-    var lastAnimation = animate({
+    launchCircles.lastAnimation = animate({
         duration: 100.0,
         timing: function(t) {
             return t;

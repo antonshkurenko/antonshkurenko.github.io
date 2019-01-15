@@ -56,7 +56,7 @@ function launchWaves(ctx, options) {
     if (launchWaves.lastAnimation) {
         launchWaves.lastAnimation.keepAnimating = false;
     }
-    var lastAnimation = animate({
+    launchWaves.lastAnimation = animate({
         duration: 5000.0,
         timing: function(t) {
             return animateBetween(0, WAVE_GAP, Math.abs(t)); 
