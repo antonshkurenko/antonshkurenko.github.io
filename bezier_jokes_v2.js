@@ -27,7 +27,7 @@ var tweaks = [randomTweaksV2V1, randomTweaksV2V2];
 
 var points = createCirclePoints(RADIUS, Math.random() * FULL_PI, POINTS_AMOUNT);
 
-function drawBezierV2(ctx, options) {
+function drawBezierV2(ctx, options, tweakFunc) {
 
     ctx.setLineDash([1, 1 + 6 * Math.random()]);
     ctx.fillStyle = "rgba(0,0,0,0.05)";
@@ -35,7 +35,7 @@ function drawBezierV2(ctx, options) {
     ctx.lineJoin = "round",
     ctx.lineWidth = 1;
 
-    points = randomTweaksV2V1(points);
+    points = tweakFunc(points);
 
     drawAsSpline(ctx, points.map(function(p) {
         return p.add(options.center);
