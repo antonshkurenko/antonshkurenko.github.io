@@ -34,14 +34,10 @@ function launchSand(ctx, options) {
     if (launchSand.lastAnimation) {
         launchSand.lastAnimation.keepAnimating = false;
     }
-    launchSand.lastAnimation = animate({
-        duration: 1000.0,
-        timing: function(t) {
-            return t; 
-        },
-        draw: function(fraction) {
+
+    launchSand.lastAnimation = repeat(
+        function() {
             drawSand(ctx, options);
-        },
-        repeatCount: REPEAT_COUNT_INFINITY,
-    });
+        }, 16
+    );
 }

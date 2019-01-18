@@ -2,13 +2,14 @@ var animations = [
     launchWaves, // credits to https://medium.com/s23nyc-tech/geometric-android-animations-using-the-canvas-dd687c43f3f4
     launchSand, // credits to incovergent
     launchCircles,
+    launchBezier,
+    launchBezierV2 // credits to incovergent
 ];
 
 center = new Point(0, 0);
 
 canvasWidth = 0;
 canvasHeight = 0;
-
 
 window.addEventListener('load', function(e) {
 

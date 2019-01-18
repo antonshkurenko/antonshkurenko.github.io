@@ -51,16 +51,11 @@ function launchCircles(ctx, options) {
     if (launchCircles.lastAnimation) {
         launchCircles.lastAnimation.keepAnimating = false;
     }
-    launchCircles.lastAnimation = animate({
-        duration: 100.0,
-        timing: function(t) {
-            return t;
-        },
-        draw: function(fraction) {
-            drawCircles(ctx, options, fraction);
-        },
-        repeatCount: REPEAT_COUNT_INFINITY,
-        
-    });
+
+    launchCircles.lastAnimation = repeat(
+        function() {
+            drawCircles(ctx, options);
+        }, 25
+    );
 }
 

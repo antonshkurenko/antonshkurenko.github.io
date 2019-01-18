@@ -64,6 +64,21 @@ function animate(options) {
     return animation;
 }
 
+function repeat(drawFunc, repeat) {
+    var animation = {
+        keepAnimating: true,
+    };
+    var id = setInterval(function() {
+        if (!animation.keepAnimating) {
+            clearInterval(id);
+        } else {
+            requestAnimationFrame(drawFunc);
+        }
+    }, repeat)
+
+    return animation;
+}
+
 function animateBetween(a, b, u) {
     return (1 - u) * a + u * b;
 }
@@ -169,4 +184,62 @@ function getTextSize(text, font) {
     var metrics = context.measureText(text);
 
     return new Point(metrics.width, 32);
+}
+
+function createCirclePoints(radius, startAngle, amount) {
+    var step = FULL_PI / amount;
+    var currentAngle = startAngle;
+    var steps = [];
+    for (var i = 0; i < amount; i++) {
+        steps.push(new Point(polarToX(radius, currentAngle), polarToY(radius, currentAngle)));
+        currentAngle+=step;
+    }
+
+    return steps;
+}
+
+function tweak(k) {
+    return k * (-1 + Math.random() * 2)
+}
+
+// bezier code from: https://stackoverflow.com/a/31169371/4142087
+
+// from: http://rosettacode.org/wiki/Evaluate_binomial_coefficients#JavaScript
+function binom(n, k) {
+    var coeff = 1;
+    for (var i = n - k + 1; i <= n; i++) coeff *= i;
+    for (var i = 1; i <= k; i++) coeff /= i;
+    return coeff;
+}
+
+// based on: https://stackoverflow.com/questions/16227300
+function bezier(t, plist) {
+    var order = plist.length - 1;
+  
+    var y = 0;
+    var x = 0;
+  
+    for (i = 0; i <= order; i++) {
+      x = x + (binom(order, i) * Math.pow((1 - t), (order - i)) * Math.pow(t, i) * (plist[i].x));
+      y = y + (binom(order, i) * Math.pow((1 - t), (order - i)) * Math.pow(t, i) * (plist[i].y));
+    }
+  
+    return {
+      x: x,
+      y: y
+    };
+}
+
+// based on incovergent impl, but I think he took it from stackoverflow (I saw it there :) )
+function drawAsSpline(ctx, points) {
+    ctx.beginPath(),
+    ctx.moveTo(points[0].x, points[0].y);
+    for (var i = 1; i < points.length - 2; i++) {
+        var xm = (points[i].x + points[i + 1].x) / 2
+          , ym = (points[i].y + points[i + 1].y) / 2;
+        ctx.quadraticCurveTo(points[i].x, points[i].y, xm, ym)
+    }
+    var end = points.length - 2;
+    ctx.quadraticCurveTo(points[end].x, points[end].y, points[end + 1].x, points[end + 1].y),
+    ctx.stroke()
 }
