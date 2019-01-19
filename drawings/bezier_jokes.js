@@ -20,7 +20,7 @@ function drawBezier(ctx, options) {
 
     points = randomTweaksV1(points);
 
-    for(var i = 0; i < 1; i += 0.001) {
+    for (var i = 0; i < 1; i += 0.001) {
 
         ctx.beginPath();
 
@@ -41,7 +41,7 @@ function launchBezier(ctx, options) {
     }
 
     launchBezier.lastAnimation = repeat(
-        function() {
+        function () {
             drawBezier(ctx, options);
         }, 100
     );

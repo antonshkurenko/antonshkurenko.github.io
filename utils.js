@@ -3,12 +3,12 @@ FULL_PI = Math.PI * 2;
 function throttle(type, name, obj) {
     obj = obj || window;
     var running = false;
-    var func = function() {
+    var func = function () {
         if (running) {
             return;
         }
         running = true;
-        requestAnimationFrame(function() {
+        requestAnimationFrame(function () {
             obj.dispatchEvent(new CustomEvent(name));
             running = false;
         });
@@ -25,40 +25,42 @@ function animate(options) {
         keepAnimating: true,
     };
 
-    var start = performance.now();  
+    var start = performance.now();
     requestAnimationFrame(function animate(time) {
-      
-      var timeFraction = (time - start) / options.duration;
-      if (timeFraction > 1) timeFraction = 1;
-      if (timeFraction < 0) timeFraction = 0;
-  
-      var progress = options.timing(timeFraction)
-  
-      options.draw(progress);
-  
-      if (animation.keepAnimating) {
-        if (timeFraction < 1) {
-            requestAnimationFrame(animate);
-        } else {
-            var restart = true;
-            if (options.repeatCount == REPEAT_COUNT_INVERSE) {
-                var prevTiming = options.timing;
-                options.timing = function(t) { return prevTiming(1-t); }
-                options.repeatCount = 0;
-            } else if (options.repeatCount == REPEAT_COUNT_INFINITY) {
-                
-            } else if (options.repeatCount > 0) {
-                options.repeatCount--;
-            } else {
-                restart = false;
-            }
 
-            if (restart) {
-                start = performance.now();
+        var timeFraction = (time - start) / options.duration;
+        if (timeFraction > 1) timeFraction = 1;
+        if (timeFraction < 0) timeFraction = 0;
+
+        var progress = options.timing(timeFraction);
+
+        options.draw(progress);
+
+        if (animation.keepAnimating) {
+            if (timeFraction < 1) {
                 requestAnimationFrame(animate);
+            } else {
+                var restart = true;
+                if (options.repeatCount == REPEAT_COUNT_INVERSE) {
+                    var prevTiming = options.timing;
+                    options.timing = function (t) {
+                        return prevTiming(1 - t);
+                    };
+                    options.repeatCount = 0;
+                } else if (options.repeatCount == REPEAT_COUNT_INFINITY) {
+
+                } else if (options.repeatCount > 0) {
+                    options.repeatCount--;
+                } else {
+                    restart = false;
+                }
+
+                if (restart) {
+                    start = performance.now();
+                    requestAnimationFrame(animate);
+                }
             }
         }
-      }
     });
 
     return animation;
@@ -66,15 +68,15 @@ function animate(options) {
 
 function repeat(drawFunc, repeat) {
     var animation = {
-        keepAnimating: true,
+        keepAnimating: true
     };
-    var id = setInterval(function() {
+    var id = setInterval(function () {
         if (!animation.keepAnimating) {
             clearInterval(id);
         } else {
             requestAnimationFrame(drawFunc);
         }
-    }, repeat)
+    }, repeat);
 
     return animation;
 }
@@ -88,33 +90,33 @@ function Point(x, y) {
     this.y = parseFloat(y.toFixed(4));
 }
 
-Point.prototype.add = function(other) {
+Point.prototype.add = function (other) {
     return new Point(this.x + other.x, this.y + other.y);
-}
+};
 
-Point.prototype.sub = function(other) {
+Point.prototype.sub = function (other) {
     return new Point(this.x - other.x, this.y - other.y);
 };
 
-Point.prototype.dist = function(other) {
+Point.prototype.dist = function (other) {
     return Math.hypot(this.x - other.x, this.y - other.y);
-}
+};
 
-Point.prototype.len = function() {
+Point.prototype.len = function () {
     return Math.hypot(this.x, this.y);
-}
+};
 
-Point.prototype.mult = function(k) {
+Point.prototype.mult = function (k) {
     return new Point(this.x * k, this.y * k);
-}
+};
 
-Point.prototype.div = function(k) {
+Point.prototype.div = function (k) {
     return new Point(this.x / k, this.y / k);
-}
+};
 
-Point.prototype.isInside = function(center, radius) {
+Point.prototype.isInside = function (center, radius) {
     return this.dist(center) <= radius;
-}
+};
 
 function angleBetweenTwoDots(first, second) {
     return Math.atan2(second.y - first.y, second.x - first.x);
@@ -192,7 +194,7 @@ function createCirclePoints(radius, startAngle, amount) {
     var steps = [];
     for (var i = 0; i < amount; i++) {
         steps.push(new Point(polarToX(radius, currentAngle), polarToY(radius, currentAngle)));
-        currentAngle+=step;
+        currentAngle += step;
     }
 
     return steps;
@@ -215,31 +217,31 @@ function binom(n, k) {
 // based on: https://stackoverflow.com/questions/16227300
 function bezier(t, plist) {
     var order = plist.length - 1;
-  
+
     var y = 0;
     var x = 0;
-  
+
     for (i = 0; i <= order; i++) {
-      x = x + (binom(order, i) * Math.pow((1 - t), (order - i)) * Math.pow(t, i) * (plist[i].x));
-      y = y + (binom(order, i) * Math.pow((1 - t), (order - i)) * Math.pow(t, i) * (plist[i].y));
+        x = x + (binom(order, i) * Math.pow((1 - t), (order - i)) * Math.pow(t, i) * (plist[i].x));
+        y = y + (binom(order, i) * Math.pow((1 - t), (order - i)) * Math.pow(t, i) * (plist[i].y));
     }
-  
+
     return {
-      x: x,
-      y: y
+        x: x,
+        y: y
     };
 }
 
 // based on incovergent impl, but I think he took it from stackoverflow (I saw it there :) )
 function drawAsSpline(ctx, points) {
-    ctx.beginPath(),
+    ctx.beginPath();
     ctx.moveTo(points[0].x, points[0].y);
     for (var i = 1; i < points.length - 2; i++) {
         var xm = (points[i].x + points[i + 1].x) / 2
-          , ym = (points[i].y + points[i + 1].y) / 2;
-        ctx.quadraticCurveTo(points[i].x, points[i].y, xm, ym)
+            , ym = (points[i].y + points[i + 1].y) / 2;
+        ctx.quadraticCurveTo(points[i].x, points[i].y, xm, ym);
     }
     var end = points.length - 2;
-    ctx.quadraticCurveTo(points[end].x, points[end].y, points[end + 1].x, points[end + 1].y),
-    ctx.stroke()
+    ctx.quadraticCurveTo(points[end].x, points[end].y, points[end + 1].x, points[end + 1].y);
+    ctx.stroke();
 }

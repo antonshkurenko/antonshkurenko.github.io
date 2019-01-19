@@ -14,13 +14,15 @@ function randomTweaksV2V1(points) {
 
 // idx matters
 function randomTweaksV2V2(points) {
-    return points.map(function (p, idx, arr) {
-        return p.add(
-            new Point(
-                tweak(5 * idx / arr.length),
-                tweak(5 * idx / arr.length)
-            ));
-    });
+    // not now, invent something better later
+    return randomTweaksV2V1(points);
+    // return points.map(function (p, idx, arr) {
+    //     return p.add(
+    //         new Point(
+    //             tweak(5 * idx / arr.length),
+    //             tweak(5 * idx / arr.length)
+    //         ));
+    // });
 }
 
 var tweaks = [randomTweaksV2V1, randomTweaksV2V2];
@@ -31,13 +33,13 @@ function drawBezierV2(ctx, options, tweakFunc) {
 
     ctx.setLineDash([1, 1 + 6 * Math.random()]);
     ctx.fillStyle = "rgba(0,0,0,0.05)";
-    ctx.strokeStyle = "rgba(0,0,0,0.05)",
-    ctx.lineJoin = "round",
+    ctx.strokeStyle = "rgba(0,0,0,0.05)";
+    ctx.lineJoin = "round";
     ctx.lineWidth = 1;
 
     points = tweakFunc(points);
 
-    drawAsSpline(ctx, points.map(function(p) {
+    drawAsSpline(ctx, points.map(function (p) {
         return p.add(options.center);
     }));
 }
@@ -51,7 +53,7 @@ function launchBezierV2(ctx, options) {
     var tweakFunc = tweaks[Math.floor(Math.random() * tweaks.length)];
 
     launchBezierV2.lastAnimation = repeat(
-        function() {
+        function () {
             drawBezierV2(ctx, options, tweakFunc);
         }, 16
     );

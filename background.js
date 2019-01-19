@@ -3,7 +3,8 @@ var animations = [
     launchSand, // credits to incovergent
     launchCircles,
     launchBezier,
-    launchBezierV2 // credits to incovergent
+    launchBezierV2, // credits to incovergent
+    launchRandomSymmetryArt // credits to atticusbones
 ];
 
 center = new Point(0, 0);
@@ -11,7 +12,7 @@ center = new Point(0, 0);
 canvasWidth = 0;
 canvasHeight = 0;
 
-window.addEventListener('load', function(e) {
+window.addEventListener('load', function (e) {
 
     var canvas = document.getElementById('bg-canvas');
     var ctx = canvas.getContext('2d');
@@ -26,16 +27,17 @@ window.addEventListener('load', function(e) {
 
         center.x = body.clientWidth * 0.5;
         center.y = body.clientHeight * 0.5;
-    
+
         animation(ctx, {
             center: center,
             height: canvasHeight,
-            width: canvasWidth,
+            width: canvasWidth
         });
     }
+
     resizeCanvas();
 
-    window.addEventListener('optimizedResize', function(e) {
+    window.addEventListener('optimizedResize', function (e) {
         resizeCanvas();
     });
 });

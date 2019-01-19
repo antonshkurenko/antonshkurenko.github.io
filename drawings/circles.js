@@ -6,7 +6,7 @@ function drawCircles(ctx, options) {
     for (var i = 0; i < CIRCLES_BY_STEP; i++) {
 
         var point = new Point(Math.random() * options.width, Math.random() * options.height);
-        var radius = Math.floor(Math.random() * 50) + CIRCLE_RADIUS; 
+        var radius = Math.floor(Math.random() * 50) + CIRCLE_RADIUS;
 
         var grd;
         if (center.isInside(point, radius)) {
@@ -27,7 +27,7 @@ function drawCircles(ctx, options) {
                 point.x + cosAlphaR,
                 point.y + sinAlphaR,
                 point.x - cosAlphaR,
-                point.y - sinAlphaR,
+                point.y - sinAlphaR
             );
         }
 
@@ -53,7 +53,7 @@ function launchCircles(ctx, options) {
     }
 
     launchCircles.lastAnimation = repeat(
-        function() {
+        function () {
             drawCircles(ctx, options);
         }, 25
     );
