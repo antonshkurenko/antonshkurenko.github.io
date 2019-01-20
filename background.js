@@ -4,7 +4,8 @@ var animations = [
     launchCircles,
     launchBezier,
     launchBezierV2, // credits to incovergent
-    launchRandomSymmetryArt // credits to atticusbones
+    launchRandomSymmetryArt, // credits to atticusbones
+    launchGrowth
 ];
 
 center = new Point(0, 0);
@@ -20,6 +21,8 @@ window.addEventListener('load', function (e) {
     var body = document.getElementsByTagName('body')[0];
 
     var animation = animations[Math.floor(Math.random() * animations.length)];
+
+    var animation = animations[animations.length - 1];
 
     function resizeCanvas() {
         canvas.width = canvasWidth = window.innerWidth;

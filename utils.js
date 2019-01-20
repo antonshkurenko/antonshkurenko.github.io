@@ -204,6 +204,20 @@ function tweak(k) {
     return k * (-1 + Math.random() * 2)
 }
 
+function getRnd(n, min, max) {
+    for (var res = [], i = 0; i < n; i++) {
+        res.push(min + Math.random() * (max - min));
+    }
+    return res
+}
+
+function getRndSign(n) {
+    for (var res = [], i = 0; i < n; i++) {
+        Math.random() >= 0.5 ? res.push(-1) : res.push(1);
+    }
+    return res
+}
+
 // bezier code from: https://stackoverflow.com/a/31169371/4142087
 
 // from: http://rosettacode.org/wiki/Evaluate_binomial_coefficients#JavaScript

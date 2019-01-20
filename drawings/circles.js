@@ -46,6 +46,38 @@ function drawCircles(ctx, options) {
     }
 }
 
+// todo: improve
+function drawCirclesV2(ctx, options) {
+
+    for (var i = 0; i < CIRCLES_BY_STEP; i++) {
+
+        var point = new Point(Math.random() * options.width, Math.random() * options.height);
+        var radius = Math.floor(Math.random() * 50) + CIRCLE_RADIUS;
+
+        var grd = ctx.createRadialGradient(
+            center.x,
+            center.y,
+            1,
+            center.x,
+            center.y,
+            center.len()
+        );
+
+        grd.addColorStop(0, 'rgba(0,0,0,0.05)');
+        grd.addColorStop(1, 'rgba(0,0,0,0)');
+
+        ctx.fillStyle = grd;
+
+        ctx.beginPath();
+
+        ctx.arc(
+            point.x,
+            point.y,
+            radius, 0, FULL_PI);
+        ctx.fill();
+    }
+}
+
 function launchCircles(ctx, options) {
 
     if (launchCircles.lastAnimation) {
