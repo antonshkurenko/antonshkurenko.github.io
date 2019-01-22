@@ -20,7 +20,7 @@ function drawBezier(ctx, options) {
 
     points = randomTweaksV1(points);
 
-    for (var i = 0; i < 1; i += 0.001) {
+    for (var i = 0; i < 1; i += (Math.random() * 0.006 + 0.001)) {
 
         ctx.beginPath();
 

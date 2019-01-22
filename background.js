@@ -10,9 +10,6 @@ var animations = [
 
 center = new Point(0, 0);
 
-canvasWidth = 0;
-canvasHeight = 0;
-
 window.addEventListener('load', function (e) {
 
     var canvas = document.getElementById('bg-canvas');
@@ -20,21 +17,19 @@ window.addEventListener('load', function (e) {
 
     var body = document.getElementsByTagName('body')[0];
 
-    var animation = animations[Math.floor(Math.random() * animations.length)];
-
-    var animation = animations[animations.length - 1];
+    var animation = animations[Math.floor(Math.random() * (animations.length - 1))];
 
     function resizeCanvas() {
-        canvas.width = canvasWidth = window.innerWidth;
-        canvas.height = canvasHeight = window.innerHeight;
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
         center.x = body.clientWidth * 0.5;
         center.y = body.clientHeight * 0.5;
 
         animation(ctx, {
             center: center,
-            height: canvasHeight,
-            width: canvasWidth
+            height: canvas.height,
+            width: canvas.width
         });
     }
 
