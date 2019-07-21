@@ -75,7 +75,7 @@ body {
 }
 
 a {
-	color: black;
+    color: black;
     text-decoration: none;
 }
 
@@ -86,7 +86,7 @@ a:hover .hover-underline {
 @keyframes fadein {
     0% { opacity: 0; }
     25%   { opacity: 0; }
-	100%   { opacity: 1; }
+    100%   { opacity: 1; }
 }
 
 #keys {
