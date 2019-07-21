@@ -1,0 +1,118 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta property="og:title" content="Anton Shkurenko">
+    <meta property="og:description" content="Follow me on twitter: @tonyshkurenko">
+    <meta property="og:url" content="https://tonyshkurenko.github.io">
+    <meta property="og:image" content="https://tonyshkurenko.github.io/star_big.png">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="photoswipe/photoswipe.css">
+    <link rel="stylesheet" type="text/css" href="photoswipe/default-skin/default-skin.css">
+    <link rel="icon" type="image/png" href="star.png">
+    <script src="keys/data.js"></script>
+    <script src="photoswipe/photoswipe-ui-default.min.js"></script>
+    <script src="photoswipe/photoswipe.min.js"></script>
+    <script src="masonry.pkgd.min.js"></script>
+    <script src="keys.js"></script>
+
+    <title>Keys.</title>
+</head>
+
+<body>
+
+    <div class="home-url">
+        <a href="index.html">🏡 <span class="small-url">There is no place like home.</span></a>
+    </div>
+
+    <div id="keys"></div>
+
+    <div class="table-wrapper">
+
+        <a href="https://twitter.com/tonyshkurenko" class="div-table-row">
+            <div class="div-table-col left-column hover-underline">twitter.com/</div>
+            <div class="div-table-col middle-column hover-underline">tonyshkurenko</div>
+            <div class="div-table-col right-column">&nbsp;</div>
+        </a>
+        <a href="https://github.com/tonyshkurenko" class="div-table-row">
+            <div class="div-table-col left-column hover-underline">github.com/</div>
+            <div class="div-table-col middle-column hover-underline">tonyshkurenko</div>
+            <div class="div-table-col right-column">&nbsp;</div>
+        </a>
+        <div class="div-table-row">
+            <div class="div-table-col left-column">@</div>
+            <div class="div-table-col middle-column">tonyshkurenko</div>
+            <div class="div-table-col right-column">&nbsp;wherever you like</div>
+        </div>
+    </div>
+
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+        <!-- Background of PhotoSwipe. 
+             It's a separate element as animating opacity is faster than rgba(). -->
+        <div class="pswp__bg"></div>
+    
+        <!-- Slides wrapper with overflow:hidden. -->
+        <div class="pswp__scroll-wrap">
+    
+            <!-- Container that holds slides. 
+                PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                Don't modify these 3 pswp__item elements, data is added later on. -->
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+    
+            <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+            <div class="pswp__ui pswp__ui--hidden">
+    
+                <div class="pswp__top-bar">
+    
+                    <!--  Controls are self-explanatory. Order can be changed. -->
+    
+                    <div class="pswp__counter"></div>
+    
+                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+    
+                    <button class="pswp__button pswp__button--share" title="Share"></button>
+    
+                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+    
+                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+    
+                    <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                    <!-- element will get class pswp__preloader--active when preloader is running -->
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                          <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div> 
+                </div>
+    
+                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+                </button>
+    
+                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+                </button>
+    
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+    
+            </div>
+    
+        </div>
+    
+    </div>
+</body>
+
+</html>

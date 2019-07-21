@@ -4,8 +4,7 @@ var animations = [
     launchCircles,
     launchBezier,
     launchBezierV2, // credits to incovergent
-    launchRandomSymmetryArt, // credits to atticusbones
-    launchGrowth
+    launchRandomSymmetryArt // credits to atticusbones
 ];
 
 center = new Point(0, 0);
