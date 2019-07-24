@@ -1,5 +1,15 @@
 window.addEventListener('load', function (e) {
 
+    var home = document.getElementsByClassName('small-url')[0];
+
+    HOME_STRS = [
+        "There is no place like home.",
+        "Country roads, take me home.",
+        "Somewhere only we know."
+    ];
+
+    home.innerText = HOME_STRS[Math.floor(Math.random() * HOME_STRS.length)];
+
     var reversedKeys = KEYS.keys.reverse();
 
     var items = reversedKeys.map(function (el) {

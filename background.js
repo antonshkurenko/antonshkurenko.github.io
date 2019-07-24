@@ -16,7 +16,7 @@ window.addEventListener('load', function (e) {
 
     var body = document.getElementsByTagName('body')[0];
 
-    var animation = animations[Math.floor(Math.random() * (animations.length - 1))];
+    var animation = animations[Math.floor(Math.random() * animations.length)];
 
     function resizeCanvas() {
         canvas.width = window.innerWidth;
