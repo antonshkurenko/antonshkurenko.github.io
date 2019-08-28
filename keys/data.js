@@ -126,7 +126,7 @@ KEYS = {
             "pic": "keys/24_saint_vincent_cape.jpg",
             "year": 2018,
             "city": "🇵🇹Cape St. Vincent",
-            "additional": "The southwesternmost point of Portugal and of mainland Europe and the biggest key."
+            "additional": "The southwesternmost point of Portugal and of mainland Europe."
         },
         {
             "pic": "keys/25_vienna.jpg",
@@ -206,6 +206,39 @@ KEYS = {
             "year": 2019,
             "city": "🇨🇿Kutná Hora",
             "additional": "Key from the Sedlec Ossuary ☠️."
-        }
+        },
+        {
+            "pic": "keys/40_linz.jpg",
+            "year": 2019,
+            "city": "🇦🇹Linz"
+        },
+        {
+            "pic": "keys/41_salzburg.jpg",
+            "year": 2019,
+            "city": "🇦🇹Salzburg",
+            "additional": "The Key 🎼."
+        },
+        {
+            "pic": "keys/42_salzburg_castle.jpg",
+            "year": 2019,
+            "city": "🇦🇹Hohensalzburg Fortress",
+            "additional": "The biggest key."
+        },
+        {
+            "pic": "keys/43_hallstatt.jpg",
+            "year": 2019,
+            "city": "🇦🇹Hallstatt"
+        },
+        {
+            "pic": "keys/44_klagenfurt.jpg",
+            "year": 2019,
+            "city": "🇦🇹Klagenfurt"
+        },
+        {
+            "pic": "keys/45_graz.jpg",
+            "year": 2019,
+            "city": "🇦🇹Graz",
+            "additional": "🔪"
+        },
     ]
 };
