@@ -240,5 +240,48 @@ KEYS = {
             "city": "🇦🇹Graz",
             "additional": "🔪"
         },
+        {
+            "pic": "keys/46_sharm_el_sheikh.jpg",
+            "year": 2019,
+            "city": "🇪🇬Sharm El Sheikh"
+        },
+        {
+            "pic": "keys/47_sharm_el_sheikh_church.jpg",
+            "year": 2019,
+            "city": "🇪🇬Coptic Orthodox Church, Sharm El Sheikh",
+            "additional": "☦️"
+        },
+    ],
+    "couldbe": [
+        {
+            "pic": "keys/couldbe/1_amsterdam.jpg",
+            "year": 2018,
+            "city": "🇳🇱Amsterdam",
+            "additional": "Key from this city is already owned"
+        },
+        {
+            "pic": "keys/couldbe/2_frankfurt.jpg",
+            "year": 2019,
+            "city": "🇩🇪Frankfurt am Main",
+            "additional": "Not for sale"
+        },
+        {
+            "pic": "keys/couldbe/3_maria_schutz.jpg",
+            "year": 2019,
+            "city": "🇦🇹Maria Schutz",
+            "additional": "Shop was closed 😭"
+        },
+        {
+            "pic": "keys/couldbe/4_egypt.jpg",
+            "year": 2019,
+            "city": "🇪🇬Sharm El Sheikh",
+            "additional": "Key from this city is already owned"
+        },
+        {
+            "pic": "keys/couldbe/5_egypt_2.jpg",
+            "year": 2019,
+            "city": "🇪🇬Sharm El Sheikh",
+            "additional": "Key from this city is already owned"
+        }
     ]
 };
