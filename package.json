@@ -24,11 +24,7 @@
     "@babel/preset-env": "^7.6.3",
     "babel-loader": "^8.0.6",
     "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10"
-  },
-  "dependencies": {
-    "masonry-layout": "^4.2.2",
-    "phaser": "^3.20.1",
-    "photoswipe": "^4.1.3"
+    "webpack-cli": "^3.3.10",
+    "phaser": "^3.20.1"
   }
 }
