@@ -1,4 +1,4 @@
-KEYS = {
+export const KEYS = {
     "all": {
         "pic": "keys/all.jpg"
     },

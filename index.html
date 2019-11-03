@@ -6,83 +6,108 @@
     <meta property="og:description" content="Follow me on twitter: @tonyshkurenko">
     <meta property="og:url" content="https://tonyshkurenko.github.io">
     <meta property="og:image" content="https://tonyshkurenko.github.io/star_big.png">
-    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css' />
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'/>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="icon" type="image/png" href="star.png">
     <script src="parallax.js"></script>
-    <script src="utils.js"></script>
-    <script src="main.js"></script>
-    <script src="letters.js"></script>
-    <script src="drawings/waves.js"></script>
-    <script src="drawings/sand.js"></script>
-    <script src="drawings/circles.js"></script>
-    <script src="drawings/bezier_jokes.js"></script>
-    <script src="drawings/bezier_jokes_v2.js"></script>
-    <script src="drawings/random_symmetry.js"></script>
-    <script src="background.js"></script>
+    <script src="dist/main.bundle.js"></script>
+    <script src="dist/letters.bundle.js"></script>
+    <script src="dist/bg.bundle.js"></script>
 
     <title>Here I am.</title>
 </head>
 
 <body>
 
-    <canvas id="bg-canvas"></canvas>
-    
-    <div class="name-centered">
+<canvas id="bg-canvas"></canvas>
 
-        <!-- sum = 0
-               for i in range (0, 22):
-                 sum+=1/23
-                 print(sum)
-            take 15 last
-               -->
-        <ul id="name-scene">
-            <!-- I'd like to use spans,
-            not divs, but it's impossible
-            to use transformations on inline
-            elements
+<div class="container-centered">
+
+    <!-- sum = 0
+           for i in range (0, 22):
+             sum+=1/23
+             print(sum)
+        take 15 last
            -->
-            <li class="layer" data-depth="0.695"><div class="letter">A</div></li>
-            <li class="layer" data-depth="0.521"><div class="letter">n</div></li>
-            <li class="layer" data-depth="0.782"><div class="letter">t</div></li>
-            <li class="layer" data-depth="0.391"><div class="letter">o</div></li>
-            <li class="layer" data-depth="0.652"><div class="letter">n</div></li>
-            <li class="layer" data-depth="0.869"><div class="letter">&nbsp;</div></li>
-            <li class="layer" data-depth="0.826"><div class="letter">S</div></li>
-            <li class="layer" data-depth="0.347"><div class="letter">h</div></li>
-            <li class="layer" data-depth="0.739"><div class="letter">k</div></li>
-            <li class="layer" data-depth="0.608"><div class="letter">u</div></li>
-            <li class="layer" data-depth="0.913"><div class="letter">r</div></li>
-            <li class="layer" data-depth="0.434"><div class="letter">e</div></li>
-            <li id="first_n" class="layer" data-depth="0.565"><div class="letter">n</div></li>
-            <li id="second_n" class="layer" data-depth="0.500"><div class="letter">n</div></li>
-            <li class="layer" data-depth="0.956"><div class="letter">k</div></li>
-            <li class="layer" data-depth="0.478"><div class="letter">o</div></li>
-        </ul>
-    </div>
+    <ul id="name-scene">
+        <!-- I'd like to use spans,
+        not divs, but it's impossible
+        to use transformations on inline
+        elements
+       -->
+        <li class="layer" data-depth="0.695">
+            <div class="letter">A</div>
+        </li>
+        <li class="layer" data-depth="0.521">
+            <div class="letter">n</div>
+        </li>
+        <li class="layer" data-depth="0.782">
+            <div class="letter">t</div>
+        </li>
+        <li class="layer" data-depth="0.391">
+            <div class="letter">o</div>
+        </li>
+        <li class="layer" data-depth="0.652">
+            <div class="letter">n</div>
+        </li>
+        <li class="layer" data-depth="0.869">
+            <div class="letter">&nbsp;</div>
+        </li>
+        <li class="layer" data-depth="0.826">
+            <div class="letter">S</div>
+        </li>
+        <li class="layer" data-depth="0.347">
+            <div class="letter">h</div>
+        </li>
+        <li class="layer" data-depth="0.739">
+            <div class="letter">k</div>
+        </li>
+        <li class="layer" data-depth="0.608">
+            <div class="letter">u</div>
+        </li>
+        <li class="layer" data-depth="0.913">
+            <div class="letter">r</div>
+        </li>
+        <li class="layer" data-depth="0.434">
+            <div class="letter">e</div>
+        </li>
+        <li id="first_n" class="layer" data-depth="0.565">
+            <div class="letter">n</div>
+        </li>
+        <li id="second_n" class="layer" data-depth="0.500">
+            <div class="letter">n</div>
+        </li>
+        <li class="layer" data-depth="0.956">
+            <div class="letter">k</div>
+        </li>
+        <li class="layer" data-depth="0.478">
+            <div class="letter">o</div>
+        </li>
+    </ul>
+</div>
 
-    <div class="keys-url">
-        <a href="keys.html"><i>KEY TIME!</i> 🗝</a>
-    </div>
+<div class="keys-url">
+    <a href="keys.html"><i>KEY TIME!</i> 🗝</a>
+</div>
 
-    <div class="table-wrapper">
+<div class="table-wrapper">
 
-        <a href="https://twitter.com/tonyshkurenko" class="div-table-row">
-            <div class="div-table-col left-column hover-underline">twitter.com/</div>
-            <div class="div-table-col middle-column hover-underline">tonyshkurenko</div>
-            <div class="div-table-col right-column">&nbsp;</div>
-        </a>
-        <a href="https://github.com/tonyshkurenko" class="div-table-row">
-            <div class="div-table-col left-column hover-underline">github.com/</div>
-            <div class="div-table-col middle-column hover-underline">tonyshkurenko</div>
-            <div class="div-table-col right-column">&nbsp;</div>
-        </a>
-        <div class="div-table-row">
-            <div class="div-table-col left-column">@</div>
-            <div class="div-table-col middle-column">tonyshkurenko</div>
-            <div class="div-table-col right-column">&nbsp;wherever you like</div>
-        </div>
+    <a href="https://twitter.com/tonyshkurenko" class="div-table-row">
+        <div class="div-table-col left-column hover-underline">twitter.com/</div>
+        <div class="div-table-col middle-column hover-underline">tonyshkurenko</div>
+        <div class="div-table-col right-column">&nbsp;</div>
+    </a>
+    <a href="https://github.com/tonyshkurenko" class="div-table-row">
+        <div class="div-table-col left-column hover-underline">github.com/</div>
+        <div class="div-table-col middle-column hover-underline">tonyshkurenko</div>
+        <div class="div-table-col right-column">&nbsp;</div>
+    </a>
+    <div class="div-table-row">
+        <div class="div-table-col left-column">@</div>
+        <div class="div-table-col middle-column">tonyshkurenko</div>
+        <div class="div-table-col right-column">&nbsp;wherever you like</div>
     </div>
+</div>
 </body>
 
 </html>

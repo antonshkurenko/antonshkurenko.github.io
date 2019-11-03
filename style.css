@@ -23,7 +23,7 @@ body {
     text-shadow: -1px -1px white, -1px 1px white, 1px -1px white, 1px 1px white;
 }
 
-.name-centered {
+.container-centered {
     position: absolute;
     top: 50%;
     left: 50%;

@@ -1,0 +1,34 @@
+{
+  "name": "tonyshkurenko.github.io",
+  "version": "1.0.0",
+  "description": "This is me.",
+  "main": "src/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tonyshkurenko/tonyshkurenko.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tonyshkurenko/tonyshkurenko.github.io/issues"
+  },
+  "homepage": "https://github.com/tonyshkurenko/tonyshkurenko.github.io#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.6.0",
+    "@babel/core": "^7.6.4",
+    "@babel/plugin-transform-modules-commonjs": "^7.6.0",
+    "@babel/preset-env": "^7.6.3",
+    "babel-loader": "^8.0.6",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
+  },
+  "dependencies": {
+    "masonry-layout": "^4.2.2",
+    "phaser": "^3.20.1",
+    "photoswipe": "^4.1.3"
+  }
+}

@@ -1,1 +1,0 @@
-throttle("resize", "optimizedResize", window);
