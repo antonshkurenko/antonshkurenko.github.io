@@ -1,27 +1,32 @@
-import {BootScene} from "./scenes/boot";
-import {MenuScene} from "./scenes/menu";
-import {WorldScene} from "./scenes/world";
-
-export const SIZE = 600;
+import {BootScene} from "./scenes/boot/boot";
+import {MenuScene} from "./scenes/menu/menu";
+import {WorldScene} from "./scenes/world/world";
 
 export const DPR = window.devicePixelRatio;
 
-export const GAME_W = SIZE * DPR;
-export const GAME_H = SIZE * DPR;
+export const GAME_W = 768;
+export const GAME_H = 576;
 
-console.log(`Game size: ${GAME_W}/${GAME_H}`);
+export const GAME_W_DPR = GAME_W * DPR;
+export const GAME_H_DPR = GAME_H * DPR;
+
+console.log(`Game size: ${GAME_W_DPR}/${GAME_H_DPR}`);
 
 export const SCENE_BOOT = "boot";
 export const SCENE_MENU = "menu";
 export const SCENE_WORLD = "world";
+
+export const CONFIG = {
+
+};
 
 export const BIRTHDAY_2019_CONFIG = {
     type: Phaser.AUTO,
     parent: 'game',
     scale: {
         mode: Phaser.Scale.NONE,
-        width: GAME_W,
-        height: GAME_H,
+        width: GAME_W_DPR,
+        height: GAME_H_DPR,
         zoom: 1 / DPR
     },
     physics: {

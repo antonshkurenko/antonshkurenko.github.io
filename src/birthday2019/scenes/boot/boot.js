@@ -1,5 +1,5 @@
-import {SCENE_MENU} from "../game";
-import {imageName, toPixels} from "../utils/devicePixelRationUtils";
+import {SCENE_MENU} from "../../game";
+import {imageName, toPixels} from "../../utils/devicePixelRationUtils";
 
 export class BootScene extends Phaser.Scene {
     init(data) {
@@ -9,11 +9,12 @@ export class BootScene extends Phaser.Scene {
     }
 
     preload() {
-        // map tiles
-        // this.load.image('tiles', 'assets/birthday2019/map/spritesheet.png');
 
-        // map in json format
-        // this.load.tilemapTiledJSON('tilesMap', 'assets/birthday2019/map/map.json');
+        this.load.image('kbp_bg', imageName('assets/birthday2019/kbp/kbp@<size>x.png'));
+        this.load.image('df_bg', imageName('assets/birthday2019/dutyFree/df@<size>x.png'));
+
+        this.load.image('road', imageName('assets/birthday2019/road/road@<size>x.png'));
+        this.load.image('car', imageName('assets/birthday2019/car/car@<size>x.png'));
 
         this.load.spritesheet('shapes', imageName('assets/birthday2019/players/shapes@<size>x.png'),
             {frameWidth: toPixels(32), frameHeight: toPixels(32), margin: 0, spacing: 0}
