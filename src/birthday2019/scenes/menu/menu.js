@@ -1,5 +1,5 @@
 import {SCENE_WORLD} from "../../game";
-import {DutyFreeBehavior} from "../world/behaviors/dutyFreeBehavior";
+import {RoadBehavior} from "../world/behaviors/roadBehavior";
 
 export class MenuScene extends Phaser.Scene {
     init(data) {
@@ -10,8 +10,8 @@ export class MenuScene extends Phaser.Scene {
 
     create() {
         this.game.scene.start(SCENE_WORLD, {
-            // behavior: new RoadBehavior(),
-            behavior: new DutyFreeBehavior(),
+            behavior: new RoadBehavior(),
+            // behavior: new DutyFreeBehavior(),
             // behavior: new KbpBehavior(),
         });
     }

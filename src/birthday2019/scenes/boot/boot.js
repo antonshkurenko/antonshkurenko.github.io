@@ -15,6 +15,7 @@ export class BootScene extends Phaser.Scene {
 
         this.load.image('road', imageName('assets/birthday2019/road/road@<size>x.png'));
         this.load.image('car', imageName('assets/birthday2019/car/car@<size>x.png'));
+        this.load.image('billboard', imageName('assets/birthday2019/billboard/billboard@<size>x.png'));
 
         this.load.spritesheet('shapes', imageName('assets/birthday2019/players/shapes@<size>x.png'),
             {frameWidth: toPixels(32), frameHeight: toPixels(32), margin: 0, spacing: 0}
