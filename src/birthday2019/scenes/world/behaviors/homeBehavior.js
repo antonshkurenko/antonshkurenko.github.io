@@ -4,7 +4,7 @@ import {InvisibleZone} from "../../../units/invisibleZone";
 
 export class DutyFreeBehavior {
 
-    create(scene) {
+    create(scene, data) {
 
         this.scene = scene;
 

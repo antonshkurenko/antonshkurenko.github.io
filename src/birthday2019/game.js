@@ -20,6 +20,12 @@ export const CONFIG = {
 
 };
 
+/**
+ * TODO:
+ * 1) Particles
+ * 2) Shining
+ */
+
 export const BIRTHDAY_2019_CONFIG = {
     type: Phaser.AUTO,
     parent: 'game',

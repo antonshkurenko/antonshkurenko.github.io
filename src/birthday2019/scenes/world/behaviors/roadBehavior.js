@@ -3,7 +3,7 @@ import {GAME_H, GAME_H_DPR, GAME_W, GAME_W_DPR} from "../../../game";
 
 export class RoadBehavior {
 
-    create(scene) {
+    create(scene, data) {
 
         this.scene = scene;
 
@@ -15,9 +15,12 @@ export class RoadBehavior {
 
         let car = scene.add.image(0, 0, 'car');
         car.setOrigin(0);
-        let player = scene.add.image(car.width * 0.2, car.height * 0.2, 'shapes', 0);
+
+        const playerMeta = data.playerMeta;
+
+        let player = scene.add.image(car.width * 0.2, car.height * 0.2, 'shapes', playerMeta.frame);
         player.setOrigin(0);
-        player.tint = 0xEF5350;
+        player.tint = playerMeta.tint;
         let text = scene.add.text(car.width * 0.55, car.height * 0.55, '🧳', {
             fontFamily: 'Arial',
             fontSize: toPixels(24),

@@ -1,8 +1,8 @@
-import {toPixels} from "../../utils/devicePixelRationUtils";
-
 export class WorldScene extends Phaser.Scene {
-    init(data) {
-        this.behavior = data.behavior;
+    init(props) {
+
+        this.data = props.data;
+        this.behavior = props.behavior;
     }
 
     preload() {
@@ -12,10 +12,11 @@ export class WorldScene extends Phaser.Scene {
 
         this.cameras.main.setBackgroundColor('#FFFFFF');
 
-        // must create this.player and setup a map
-
         if (this.behavior.create) {
-            this.behavior.create(this);
+
+            console.log(this.data);
+
+            this.behavior.create(this, this.data);
         }
     }
 

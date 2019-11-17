@@ -2,21 +2,26 @@ import {toPixels} from "../../../utils/devicePixelRationUtils";
 import {GAME_H, GAME_H_DPR, GAME_W, GAME_W_DPR} from "../../../game";
 import {InvisibleZone} from "../../../units/invisibleZone";
 import {RoadBehavior} from "./roadBehavior";
+import {Player} from "../../../units/player";
 
 export class KbpBehavior {
 
-    create(scene) {
+    create(scene, data) {
 
         this.scene = scene;
 
         scene.add.image(0, 0, 'kbp_bg').setOrigin(0);
 
-        this.player = scene.physics.add.sprite(toPixels(GAME_W * 0.5), toPixels(GAME_H * 0.9), 'shapes', 0);
-        this.player.tint = 0xEF5350;
+        this.player = new Player(
+            scene,
+            toPixels(GAME_W * 0.5),
+            toPixels(GAME_H * 0.9),
+            'shapes',
+            data.playerMeta
+        );
 
         scene.physics.world.bounds.width = GAME_W_DPR;
         scene.physics.world.bounds.height = GAME_H_DPR;
-        this.player.setCollideWorldBounds(true);
 
         let kbpZone = new InvisibleZone(
             scene, toPixels(256), toPixels(0), toPixels(256), toPixels(64)
@@ -27,6 +32,9 @@ export class KbpBehavior {
 
             scene.scene.restart({
                 behavior: new RoadBehavior(),
+                data: {
+                    playerMeta: this.player.meta
+                }
             });
         });
 
@@ -78,28 +86,12 @@ export class KbpBehavior {
             console.log(`Collided player: ${player} with entrance zone: ${zone}`);
         });
 
-        this.cursors = scene.input.keyboard.createCursorKeys();
-
         scene.cameras.main.setBounds(0, 0, GAME_W_DPR, GAME_H_DPR);
         scene.cameras.main.startFollow(this.player);
         scene.cameras.main.roundPixels = true;
     }
 
     update(scene, time, delta) {
-        this.player.body.setVelocity(toPixels(0));
-
-        // Horizontal movement
-        if (this.cursors.left.isDown) {
-            this.player.body.setVelocityX(toPixels(-80));
-        } else if (this.cursors.right.isDown) {
-            this.player.body.setVelocityX(toPixels(80));
-        }
-
-        // Vertical movement
-        if (this.cursors.up.isDown) {
-            this.player.body.setVelocityY(toPixels(-80));
-        } else if (this.cursors.down.isDown) {
-            this.player.body.setVelocityY(toPixels(80));
-        }
+        this.player.onUpdate();
     }
 }
