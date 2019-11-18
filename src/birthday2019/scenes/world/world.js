@@ -11,11 +11,8 @@ export class WorldScene extends Phaser.Scene {
     create() {
 
         this.cameras.main.setBackgroundColor('#FFFFFF');
-
+        this.cameras.main.fadeIn(1000);
         if (this.behavior.create) {
-
-            console.log(this.data);
-
             this.behavior.create(this, this.data);
         }
     }

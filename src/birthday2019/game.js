@@ -17,13 +17,15 @@ export const SCENE_MENU = "menu";
 export const SCENE_WORLD = "world";
 
 export const CONFIG = {
-
+    defaultColor: 0x9E9E9E
 };
 
 /**
  * TODO:
  * 1) Particles
  * 2) Shining
+ *
+ * 3) FIX ROTATING a hexagon
  */
 
 export const BIRTHDAY_2019_CONFIG = {

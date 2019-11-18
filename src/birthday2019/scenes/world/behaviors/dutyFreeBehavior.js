@@ -3,6 +3,24 @@ import {GAME_H, GAME_H_DPR, GAME_W, GAME_W_DPR} from "../../../game";
 import {InvisibleZone} from "../../../units/invisibleZone";
 import {KbpBehavior} from "./kbpBehavior";
 import {Player} from "../../../units/player";
+import {Conversation} from "../../../units/conversation";
+import {RandomPerson} from "../../../units/randomPerson";
+
+const START_PHRASES = [
+    "Hey!",
+    "Howdy?",
+    "Hello",
+    "Hi",
+    "What's up?",
+    "Good Day Sir",
+];
+const LATE_PHRASES = [
+    "Don't push me 💢",
+];
+const RARE_PHRASES = [
+    "We're no strangers to love\n" +
+    "You know the rules and so do I",
+];
 
 export class DutyFreeBehavior {
 
@@ -29,14 +47,6 @@ export class DutyFreeBehavior {
 
         dfZone.collideWith(this.player, (player, zone) => {
             console.log(`Collided player: ${player} with df zone: ${zone}`);
-
-            let camera = this.scene.cameras.main;
-
-            // camera.shake(100, 0.005);
-
-            // DOESNT WORK!!!
-            camera.flash(400);
-            // camera.fade(400);
 
             scene.scene.restart({
                 behavior: new KbpBehavior(),
@@ -113,18 +123,56 @@ export class DutyFreeBehavior {
                 ch: '💼',
                 vAlign: 'btm',
                 hAlign: 'right'
-            }, {
+            },
+            {
                 ch: '🌂',
                 vAlign: 'btm',
                 hAlign: 'right'
-            }, {
+            },
+            {
                 ch: '👒',
                 vAlign: 'top',
                 hAlign: 'center'
-            }, {
+            },
+            {
                 ch: '🧢',
                 vAlign: 'top',
                 hAlign: 'center'
+            },
+            {
+                ch: '🎩',
+                vAlign: 'top',
+                hAlign: 'center'
+            },
+            {
+                ch: '👓',
+                vAlign: 'top',
+                hAlign: 'center'
+            },
+            {
+                ch: '🕶',
+                vAlign: 'top',
+                hAlign: 'center'
+            },
+            {
+                ch: '🔫',
+                vAlign: 'center',
+                hAlign: 'left'
+            },
+            {
+                ch: '🔪',
+                vAlign: 'btm',
+                hAlign: 'right'
+            },
+            {
+                ch: '🎈',
+                vAlign: 'top',
+                hAlign: 'left'
+            },
+            {
+                ch: '💤',
+                vAlign: 'top',
+                hAlign: 'right'
             }
         ];
 
@@ -134,61 +182,14 @@ export class DutyFreeBehavior {
         ];
 
         people.forEach((person) => {
-            let personSprite = this.scene.add.image(0, 0, 'shapes', 0);
-            personSprite.x = personSprite.width * 0.5;
-            personSprite.y = personSprite.height * 0.5;
-            personSprite.setRotation(Phaser.Math.RND.rotation());
 
-            let personObj = this.scene.add.container(person.x, person.y, [personSprite]);
+            let rndPerson = new RandomPerson(this.scene, person.x, person.y, emojis);
 
-            if (Phaser.Math.RND.between(0, 4) > 2) {
+            let conversation = new Conversation(this.scene, rndPerson.getBounds(), START_PHRASES, LATE_PHRASES, RARE_PHRASES);
 
-                let emoji = Phaser.Math.RND.pick(emojis);
-
-                let text = this.scene.add.text(0, 0, emoji.ch, {
-                    fontFamily: 'Arial',
-                    fontSize: toPixels(20),
-                    fill: '#ff0000'
-                });
-
-                switch (emoji.vAlign) {
-                    case "center":
-                        text.y = personSprite.height * 0.5 - text.height * 0.5;
-                        break;
-                    case "btm":
-                        text.y = personSprite.height - text.height;
-                        break;
-                    case "top":
-                        text.y = 0;
-                        break;
-                    default:
-                        throw "Unsupported vAlign"
-                }
-
-                switch (emoji.hAlign) {
-                    case "center":
-                        text.x = personSprite.width * 0.5 - text.width * 0.5;
-                        break;
-                    case "right":
-                        text.x = personSprite.width - text.width;
-                        break;
-                    case "left":
-                        text.x = 0;
-                        break;
-                    default:
-                        throw "Unsupported hAlign"
-                }
-
-                personObj.add(text);
-            }
-
-            this.scene.physics.add.existing(personObj);
-            personObj.body.setSize(personSprite.width, personSprite.height);
-            personObj.body.setEnable(true);
-            personObj.body.setImmovable(true);
-
-            this.scene.physics.add.collider(this.player, personObj, () => {
+            this.scene.physics.add.collider(this.player, rndPerson, () => {
                 console.log(`Collided player with person: ${person}`);
+                conversation.hit();
             });
         });
     }

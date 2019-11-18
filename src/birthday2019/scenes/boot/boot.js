@@ -12,6 +12,7 @@ export class BootScene extends Phaser.Scene {
 
         this.load.image('kbp_bg', imageName('assets/birthday2019/kbp/kbp@<size>x.png'));
         this.load.image('df_bg', imageName('assets/birthday2019/dutyFree/df@<size>x.png'));
+        this.load.image('home_bg', imageName('assets/birthday2019/home/home@<size>x.png'));
 
         this.load.image('road', imageName('assets/birthday2019/road/road@<size>x.png'));
         this.load.image('car', imageName('assets/birthday2019/car/car@<size>x.png'));

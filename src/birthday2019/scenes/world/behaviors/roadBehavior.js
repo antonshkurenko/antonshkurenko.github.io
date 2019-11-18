@@ -1,5 +1,6 @@
 import {toPixels} from "../../../utils/devicePixelRationUtils";
 import {GAME_H, GAME_H_DPR, GAME_W, GAME_W_DPR} from "../../../game";
+import {HomeBehavior} from "./homeBehavior";
 
 export class RoadBehavior {
 
@@ -16,11 +17,11 @@ export class RoadBehavior {
         let car = scene.add.image(0, 0, 'car');
         car.setOrigin(0);
 
-        const playerMeta = data.playerMeta;
+        this.playerMeta = data.playerMeta;
 
-        let player = scene.add.image(car.width * 0.2, car.height * 0.2, 'shapes', playerMeta.frame);
+        let player = scene.add.image(car.width * 0.2, car.height * 0.2, 'shapes', this.playerMeta.frame);
         player.setOrigin(0);
-        player.tint = playerMeta.tint;
+        player.tint = this.playerMeta.tint;
         let text = scene.add.text(car.width * 0.55, car.height * 0.55, '🧳', {
             fontFamily: 'Arial',
             fontSize: toPixels(24),
@@ -28,14 +29,12 @@ export class RoadBehavior {
         });
         text.setOrigin(0);
 
-        let playerInCar = scene.add.container(toPixels(GAME_W * 0.5) + this.roadSprite.width * 0.05, toPixels(GAME_H * 0.8), [car, player, text]);
-        scene.physics.add.existing(playerInCar);
-        playerInCar.body.setSize(car.width, car.height);
-        playerInCar.body.setEnable(true);
-        playerInCar.body.setCollideWorldBounds(true);
+        this.playerInCar = scene.add.container(toPixels(GAME_W * 0.5) + this.roadSprite.width * 0.05, toPixels(GAME_H * 0.8), [car, player, text]);
+        scene.physics.add.existing(this.playerInCar);
+        this.playerInCar.body.setSize(car.width, car.height);
+        this.playerInCar.body.setEnable(true);
 
         scene.cameras.main.setBounds(0, 0, GAME_W_DPR, GAME_H_DPR);
-        scene.cameras.main.startFollow(playerInCar);
         scene.cameras.main.roundPixels = true;
 
         scene.time.delayedCall(5000, () => {
@@ -44,7 +43,7 @@ export class RoadBehavior {
                 to: 1,
                 duration: 2000,
                 onUpdate: (tween, target) => {
-                    playerInCar.body.setVelocityY(Phaser.Math.Easing.Back.In(tween.progress) * toPixels(-500));
+                    this.playerInCar.body.setVelocityY(Phaser.Math.Easing.Back.In(tween.progress) * toPixels(-500));
                 }
             });
         });
@@ -75,6 +74,17 @@ export class RoadBehavior {
         });
 
         this.updateBillboardsStates();
+
+        // use some amount of pixels to let car cross them instead of delayedCall with time
+        // and boolean variable handled or not
+        if (this.playerInCar.y + this.playerInCar.height < toPixels(-1000)) {
+            scene.scene.restart({
+                behavior: new HomeBehavior(),
+                data: {
+                    playerMeta: this.playerMeta
+                }
+            });
+        }
     }
 
     addBillboard(posY) {
