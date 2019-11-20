@@ -1,6 +1,7 @@
 import {toPixels} from "../../../utils/devicePixelRationUtils";
 import {GAME_H, GAME_H_DPR, GAME_W, GAME_W_DPR} from "../../../game";
 import {HomeBehavior} from "./homeBehavior";
+import {MovingObjectsPool} from "../../../units/movingObjectsPool";
 
 export class RoadBehavior {
 
@@ -48,20 +49,9 @@ export class RoadBehavior {
             });
         });
 
-        // billboards
-        this.billboardsGroup = scene.add.group({
-            removeCallback: (billboard) => {
-                this.billboardsPool.add(billboard);
-            }
-        });
 
-        this.billboardsPool = scene.add.group({
-            removeCallback: (billboard) => {
-                this.billboardsGroup.add(billboard);
-            }
-        });
-
-        this.addBillboard(toPixels(Phaser.Math.RND.between(-100, -200)));
+        this.leftBillboards = new MovingObjectsPool(scene, this._billboardFactory(toPixels(100)));
+        this.rightBillboards = new MovingObjectsPool(scene, this._billboardFactory(toPixels(500)));
     }
 
     update(scene, time, delta) {
@@ -69,11 +59,12 @@ export class RoadBehavior {
         const velocity = toPixels(2.5);
 
         this.roadSprite.tilePositionY -= velocity;
-        this.billboardsGroup.getChildren().forEach((billboard) => {
-            billboard.y += velocity;
-        });
 
-        this.updateBillboardsStates();
+        this.leftBillboards.move(velocity);
+        this.rightBillboards.move(velocity);
+
+        this.leftBillboards.updateStates();
+        this.rightBillboards.updateStates();
 
         // use some amount of pixels to let car cross them instead of delayedCall with time
         // and boolean variable handled or not
@@ -87,19 +78,17 @@ export class RoadBehavior {
         }
     }
 
-    addBillboard(posY) {
-        let billboard;
-        if (this.billboardsPool.getLength()) {
-            billboard = this.billboardsPool.getFirst();
-            billboard.y = posY;
-            billboard.active = true;
-            billboard.visible = true;
-            this.billboardsPool.remove(billboard);
-        } else {
+    _billboardFactory(xCoord) {
 
+        const billboards = [
+            '🍆🍑',
+            '⚽️🏀💸',
+        ];
+
+        return (scene, posY) => {
             let billboardImage = this.scene.add.image(0, 0, 'billboard');
             billboardImage.setOrigin(0);
-            let text = this.scene.add.text(0, 0, '🍆🍑', {
+            let text = this.scene.add.text(0, 0, Phaser.Math.RND.pick(billboards), {
                 fontFamily: 'Arial',
                 fontSize: toPixels(24),
                 fill: '#ff0000'
@@ -108,28 +97,7 @@ export class RoadBehavior {
             text.x = billboardImage.width * 0.5 - text.width * 0.5;
             text.y = billboardImage.height * 0.35 - text.height * 0.5;
 
-            let billboard = this.scene.add.container(toPixels(100), posY, [billboardImage, text]);
-
-            this.billboardsGroup.add(billboard);
+            return this.scene.add.container(xCoord, posY, [billboardImage, text]);
         }
     }
-
-    updateBillboardsStates() {
-
-        let coords = this.billboardsGroup.getChildren().map((billboard) => billboard.y);
-
-        let minY = Math.min(...coords);
-
-        this.billboardsGroup.getChildren().forEach((billboard) => {
-            if (GAME_H_DPR < billboard.y - billboard.height) {
-                this.billboardsGroup.killAndHide(billboard);
-                this.billboardsGroup.remove(billboard);
-            }
-        });
-
-        if (minY > toPixels(200)) {
-            this.addBillboard(toPixels(Phaser.Math.RND.between(-100, -200)));
-        }
-    }
-
 }

@@ -26,6 +26,7 @@ export const CONFIG = {
  * 2) Shining
  *
  * 3) FIX ROTATING a hexagon
+ * 4) Guard must say something else, if you are dressed up
  */
 
 export const BIRTHDAY_2019_CONFIG = {

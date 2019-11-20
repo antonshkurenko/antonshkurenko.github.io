@@ -1,9 +1,11 @@
 import {CONFIG} from "../game";
 import {toPixels} from "../utils/devicePixelRationUtils";
 
-export class RandomPerson extends Phaser.GameObjects.Container {
-    constructor(scene, x, y, emojis) {
+export class Person extends Phaser.GameObjects.Container {
+    constructor(scene, x, y, emojis, forceEmoji) {
         super(scene, x, y);
+
+        forceEmoji = forceEmoji || false;
 
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
@@ -16,7 +18,7 @@ export class RandomPerson extends Phaser.GameObjects.Container {
 
         this.add(personSprite);
 
-        if (Phaser.Math.RND.between(0, 4) > 2) {
+        if (forceEmoji || Phaser.Math.RND.frac() > 0.5) {
 
             let emoji = Phaser.Math.RND.pick(emojis);
 

@@ -3,6 +3,24 @@ import {GAME_H, GAME_H_DPR, GAME_W, GAME_W_DPR} from "../../../game";
 import {InvisibleZone} from "../../../units/invisibleZone";
 import {RoadBehavior} from "./roadBehavior";
 import {Player} from "../../../units/player";
+import {Conversation} from "../../../units/conversation";
+import {TaxiDriverFactory} from "../../../units/personFactories/taxiDriverFactory";
+
+const START_PHRASES = [
+    "Hey!",
+    "Howdy?",
+    "Hello",
+    "Hi",
+    "What's up?",
+    "Good Day Sir",
+];
+const LATE_PHRASES = [
+    "Welcome home!",
+    "Taxi! 🚕"
+];
+const RARE_PHRASES = [
+    "Oy na hori dva dubky",
+];
 
 export class KbpBehavior {
 
@@ -86,6 +104,8 @@ export class KbpBehavior {
             console.log(`Collided player: ${player} with entrance zone: ${zone}`);
         });
 
+        this._addPeople();
+
         scene.cameras.main.setBounds(0, 0, GAME_W_DPR, GAME_H_DPR);
         scene.cameras.main.startFollow(this.player);
         scene.cameras.main.roundPixels = true;
@@ -93,5 +113,41 @@ export class KbpBehavior {
 
     update(scene, time, delta) {
         this.player.onUpdate();
+    }
+
+    _addPeople() {
+
+        let people = [
+            {x: GAME_W_DPR * 0.26, y: GAME_H_DPR * 0.75},
+            {x: GAME_W_DPR * 0.21, y: GAME_H_DPR * 0.74},
+            {x: GAME_W_DPR * 0.30, y: GAME_H_DPR * 0.76},
+            {x: GAME_W_DPR * 0.33, y: GAME_H_DPR * 0.745},
+            {x: GAME_W_DPR * 0.37, y: GAME_H_DPR * 0.764},
+            {x: GAME_W_DPR * 0.44, y: GAME_H_DPR * 0.755},
+            {x: GAME_W_DPR * 0.49, y: GAME_H_DPR * 0.743},
+            {x: GAME_W_DPR * 0.55, y: GAME_H_DPR * 0.752},
+            {x: GAME_W_DPR * 0.61, y: GAME_H_DPR * 0.751},
+            {x: GAME_W_DPR * 0.66, y: GAME_H_DPR * 0.742},
+            {x: GAME_W_DPR * 0.72, y: GAME_H_DPR * 0.753},
+            {x: GAME_W_DPR * 0.77, y: GAME_H_DPR * 0.763},
+
+            {x: GAME_W_DPR * 0.3, y: GAME_H_DPR * 0.64},
+            {x: GAME_W_DPR * 0.36, y: GAME_H_DPR * 0.62},
+            {x: GAME_W_DPR * 0.4, y: GAME_H_DPR * 0.51},
+        ];
+
+        let factory = new TaxiDriverFactory(this.scene);
+
+        people.forEach((person) => {
+
+            let rndPerson = factory.create(person.x, person.y);
+
+            let conversation = new Conversation(this.scene, rndPerson.getBounds(), START_PHRASES, LATE_PHRASES, RARE_PHRASES);
+
+            this.scene.physics.add.collider(this.player, rndPerson, () => {
+                console.log(`Collided player with person: ${person}`);
+                conversation.hit();
+            });
+        });
     }
 }

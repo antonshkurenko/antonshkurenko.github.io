@@ -1,10 +1,11 @@
 import {toPixels} from "../../../utils/devicePixelRationUtils";
-import {GAME_H, GAME_H_DPR, GAME_W, GAME_W_DPR} from "../../../game";
+import {CONFIG, GAME_H, GAME_H_DPR, GAME_W, GAME_W_DPR} from "../../../game";
 import {InvisibleZone} from "../../../units/invisibleZone";
 import {KbpBehavior} from "./kbpBehavior";
 import {Player} from "../../../units/player";
 import {Conversation} from "../../../units/conversation";
-import {RandomPerson} from "../../../units/randomPerson";
+import {RandomPersonFactory} from "../../../units/personFactories/randomPersonFactory";
+import {GuardFactory} from "../../../units/personFactories/guardFactory";
 
 const START_PHRASES = [
     "Hey!",
@@ -41,6 +42,10 @@ export class DutyFreeBehavior {
         scene.physics.world.bounds.width = GAME_W_DPR;
         scene.physics.world.bounds.height = GAME_H_DPR;
 
+        let guardConversation = this._addGuard();
+        this._addShops(guardConversation);
+        this._addPeople();
+
         let dfZone = new InvisibleZone(
             scene, toPixels(256), toPixels(0), toPixels(256), toPixels(64)
         );
@@ -48,12 +53,20 @@ export class DutyFreeBehavior {
         dfZone.collideWith(this.player, (player, zone) => {
             console.log(`Collided player: ${player} with df zone: ${zone}`);
 
-            scene.scene.restart({
-                behavior: new KbpBehavior(),
-                data: {
-                    playerMeta: this.player.meta
-                }
-            });
+            if (this.player.currentDress() === CONFIG.defaultColor) {
+                guardConversation.hit("❗️", {
+                    fontFamily: 'Arial',
+                    fontSize: toPixels(24),
+                    fill: '#000000'
+                });
+            } else {
+                scene.scene.restart({
+                    behavior: new KbpBehavior(),
+                    data: {
+                        playerMeta: this.player.meta
+                    }
+                });
+            }
         });
 
         dfZone.putTextInside(
@@ -64,9 +77,6 @@ export class DutyFreeBehavior {
             }
         );
 
-        this._addShops();
-        this._addPeople();
-
         scene.cameras.main.setBounds(0, 0, GAME_W_DPR, GAME_H_DPR);
         scene.cameras.main.startFollow(this.player);
         scene.cameras.main.roundPixels = true;
@@ -76,7 +86,7 @@ export class DutyFreeBehavior {
         this.player.onUpdate();
     }
 
-    _addShops() {
+    _addShops(guardConversation) {
         let shops = [
             {name: "YSL", x: 0, y: 0, color: 0xF44336},
             {name: "Gucci", x: 0, y: 144, color: 0xE91E63},
@@ -100,6 +110,14 @@ export class DutyFreeBehavior {
                     this.scene.cameras.main.flash(400);
                     player.dressUp(shop.color);
                 }
+
+                if (player.currentDress() !== CONFIG.defaultColor) {
+                    guardConversation.changePhrases(
+                        ["You're good"],
+                        ["Come in, come in"],
+                        ["So hot 🔥"]
+                    );
+                }
             });
 
             shopZone.putTextInside(
@@ -113,77 +131,22 @@ export class DutyFreeBehavior {
     }
 
     _addPeople() {
-        let emojis = [
-            {
-                ch: '👜',
-                vAlign: 'btm',
-                hAlign: 'right'
-            },
-            {
-                ch: '💼',
-                vAlign: 'btm',
-                hAlign: 'right'
-            },
-            {
-                ch: '🌂',
-                vAlign: 'btm',
-                hAlign: 'right'
-            },
-            {
-                ch: '👒',
-                vAlign: 'top',
-                hAlign: 'center'
-            },
-            {
-                ch: '🧢',
-                vAlign: 'top',
-                hAlign: 'center'
-            },
-            {
-                ch: '🎩',
-                vAlign: 'top',
-                hAlign: 'center'
-            },
-            {
-                ch: '👓',
-                vAlign: 'top',
-                hAlign: 'center'
-            },
-            {
-                ch: '🕶',
-                vAlign: 'top',
-                hAlign: 'center'
-            },
-            {
-                ch: '🔫',
-                vAlign: 'center',
-                hAlign: 'left'
-            },
-            {
-                ch: '🔪',
-                vAlign: 'btm',
-                hAlign: 'right'
-            },
-            {
-                ch: '🎈',
-                vAlign: 'top',
-                hAlign: 'left'
-            },
-            {
-                ch: '💤',
-                vAlign: 'top',
-                hAlign: 'right'
-            }
-        ];
-
         let people = [
             {x: GAME_W_DPR * 0.4, y: GAME_H_DPR * 0.4},
             {x: GAME_W_DPR * 0.4 + toPixels(40), y: GAME_H_DPR * 0.4 + toPixels(5)},
+            {x: GAME_W_DPR * 0.25, y: GAME_H_DPR * 0.3},
+            {x: GAME_W_DPR * 0.6, y: GAME_H_DPR * 0.5},
+            {x: GAME_W_DPR * 0.6 + toPixels(40), y: GAME_H_DPR * 0.5 + toPixels(30)},
+            {x: GAME_W_DPR * 0.6 + toPixels(5), y: GAME_H_DPR * 0.5 + toPixels(60)},
+            {x: GAME_W_DPR * 0.3, y: GAME_H_DPR * 0.55},
+            {x: GAME_W_DPR * 0.3 + toPixels(-5), y: GAME_H_DPR * 0.55 + toPixels(40)},
         ];
+
+        let factory = new RandomPersonFactory(this.scene);
 
         people.forEach((person) => {
 
-            let rndPerson = new RandomPerson(this.scene, person.x, person.y, emojis);
+            let rndPerson = factory.create(person.x, person.y);
 
             let conversation = new Conversation(this.scene, rndPerson.getBounds(), START_PHRASES, LATE_PHRASES, RARE_PHRASES);
 
@@ -192,5 +155,27 @@ export class DutyFreeBehavior {
                 conversation.hit();
             });
         });
+    }
+
+    _addGuard() {
+
+        let factory = new GuardFactory(this.scene);
+
+        let guard = factory.create(toPixels(500), toPixels(72));
+
+        let conversation = new Conversation(
+            this.scene,
+            guard.getBounds(),
+            ["Hi, please dress up"],
+            ["You can't proceed\nwithout being dressed up"],
+            ["C'mon man, dress up"]
+        );
+
+        this.scene.physics.add.collider(this.player, guard, () => {
+            console.log(`Collided player with person: ${guard}`);
+            conversation.hit();
+        });
+
+        return conversation;
     }
 }
