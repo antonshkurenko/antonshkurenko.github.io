@@ -3,24 +3,7 @@ import {GAME_H, GAME_H_DPR, GAME_W, GAME_W_DPR} from "../../../game";
 import {InvisibleZone} from "../../../units/invisibleZone";
 import {RoadBehavior} from "./roadBehavior";
 import {Player} from "../../../units/player";
-import {Conversation} from "../../../units/conversation";
 import {TaxiDriverFactory} from "../../../units/personFactories/taxiDriverFactory";
-
-const START_PHRASES = [
-    "Hey!",
-    "Howdy?",
-    "Hello",
-    "Hi",
-    "What's up?",
-    "Good Day Sir",
-];
-const LATE_PHRASES = [
-    "Welcome home!",
-    "Taxi! 🚕"
-];
-const RARE_PHRASES = [
-    "Oy na hori dva dubky",
-];
 
 export class KbpBehavior {
 
@@ -142,11 +125,9 @@ export class KbpBehavior {
 
             let rndPerson = factory.create(person.x, person.y);
 
-            let conversation = new Conversation(this.scene, rndPerson.getBounds(), START_PHRASES, LATE_PHRASES, RARE_PHRASES);
-
             this.scene.physics.add.collider(this.player, rndPerson, () => {
                 console.log(`Collided player with person: ${person}`);
-                conversation.hit();
+                rndPerson.conversation.hit();
             });
         });
     }

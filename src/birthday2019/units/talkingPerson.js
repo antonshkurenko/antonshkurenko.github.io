@@ -1,8 +1,9 @@
 import {CONFIG} from "../game";
 import {toPixels} from "../utils/devicePixelRationUtils";
+import {Conversation} from "./conversation";
 
-export class Person extends Phaser.GameObjects.Container {
-    constructor(scene, x, y, emojis, forceEmoji) {
+export class TalkingPerson extends Phaser.GameObjects.Container {
+    constructor(scene, x, y, emojis, forceEmoji, phrases) {
         super(scene, x, y);
 
         forceEmoji = forceEmoji || false;
@@ -84,5 +85,13 @@ export class Person extends Phaser.GameObjects.Container {
                 }
             }
         });
+
+        this.conversation = new Conversation(
+            this.scene,
+            this.getBounds(),
+            phrases.start,
+            phrases.late,
+            phrases.rare
+        );
     }
 }

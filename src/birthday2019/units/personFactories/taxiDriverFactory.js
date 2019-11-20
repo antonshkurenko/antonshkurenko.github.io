@@ -1,4 +1,4 @@
-import {Person} from "../person";
+import {TalkingPerson} from "../talkingPerson";
 
 const emojis = [
     {
@@ -18,6 +18,22 @@ const emojis = [
     }
 ];
 
+const START_PHRASES = [
+    "Hey!",
+    "Howdy?",
+    "Hello",
+    "Hi",
+    "What's up?",
+    "Good Day Sir",
+];
+const LATE_PHRASES = [
+    "Welcome home!",
+    "Taxi! 🚕"
+];
+const RARE_PHRASES = [
+    "Oy na hori dva dubky",
+];
+
 export class TaxiDriverFactory {
 
     constructor(scene) {
@@ -27,6 +43,10 @@ export class TaxiDriverFactory {
 
 
     create(x, y) {
-        return new Person(this.scene, x, y, emojis, true);
+        return new TalkingPerson(this.scene, x, y, emojis, true, {
+            start: START_PHRASES,
+            late: LATE_PHRASES,
+            rare: RARE_PHRASES
+        });
     }
 }

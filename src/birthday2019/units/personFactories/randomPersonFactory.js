@@ -1,4 +1,4 @@
-import {Person} from "../person";
+import {TalkingPerson} from "../talkingPerson";
 
 const emojis = [
     {
@@ -48,15 +48,34 @@ const emojis = [
     }
 ];
 
+const START_PHRASES = [
+    "Hey!",
+    "Howdy?",
+    "Hello",
+    "Hi",
+    "What's up?",
+    "Good Day Sir",
+];
+const LATE_PHRASES = [
+    "Don't push me 💢",
+];
+const RARE_PHRASES = [
+    "We're no strangers to love\n" +
+    "You know the rules and so do I",
+];
+
 export class RandomPersonFactory {
 
     constructor(scene) {
         this.scene = scene;
-
     }
 
 
     create(x, y) {
-        return new Person(this.scene, x, y, emojis, false);
+        return new TalkingPerson(this.scene, x, y, emojis, false, {
+            start: START_PHRASES,
+            late: LATE_PHRASES,
+            rare: RARE_PHRASES
+        });
     }
 }

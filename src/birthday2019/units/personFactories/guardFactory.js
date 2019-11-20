@@ -1,4 +1,4 @@
-import {Person} from "../person";
+import {TalkingPerson} from "../talkingPerson";
 
 const emojis = [
     {
@@ -20,6 +20,10 @@ export class GuardFactory {
     }
 
     create(x, y) {
-        return new Person(this.scene, x, y, emojis, true);
+        return new TalkingPerson(this.scene, x, y, emojis, true, {
+            start: ["Hi, please dress up"],
+            late: ["You can't proceed\nwithout being dressed up"],
+            rare: ["C'mon man, dress up"]
+        });
     }
 }

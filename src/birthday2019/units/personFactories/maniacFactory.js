@@ -1,4 +1,4 @@
-import {Person} from "../person";
+import {TalkingPerson} from "../talkingPerson";
 
 const emojis = [
     {
@@ -27,6 +27,10 @@ export class ManiacFactory {
 
 
     create(x, y) {
-        return new Person(this.scene, x, y, emojis, true);
+        return new TalkingPerson(this.scene, x, y, emojis, true, {
+            start: ["Hello 😈"],
+            late: ["Run, run"],
+            rare: ["Here's Johnny!"]
+        });
     }
 }

@@ -3,25 +3,8 @@ import {CONFIG, GAME_H, GAME_H_DPR, GAME_W, GAME_W_DPR} from "../../../game";
 import {InvisibleZone} from "../../../units/invisibleZone";
 import {KbpBehavior} from "./kbpBehavior";
 import {Player} from "../../../units/player";
-import {Conversation} from "../../../units/conversation";
 import {RandomPersonFactory} from "../../../units/personFactories/randomPersonFactory";
 import {GuardFactory} from "../../../units/personFactories/guardFactory";
-
-const START_PHRASES = [
-    "Hey!",
-    "Howdy?",
-    "Hello",
-    "Hi",
-    "What's up?",
-    "Good Day Sir",
-];
-const LATE_PHRASES = [
-    "Don't push me 💢",
-];
-const RARE_PHRASES = [
-    "We're no strangers to love\n" +
-    "You know the rules and so do I",
-];
 
 export class DutyFreeBehavior {
 
@@ -42,8 +25,8 @@ export class DutyFreeBehavior {
         scene.physics.world.bounds.width = GAME_W_DPR;
         scene.physics.world.bounds.height = GAME_H_DPR;
 
-        let guardConversation = this._addGuard();
-        this._addShops(guardConversation);
+        let guard = this._addGuard();
+        this._addShops(guard);
         this._addPeople();
 
         let dfZone = new InvisibleZone(
@@ -86,7 +69,7 @@ export class DutyFreeBehavior {
         this.player.onUpdate();
     }
 
-    _addShops(guardConversation) {
+    _addShops(guard) {
         let shops = [
             {name: "YSL", x: 0, y: 0, color: 0xF44336},
             {name: "Gucci", x: 0, y: 144, color: 0xE91E63},
@@ -112,7 +95,7 @@ export class DutyFreeBehavior {
                 }
 
                 if (player.currentDress() !== CONFIG.defaultColor) {
-                    guardConversation.changePhrases(
+                    guard.conversation.changePhrases(
                         ["You're good"],
                         ["Come in, come in"],
                         ["So hot 🔥"]
@@ -148,11 +131,9 @@ export class DutyFreeBehavior {
 
             let rndPerson = factory.create(person.x, person.y);
 
-            let conversation = new Conversation(this.scene, rndPerson.getBounds(), START_PHRASES, LATE_PHRASES, RARE_PHRASES);
-
             this.scene.physics.add.collider(this.player, rndPerson, () => {
                 console.log(`Collided player with person: ${person}`);
-                conversation.hit();
+                rndPerson.conversation.hit();
             });
         });
     }
@@ -163,19 +144,11 @@ export class DutyFreeBehavior {
 
         let guard = factory.create(toPixels(500), toPixels(72));
 
-        let conversation = new Conversation(
-            this.scene,
-            guard.getBounds(),
-            ["Hi, please dress up"],
-            ["You can't proceed\nwithout being dressed up"],
-            ["C'mon man, dress up"]
-        );
-
         this.scene.physics.add.collider(this.player, guard, () => {
             console.log(`Collided player with person: ${guard}`);
-            conversation.hit();
+            guard.conversation.hit();
         });
 
-        return conversation;
+        return guard;
     }
 }
