@@ -126,8 +126,7 @@ export class KbpBehavior {
             let rndPerson = factory.create(person.x, person.y);
 
             this.scene.physics.add.collider(this.player, rndPerson, () => {
-                console.log(`Collided player with person: ${person}`);
-                rndPerson.conversation.hit();
+                rndPerson.onCollideWithPlayer(rndPerson, this.player);
             });
         });
     }

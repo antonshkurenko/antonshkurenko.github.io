@@ -38,15 +38,15 @@ export class TaxiDriverFactory {
 
     constructor(scene) {
         this.scene = scene;
-
     }
-
 
     create(x, y) {
         return new TalkingPerson(this.scene, x, y, emojis, true, {
             start: START_PHRASES,
             late: LATE_PHRASES,
             rare: RARE_PHRASES
+        }, (person, player) => {
+            person.conversation.hit();
         });
     }
 }

@@ -3,8 +3,10 @@ import {toPixels} from "../utils/devicePixelRationUtils";
 import {Conversation} from "./conversation";
 
 export class TalkingPerson extends Phaser.GameObjects.Container {
-    constructor(scene, x, y, emojis, forceEmoji, phrases) {
+    constructor(scene, x, y, emojis, forceEmoji, phrases, onCollideWithPlayer) {
         super(scene, x, y);
+
+        this.onCollideWithPlayer = onCollideWithPlayer;
 
         forceEmoji = forceEmoji || false;
 

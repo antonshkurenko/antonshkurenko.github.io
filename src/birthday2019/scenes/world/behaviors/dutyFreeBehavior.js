@@ -37,7 +37,7 @@ export class DutyFreeBehavior {
             console.log(`Collided player: ${player} with df zone: ${zone}`);
 
             if (this.player.currentDress() === CONFIG.defaultColor) {
-                guardConversation.hit("❗️", {
+                guard.conversation.hit("❗️", {
                     fontFamily: 'Arial',
                     fontSize: toPixels(24),
                     fill: '#000000'
@@ -132,8 +132,7 @@ export class DutyFreeBehavior {
             let rndPerson = factory.create(person.x, person.y);
 
             this.scene.physics.add.collider(this.player, rndPerson, () => {
-                console.log(`Collided player with person: ${person}`);
-                rndPerson.conversation.hit();
+                rndPerson.onCollideWithPlayer(rndPerson, this.player);
             });
         });
     }
@@ -145,8 +144,7 @@ export class DutyFreeBehavior {
         let guard = factory.create(toPixels(500), toPixels(72));
 
         this.scene.physics.add.collider(this.player, guard, () => {
-            console.log(`Collided player with person: ${guard}`);
-            guard.conversation.hit();
+            guard.onCollideWithPlayer(guard, this.player);
         });
 
         return guard;

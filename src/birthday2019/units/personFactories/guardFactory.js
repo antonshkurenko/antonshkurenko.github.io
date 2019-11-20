@@ -24,6 +24,8 @@ export class GuardFactory {
             start: ["Hi, please dress up"],
             late: ["You can't proceed\nwithout being dressed up"],
             rare: ["C'mon man, dress up"]
+        }, (person, player) => {
+            person.conversation.hit();
         });
     }
 }
