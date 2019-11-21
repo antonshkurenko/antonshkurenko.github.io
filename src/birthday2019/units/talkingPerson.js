@@ -1,9 +1,8 @@
-import {CONFIG} from "../game";
 import {toPixels} from "../utils/devicePixelRationUtils";
 import {Conversation} from "./conversation";
 
 export class TalkingPerson extends Phaser.GameObjects.Container {
-    constructor(scene, x, y, emojis, forceEmoji, phrases, onCollideWithPlayer) {
+    constructor(scene, x, y, color, emojis, forceEmoji, phrases, onCollideWithPlayer) {
         super(scene, x, y);
 
         this.onCollideWithPlayer = onCollideWithPlayer;
@@ -17,7 +16,7 @@ export class TalkingPerson extends Phaser.GameObjects.Container {
         personSprite.x = personSprite.width * 0.5;
         personSprite.y = personSprite.height * 0.5;
         personSprite.setRotation(Phaser.Math.RND.rotation());
-        personSprite.tint = CONFIG.defaultColor;
+        personSprite.tint = color;
 
         this.add(personSprite);
 

@@ -1,4 +1,5 @@
 import {TalkingPerson} from "../talkingPerson";
+import {CONFIG} from "../../game";
 
 const emojis = [
     {
@@ -20,7 +21,7 @@ export class GuardFactory {
     }
 
     create(x, y) {
-        return new TalkingPerson(this.scene, x, y, emojis, true, {
+        return new TalkingPerson(this.scene, x, y, CONFIG.defaultColor, emojis, true, {
             start: ["Hi, please dress up"],
             late: ["You can't proceed\nwithout being dressed up"],
             rare: ["C'mon man, dress up"]

@@ -1,4 +1,5 @@
 import {TalkingPerson} from "../talkingPerson";
+import {CONFIG} from "../../game";
 
 const emojis = [
     {
@@ -41,7 +42,7 @@ export class TaxiDriverFactory {
     }
 
     create(x, y) {
-        return new TalkingPerson(this.scene, x, y, emojis, true, {
+        return new TalkingPerson(this.scene, x, y, CONFIG.defaultColor, emojis, true, {
             start: START_PHRASES,
             late: LATE_PHRASES,
             rare: RARE_PHRASES

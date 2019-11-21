@@ -1,4 +1,5 @@
 import {TalkingPerson} from "../talkingPerson";
+import {CONFIG} from "../../game";
 
 const emojis = [
     {
@@ -71,7 +72,7 @@ export class RandomPersonFactory {
     }
 
     create(x, y) {
-        return new TalkingPerson(this.scene, x, y, emojis, false, {
+        return new TalkingPerson(this.scene, x, y, CONFIG.defaultColor, emojis, false, {
             start: START_PHRASES,
             late: LATE_PHRASES,
             rare: RARE_PHRASES
