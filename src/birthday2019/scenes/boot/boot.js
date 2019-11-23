@@ -18,6 +18,12 @@ export class BootScene extends Phaser.Scene {
         this.load.image('car', imageName('assets/birthday2019/car/car@<size>x.png'));
         this.load.image('billboard', imageName('assets/birthday2019/billboard/billboard@<size>x.png'));
 
+        this.load.image('plane', imageName('assets/birthday2019/plane/plane@<size>x.png'));
+        this.load.image('cloud1', imageName('assets/birthday2019/cloud1/cloud1@<size>x.png'));
+        this.load.image('cloud2', imageName('assets/birthday2019/cloud2/cloud2@<size>x.png'));
+        this.load.image('cloud3', imageName('assets/birthday2019/cloud3/cloud3@<size>x.png'));
+        this.load.image('cloud4', imageName('assets/birthday2019/cloud4/cloud4@<size>x.png'));
+
         this.load.spritesheet('shapes', imageName('assets/birthday2019/players/shapes@<size>x.png'),
             {frameWidth: toPixels(32), frameHeight: toPixels(32), margin: 0, spacing: 0}
         );

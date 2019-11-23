@@ -24,9 +24,12 @@ export const CONFIG = {
  * TODO:
  * 1) Particles
  * 2) Shining
+ * 3) Add Plane stage (landing and taking off)
+ * 4) Add Pre Home
+ * 5) Game Over Scene: https://gamedevacademy.org/how-to-create-a-turn-based-rpg-game-in-phaser-3-part-2/
+ *
  *
  * 3) FIX ROTATING a hexagon
- * 4) Guard must say something else, if you are dressed up
  */
 
 export const BIRTHDAY_2019_CONFIG = {

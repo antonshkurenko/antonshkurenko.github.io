@@ -50,8 +50,20 @@ export class RoadBehavior {
         });
 
 
-        this.leftBillboards = new MovingObjectsPool(scene, this._billboardFactory(toPixels(100)));
-        this.rightBillboards = new MovingObjectsPool(scene, this._billboardFactory(toPixels(500)));
+        this.leftBillboards = new MovingObjectsPool(
+            scene,
+            this._billboardFactory(toPixels(100)),
+            (_) => {
+            },
+            150
+        );
+        this.rightBillboards = new MovingObjectsPool(
+            scene,
+            this._billboardFactory(toPixels(500)),
+            (_) => {
+            },
+            150
+        );
     }
 
     update(scene, time, delta) {

@@ -3,10 +3,12 @@ import {GAME_H_DPR} from "../game";
 
 export class MovingObjectsPool {
 
-    constructor(scene, factory) {
+    constructor(scene, factory, onRecycle, rBetweenDpi) {
 
         this.scene = scene;
         this.factory = factory;
+        this.onRecycle = onRecycle;
+        this.rBetweenDpi = rBetweenDpi;
 
         this.group = scene.add.group({
             removeCallback: (el) => {
@@ -20,7 +22,7 @@ export class MovingObjectsPool {
             }
         });
 
-        this.addObject(toPixels(Phaser.Math.RND.between(-100, -200)));
+        this.addObject(toPixels(Phaser.Math.RND.between(-this.rBetweenDpi * 0.75, -this.rBetweenDpi * 1.25)));
     }
 
     move(velocity) {
@@ -35,11 +37,12 @@ export class MovingObjectsPool {
             obj.y = posY;
             obj.active = true;
             obj.visible = true;
+
+            this.onRecycle(obj);
+
             this.pool.remove(obj);
         } else {
-
             let obj = this.factory(this.scene, posY);
-
             this.group.add(obj);
         }
     }
@@ -57,8 +60,8 @@ export class MovingObjectsPool {
             }
         });
 
-        if (minY > toPixels(200)) {
-            this.addObject(toPixels(Phaser.Math.RND.between(-100, -200)));
+        if (minY > toPixels(this.rBetweenDpi)) {
+            this.addObject(toPixels(Phaser.Math.RND.between(-this.rBetweenDpi * 0.75, -this.rBetweenDpi * 1.25)));
         }
     }
 

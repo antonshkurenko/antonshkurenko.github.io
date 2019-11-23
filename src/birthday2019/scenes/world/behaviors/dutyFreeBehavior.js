@@ -1,10 +1,10 @@
 import {toPixels} from "../../../utils/devicePixelRationUtils";
 import {CONFIG, GAME_H, GAME_H_DPR, GAME_W, GAME_W_DPR} from "../../../game";
 import {InvisibleZone} from "../../../units/invisibleZone";
-import {KbpBehavior} from "./kbpBehavior";
 import {Player} from "../../../units/player";
 import {RandomPersonFactory} from "../../../units/personFactories/randomPersonFactory";
 import {GuardFactory} from "../../../units/personFactories/guardFactory";
+import {TakingOffBehavior} from "./takingOffBehavior";
 
 export class DutyFreeBehavior {
 
@@ -44,7 +44,7 @@ export class DutyFreeBehavior {
                 });
             } else {
                 scene.scene.restart({
-                    behavior: new KbpBehavior(),
+                    behavior: new TakingOffBehavior(),
                     data: {
                         playerMeta: this.player.meta
                     }
