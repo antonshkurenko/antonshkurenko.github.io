@@ -59,6 +59,8 @@ export class Conversation {
             this.conversation.y = this.bound.y - toPixels(10) - this.conversation.height;
 
             this.conversationLastUpdated = this.scene.time.now;
+
+            return true;
         }
 
         if (this.conversation === null) {
@@ -77,6 +79,10 @@ export class Conversation {
                 this.conversation = null;
                 this.call = null;
             });
+
+            return true;
         }
+
+        return false;
     }
 }

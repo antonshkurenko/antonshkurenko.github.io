@@ -138,7 +138,7 @@ export class PrehomeBehavior {
 
         let text = this.scene.add
             .text(GAME_W_DPR * 0.69, GAME_H_DPR * 0.5,
-                ['We want to create here another one cheloveinick. Fuck park. Click me.'], {
+                ['🏢🏢🏢 YA cheloveinik. 🏢🏢🏢 Fuck park. 🏢🏢🏢 Click me.'], {
                     fontFamily: 'Arial',
                     fontSize: toPixels(20),
                     fill: '#000000',

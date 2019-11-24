@@ -21,7 +21,8 @@ export class InvisibleZone extends Phaser.GameObjects.Zone {
 
         let textObj = this.scene.add.text(this.x + this.width * 0.5, this.y + this.height * 0.5, text, config);
         textObj.setAlign('center');
-        textObj.setOrigin(0.5)
+        textObj.setOrigin(0.5);
+        return textObj;
     }
 
 }

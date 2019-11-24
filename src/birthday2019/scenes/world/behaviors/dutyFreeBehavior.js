@@ -35,7 +35,6 @@ export class DutyFreeBehavior {
         );
 
         dfZone.collideWith(this.player, (player, zone) => {
-            console.log(`Collided player: ${player} with df zone: ${zone}`);
 
             if (this.player.currentDress() === CONFIG.defaultColor) {
                 guard.conversation.hit("❗️", {
@@ -88,7 +87,6 @@ export class DutyFreeBehavior {
             );
 
             shopZone.collideWith(this.player, (player, zone) => {
-                console.log(`Collided player: ${player} with shop zone: ${shop.name}, color: ${shop.color}`);
 
                 if (player.currentDress() !== shop.color) {
                     this.scene.cameras.main.flash(400);
@@ -126,14 +124,19 @@ export class DutyFreeBehavior {
             {x: GAME_W_DPR * 0.3 + toPixels(-5), y: GAME_H_DPR * 0.55 + toPixels(40)},
         ];
 
-        const factories = [
-            new RandomPersonFactory(this.scene),
-            new ManiacFactory(this.scene),
-        ];
+        let maniacFactory = new ManiacFactory(this.scene);
+        let randomFactory = new RandomPersonFactory(this.scene);
 
         people.forEach((person) => {
 
-            let factory = Phaser.Math.RND.pick(factories);
+            const result = Phaser.Math.RND.frac();
+            let factory;
+
+            if (result < 0.1) {
+                factory = maniacFactory;
+            } else {
+                factory = randomFactory;
+            }
 
             let rndPerson = factory.create(person.x, person.y);
 

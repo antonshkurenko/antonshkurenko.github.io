@@ -1,5 +1,5 @@
 import {TalkingPerson} from "../talkingPerson";
-import {CONFIG} from "../../game";
+import {CONFIG, SCENE_DEFEAT} from "../../game";
 
 const emojis = [
     {
@@ -26,7 +26,13 @@ export class ManiacFactory {
             late: ["Run, run"],
             rare: ["Here's Johnny!"]
         }, (person, player) => {
-            person.conversation.hit();
+            if (person.conversation.hit()) {
+                if (Phaser.Math.RND.frac() > 0.5) {
+                    this.scene.game.scene.start(SCENE_DEFEAT, {
+                        msg: "It was a low probability,\nbut maniac killed you ☠️"
+                    });
+                }
+            }
         });
     }
 }

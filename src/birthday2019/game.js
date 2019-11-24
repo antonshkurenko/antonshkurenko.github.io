@@ -1,6 +1,7 @@
 import {BootScene} from "./scenes/boot/boot";
 import {MenuScene} from "./scenes/menu/menu";
 import {WorldScene} from "./scenes/world/world";
+import {EndGameScene} from "./scenes/endgame/endgame";
 
 export const DPR = window.devicePixelRatio;
 
@@ -15,6 +16,7 @@ console.log(`Game size: ${GAME_W_DPR}/${GAME_H_DPR}`);
 export const SCENE_BOOT = "boot";
 export const SCENE_MENU = "menu";
 export const SCENE_WORLD = "world";
+export const SCENE_DEFEAT = "defeat";
 
 export const CONFIG = {
     defaultColor: 0x9E9E9E
@@ -24,9 +26,7 @@ export const CONFIG = {
  * TODO:
  * 1) Particles
  * 2) Shining
- * 4) Add Pre Home
  * 5) Game Over Scene: https://gamedevacademy.org/how-to-create-a-turn-based-rpg-game-in-phaser-3-part-2/
- *
  *
  * 3) FIX ROTATING a hexagon
  */
@@ -44,7 +44,7 @@ export const BIRTHDAY_2019_CONFIG = {
         default: 'arcade',
         arcade: {
             gravity: {y: 0},
-            debug: true
+            debug: false
         }
     }
 };
@@ -55,6 +55,7 @@ export function startGame() {
     birthday2019.scene.add(SCENE_BOOT, new BootScene(null));
     birthday2019.scene.add(SCENE_MENU, new MenuScene(null));
     birthday2019.scene.add(SCENE_WORLD, new WorldScene(null));
+    birthday2019.scene.add(SCENE_DEFEAT, new EndGameScene(null));
 
     birthday2019.scene.start(SCENE_BOOT);
 }

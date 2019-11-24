@@ -24,7 +24,7 @@ export class HomeBehavior {
             scene, toPixels(256), toPixels(224), toPixels(256), toPixels(128)
         );
 
-        tableZone.putTextInside(
+        let text = tableZone.putTextInside(
             '🍷🍕🍺🥃', {
                 fontFamily: 'Arial',
                 fontSize: toPixels(24),
@@ -32,8 +32,30 @@ export class HomeBehavior {
             }
         );
 
+        let collisionHappened = false;
         tableZone.collideWith(this.player, (player, zone) => {
-            console.log(`Collided player: ${player} with table zone: ${zone}`);
+
+            if (!collisionHappened) {
+                collisionHappened = true;
+
+                text.setText("Fancy a drink?\nClick me.")
+                    .setInteractive()
+                    .on('pointerover', function () {
+                        text.setStyle({
+                            fill: '#ff0000'
+                        });
+                        this.scene.sys.canvas.style.cursor = 'pointer';
+                    })
+                    .on('pointerout', function () {
+                        text.setStyle({
+                            fill: '#000000'
+                        });
+                        this.scene.sys.canvas.style.cursor = 'default';
+                    })
+                    .on('pointerdown', function () {
+                        window.open('https://forms.gle/b2WecCA23wfvhnkX7', '_blank');
+                    });
+            }
         });
 
         this._addPeople();

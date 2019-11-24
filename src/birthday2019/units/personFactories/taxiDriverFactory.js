@@ -1,5 +1,5 @@
 import {TalkingPerson} from "../talkingPerson";
-import {CONFIG} from "../../game";
+import {CONFIG, SCENE_DEFEAT} from "../../game";
 
 const emojis = [
     {
@@ -8,27 +8,16 @@ const emojis = [
         hAlign: 'right'
     },
     {
-        ch: '🇺🇦',
-        vAlign: 'top',
-        hAlign: 'right'
-    },
-    {
-        ch: '🏁',
-        vAlign: 'top',
-        hAlign: 'right'
+        ch: '🚖',
+        vAlign: 'center',
+        hAlign: 'center'
     }
 ];
 
 const START_PHRASES = [
-    "Hey!",
-    "Howdy?",
-    "Hello",
-    "Hi",
-    "What's up?",
-    "Good Day Sir",
+    "Taxi! 🚕",
 ];
 const LATE_PHRASES = [
-    "Welcome home!",
     "Taxi! 🚕"
 ];
 const RARE_PHRASES = [
@@ -47,7 +36,13 @@ export class TaxiDriverFactory {
             late: LATE_PHRASES,
             rare: RARE_PHRASES
         }, (person, player) => {
-            person.conversation.hit();
+            if (person.conversation.hit()) {
+                if (Phaser.Math.RND.frac() > 0.5) {
+                    this.scene.game.scene.start(SCENE_DEFEAT, {
+                        msg: "Who ever used taxi at KBP? ☠️"
+                    });
+                }
+            }
         });
     }
 }

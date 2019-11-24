@@ -1,5 +1,5 @@
 import {TalkingPerson} from "../talkingPerson";
-import {CONFIG} from "../../game";
+import {CONFIG, SCENE_DEFEAT} from "../../game";
 
 const emojis = [
     {
@@ -31,7 +31,13 @@ export class TitushkasFactory {
             late: LATE_PHRASES,
             rare: RARE_PHRASES
         }, (person, player) => {
-            person.conversation.hit();
+            if (person.conversation.hit()) {
+                if (Phaser.Math.RND.frac() > 0.95) {
+                    this.scene.game.scene.start(SCENE_DEFEAT, {
+                        msg: "Such titushkas ☠️"
+                    });
+                }
+            }
         });
     }
 }

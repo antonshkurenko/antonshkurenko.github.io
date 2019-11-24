@@ -1,5 +1,5 @@
 import {toPixels} from "../../../utils/devicePixelRationUtils";
-import {GAME_H, GAME_H_DPR, GAME_W, GAME_W_DPR} from "../../../game";
+import {GAME_H, GAME_H_DPR, GAME_W, GAME_W_DPR, SCENE_DEFEAT} from "../../../game";
 import {InvisibleZone} from "../../../units/invisibleZone";
 import {RoadBehavior} from "./roadBehavior";
 import {Player} from "../../../units/player";
@@ -31,7 +31,6 @@ export class KbpBehavior {
         );
 
         kbpZone.collideWith(this.player, (player, zone) => {
-            console.log(`Collided player: ${player} with kbp zone: ${zone}`);
 
             scene.scene.restart({
                 behavior: new RoadBehavior(),
@@ -54,7 +53,6 @@ export class KbpBehavior {
         );
 
         flowersZone.collideWith(this.player, (player, zone) => {
-            console.log(`Collided player: ${player} with flowers zone: ${zone}`);
         });
 
         flowersZone.putTextInside(
@@ -70,7 +68,9 @@ export class KbpBehavior {
         );
 
         exchZone.collideWith(this.player, (player, zone) => {
-            console.log(`Collided player: ${player} with exch zone: ${zone}`);
+            this.scene.game.scene.start(SCENE_DEFEAT, {
+                msg: "Exchange rate is fatal ☠️"
+            });
         });
 
         exchZone.putTextInside(
@@ -86,7 +86,6 @@ export class KbpBehavior {
         );
 
         entranceZone.collideWith(this.player, (player, zone) => {
-            console.log(`Collided player: ${player} with entrance zone: ${zone}`);
         });
 
         this._addPeople();
@@ -120,15 +119,22 @@ export class KbpBehavior {
             {x: GAME_W_DPR * 0.4, y: GAME_H_DPR * 0.51},
         ];
 
-        const factories = [
-            new TaxiDriverFactory(this.scene),
-            new RandomPersonFactory(this.scene),
-            new ManiacFactory(this.scene),
-        ];
+        let maniacFactory = new ManiacFactory(this.scene);
+        let taxiFactory = new TaxiDriverFactory(this.scene);
+        let randomFactory = new RandomPersonFactory(this.scene);
 
         people.forEach((person) => {
 
-            let factory = Phaser.Math.RND.pick(factories);
+            const result = Phaser.Math.RND.frac();
+            let factory;
+
+            if (result < 0.1) {
+                factory = maniacFactory;
+            } else if (result < 0.25) {
+                factory = taxiFactory;
+            } else {
+                factory = randomFactory;
+            }
 
             let rndPerson = factory.create(person.x, person.y);
 
