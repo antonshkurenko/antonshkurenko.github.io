@@ -43,6 +43,11 @@ const emojis = [
         hAlign: 'center'
     },
     {
+        ch: '🎈',
+        vAlign: 'top',
+        hAlign: 'left'
+    },
+    {
         ch: '💤',
         vAlign: 'top',
         hAlign: 'right'

@@ -4,6 +4,8 @@ import {InvisibleZone} from "../../../units/invisibleZone";
 import {RoadBehavior} from "./roadBehavior";
 import {Player} from "../../../units/player";
 import {TaxiDriverFactory} from "../../../units/personFactories/taxiDriverFactory";
+import {RandomPersonFactory} from "../../../units/personFactories/randomPersonFactory";
+import {ManiacFactory} from "../../../units/personFactories/maniacFactory";
 
 export class KbpBehavior {
 
@@ -101,10 +103,9 @@ export class KbpBehavior {
     _addPeople() {
 
         let people = [
-            {x: GAME_W_DPR * 0.26, y: GAME_H_DPR * 0.75},
             {x: GAME_W_DPR * 0.21, y: GAME_H_DPR * 0.74},
-            {x: GAME_W_DPR * 0.30, y: GAME_H_DPR * 0.76},
-            {x: GAME_W_DPR * 0.33, y: GAME_H_DPR * 0.745},
+            {x: GAME_W_DPR * 0.26, y: GAME_H_DPR * 0.75},
+            {x: GAME_W_DPR * 0.31, y: GAME_H_DPR * 0.76},
             {x: GAME_W_DPR * 0.37, y: GAME_H_DPR * 0.764},
             {x: GAME_W_DPR * 0.44, y: GAME_H_DPR * 0.755},
             {x: GAME_W_DPR * 0.49, y: GAME_H_DPR * 0.743},
@@ -119,9 +120,15 @@ export class KbpBehavior {
             {x: GAME_W_DPR * 0.4, y: GAME_H_DPR * 0.51},
         ];
 
-        let factory = new TaxiDriverFactory(this.scene);
+        const factories = [
+            new TaxiDriverFactory(this.scene),
+            new RandomPersonFactory(this.scene),
+            new ManiacFactory(this.scene),
+        ];
 
         people.forEach((person) => {
+
+            let factory = Phaser.Math.RND.pick(factories);
 
             let rndPerson = factory.create(person.x, person.y);
 

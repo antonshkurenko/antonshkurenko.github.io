@@ -3,18 +3,23 @@ import {CONFIG} from "../../game";
 
 const emojis = [
     {
-        ch: '🔫',
+        ch: '💩',
         vAlign: 'center',
-        hAlign: 'left'
-    },
-    {
-        ch: '🔪',
-        vAlign: 'btm',
-        hAlign: 'right'
+        hAlign: 'center'
     }
 ];
 
-export class ManiacFactory {
+const START_PHRASES = [
+    "...",
+];
+const LATE_PHRASES = [
+    "...",
+];
+const RARE_PHRASES = [
+    "...",
+];
+
+export class TitushkasFactory {
 
     constructor(scene) {
         this.scene = scene;
@@ -22,9 +27,9 @@ export class ManiacFactory {
 
     create(x, y) {
         return new TalkingPerson(this.scene, x, y, CONFIG.defaultColor, emojis, true, {
-            start: ["Hello 😈"],
-            late: ["Run, run"],
-            rare: ["Here's Johnny!"]
+            start: START_PHRASES,
+            late: LATE_PHRASES,
+            rare: RARE_PHRASES
         }, (person, player) => {
             person.conversation.hit();
         });

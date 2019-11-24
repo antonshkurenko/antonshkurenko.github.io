@@ -5,6 +5,7 @@ import {Player} from "../../../units/player";
 import {RandomPersonFactory} from "../../../units/personFactories/randomPersonFactory";
 import {GuardFactory} from "../../../units/personFactories/guardFactory";
 import {TakingOffBehavior} from "./takingOffBehavior";
+import {ManiacFactory} from "../../../units/personFactories/maniacFactory";
 
 export class DutyFreeBehavior {
 
@@ -125,9 +126,14 @@ export class DutyFreeBehavior {
             {x: GAME_W_DPR * 0.3 + toPixels(-5), y: GAME_H_DPR * 0.55 + toPixels(40)},
         ];
 
-        let factory = new RandomPersonFactory(this.scene);
+        const factories = [
+            new RandomPersonFactory(this.scene),
+            new ManiacFactory(this.scene),
+        ];
 
         people.forEach((person) => {
+
+            let factory = Phaser.Math.RND.pick(factories);
 
             let rndPerson = factory.create(person.x, person.y);
 

@@ -1,7 +1,7 @@
 import {toPixels} from "../../../utils/devicePixelRationUtils";
 import {GAME_H, GAME_H_DPR, GAME_W, GAME_W_DPR} from "../../../game";
-import {HomeBehavior} from "./homeBehavior";
 import {MovingObjectsPool} from "../../../units/movingObjectsPool";
+import {PrehomeBehavior} from "./prehomeBehavior";
 
 export class RoadBehavior {
 
@@ -82,7 +82,7 @@ export class RoadBehavior {
         // and boolean variable handled or not
         if (this.playerInCar.y + this.playerInCar.height < toPixels(-1000)) {
             scene.scene.restart({
-                behavior: new HomeBehavior(),
+                behavior: new PrehomeBehavior(),
                 data: {
                     playerMeta: this.playerMeta
                 }
