@@ -150,7 +150,7 @@ export class DutyFreeBehavior {
 
         let factory = new GuardFactory(this.scene);
 
-        let guard = factory.create(toPixels(500), toPixels(72));
+        let guard = factory.create(toPixels(500), toPixels(114));
 
         this.scene.physics.add.collider(this.player, guard, () => {
             guard.onCollideWithPlayer(guard, this.player);

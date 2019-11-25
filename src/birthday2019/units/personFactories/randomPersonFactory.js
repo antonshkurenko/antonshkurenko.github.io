@@ -64,6 +64,8 @@ const START_PHRASES = [
 ];
 const LATE_PHRASES = [
     "Don't push me 💢",
+    "Do we know each other?",
+    "Call me maybe",
 ];
 const RARE_PHRASES = [
     "We're no strangers to love\n" +

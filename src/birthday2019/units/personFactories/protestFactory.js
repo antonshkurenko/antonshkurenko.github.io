@@ -168,8 +168,10 @@ const START_PHRASES = [
 ];
 const LATE_PHRASES = [
     "Let's park",
+    "Christer's Hill!",
 ];
 const RARE_PHRASES = [
+    "FREEEEEDOOOOOOMM!!!",
     "We're no strangers to love\n" +
     "You know the rules and so do I",
 ];

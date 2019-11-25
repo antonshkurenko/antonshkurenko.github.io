@@ -23,8 +23,8 @@ export class ManiacFactory {
     create(x, y) {
         return new TalkingPerson(this.scene, x, y, CONFIG.defaultColor, emojis, true, {
             start: ["Hello 😈"],
-            late: ["Run, run"],
-            rare: ["Here's Johnny!"]
+            late: ["Run, run 🔪"],
+            rare: ["Here's Johnny! ⛏"]
         }, (person, player) => {
             if (person.conversation.hit()) {
                 if (Phaser.Math.RND.frac() > 0.5) {
