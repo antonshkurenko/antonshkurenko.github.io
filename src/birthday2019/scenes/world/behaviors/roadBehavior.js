@@ -20,9 +20,9 @@ export class RoadBehavior {
 
         this.playerMeta = data.playerMeta;
 
-        let player = scene.add.image(car.width * 0.2, car.height * 0.2, 'shapes', this.playerMeta.frame);
-        player.setOrigin(0);
-        player.tint = this.playerMeta.tint;
+        this.player = scene.add.image(car.width * 0.2, car.height * 0.2, 'shapes', this.playerMeta.frame);
+        this.player.setOrigin(0);
+        this.player.tint = this.playerMeta.tint;
         let text = scene.add.text(car.width * 0.55, car.height * 0.55, '🧳', {
             fontFamily: 'Arial',
             fontSize: toPixels(24),
@@ -30,10 +30,18 @@ export class RoadBehavior {
         });
         text.setOrigin(0);
 
-        this.playerInCar = scene.add.container(toPixels(GAME_W * 0.5) + this.roadSprite.width * 0.05, toPixels(GAME_H * 0.8), [car, player, text]);
+        this.playerInCar = scene.add.container(toPixels(GAME_W * 0.5) + this.roadSprite.width * 0.05, toPixels(GAME_H * 0.8), [car, this.player, text]);
         scene.physics.add.existing(this.playerInCar);
         this.playerInCar.body.setSize(car.width, car.height);
         this.playerInCar.body.setEnable(true);
+
+        if (this.playerMeta.personEmoji) {
+            this._addEmoji(this.playerMeta.personEmoji);
+        }
+
+        if (this.playerMeta.drinkEmoji) {
+            this._addEmoji(this.playerMeta.drinkEmoji);
+        }
 
         scene.cameras.main.setBounds(0, 0, GAME_W_DPR, GAME_H_DPR);
         scene.cameras.main.roundPixels = true;
@@ -111,5 +119,49 @@ export class RoadBehavior {
 
             return this.scene.add.container(xCoord, posY, [billboardImage, text]);
         }
+    }
+
+    _addEmoji(emoji) {
+
+        // TODO: FIX THIS!!!!
+
+
+        let text = this.scene.add.text(0, 0, emoji.ch, {
+            fontFamily: 'Arial',
+            fontSize: toPixels(20),
+            fill: '#ff0000'
+        });
+
+        switch (emoji.vAlign) {
+            case "center":
+                text.y = this.player.y + this.player.height * 0.5 - text.height * 0.5;
+                break;
+            case "btm":
+                text.y = this.player.y + this.player.height - text.height;
+                break;
+            case "top":
+                text.y = this.player.y;
+                break;
+            default:
+                throw "Unsupported vAlign"
+        }
+
+        switch (emoji.hAlign) {
+            case "center":
+                text.x = this.player.x + this.player.width * 0.5 - text.width * 0.5;
+                break;
+            case "right":
+                text.x = this.player.x + this.player.width - text.width;
+                break;
+            case "left":
+                text.x = this.player.x;
+                break;
+            default:
+                throw "Unsupported hAlign"
+        }
+
+        this.playerInCar.add(text);
+
+        return text;
     }
 }

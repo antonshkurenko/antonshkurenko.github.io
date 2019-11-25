@@ -52,7 +52,38 @@ export class KbpBehavior {
             scene, toPixels(112), toPixels(200), toPixels(144), toPixels(144)
         );
 
+        const flowerEmojis = [
+            {
+                ch: '⭐‍',
+                vAlign: 'center',
+                hAlign: 'center'
+            },
+            {
+                ch: '⚜️‍',
+                vAlign: 'center',
+                hAlign: 'center'
+            },
+            {
+                ch: '🙃‍',
+                vAlign: 'center',
+                hAlign: 'center'
+            },
+            {
+                ch: '🌼‍',
+                vAlign: 'center',
+                hAlign: 'center'
+            },
+        ];
+
+        let lastUpdated = this.scene.time.now;
         flowersZone.collideWith(this.player, (player, zone) => {
+
+            if (lastUpdated + 1000 < this.scene.time.now) {
+
+                lastUpdated = this.scene.time.now;
+
+                this.player.personalize(Phaser.Math.RND.pick(flowerEmojis));
+            }
         });
 
         flowersZone.putTextInside(

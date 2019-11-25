@@ -2,7 +2,7 @@ import {toPixels} from "../../../utils/devicePixelRationUtils";
 import {GAME_H, GAME_H_DPR, GAME_W, GAME_W_DPR} from "../../../game";
 import {Player} from "../../../units/player";
 import {InvisibleZone} from "../../../units/invisibleZone";
-import {FriendsFactory} from "../../../units/personFactories/friendsFactory";
+import {FRIENDS_EMOJIS, FriendsFactory} from "../../../units/personFactories/friendsFactory";
 
 export class HomeBehavior {
 
@@ -32,8 +32,16 @@ export class HomeBehavior {
             }
         );
 
+        let lastUpdated = this.scene.time.now;
         let collisionHappened = false;
         tableZone.collideWith(this.player, (player, zone) => {
+
+            if (lastUpdated + 1000 < this.scene.time.now) {
+
+                lastUpdated = this.scene.time.now;
+
+                this.player.drink(Phaser.Math.RND.pick(FRIENDS_EMOJIS));
+            }
 
             if (!collisionHappened) {
                 collisionHappened = true;

@@ -12,62 +12,28 @@ export class TalkingPerson extends Phaser.GameObjects.Container {
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
 
-        let personSprite = this.scene.add.image(0, 0, 'shapes', Phaser.Math.RND.between(0, 4));
-        personSprite.x = personSprite.width * 0.5;
-        personSprite.y = personSprite.height * 0.5;
-        personSprite.setRotation(Phaser.Math.RND.rotation());
-        personSprite.tint = color;
+        this.personSprite = this.scene.add.image(0, 0, 'shapes', Phaser.Math.RND.between(0, 4));
+        this.personSprite.x = this.personSprite.width * 0.5;
+        this.personSprite.y = this.personSprite.height * 0.5;
+        this.personSprite.setRotation(Phaser.Math.RND.rotation());
+        this.personSprite.tint = color;
 
-        this.add(personSprite);
+        this.add(this.personSprite);
 
-        if (forceEmoji || Phaser.Math.RND.frac() > 0.5) {
+        if (forceEmoji || Phaser.Math.RND.frac() > 0.85) {
 
             let emoji = Phaser.Math.RND.pick(emojis);
 
-            let text = this.scene.add.text(0, 0, emoji.ch, {
-                fontFamily: 'Arial',
-                fontSize: toPixels(20),
-                fill: '#ff0000'
-            });
-
-            switch (emoji.vAlign) {
-                case "center":
-                    text.y = personSprite.height * 0.5 - text.height * 0.5;
-                    break;
-                case "btm":
-                    text.y = personSprite.height - text.height;
-                    break;
-                case "top":
-                    text.y = 0;
-                    break;
-                default:
-                    throw "Unsupported vAlign"
-            }
-
-            switch (emoji.hAlign) {
-                case "center":
-                    text.x = personSprite.width * 0.5 - text.width * 0.5;
-                    break;
-                case "right":
-                    text.x = personSprite.width - text.width;
-                    break;
-                case "left":
-                    text.x = 0;
-                    break;
-                default:
-                    throw "Unsupported hAlign"
-            }
-
-            this.add(text);
+            this._addEmoji(emoji);
         }
 
-        this.body.setSize(personSprite.width, personSprite.height);
+        this.body.setSize(this.personSprite.width, this.personSprite.height);
         this.body.setEnable(true);
         this.body.setImmovable(true);
 
-        let lastRotation = personSprite.rotation;
+        let lastRotation = this.personSprite.rotation;
         this.scene.tweens.add({
-            targets: personSprite,
+            targets: this.personSprite,
             delay: Phaser.Math.RND.between(1000, 4000),
             duration: 400,
             ease: Phaser.Math.Easing.Cubic.In,
@@ -94,5 +60,43 @@ export class TalkingPerson extends Phaser.GameObjects.Container {
             phrases.late,
             phrases.rare
         );
+    }
+
+    _addEmoji(emoji) {
+        let text = this.scene.add.text(0, 0, emoji.ch, {
+            fontFamily: 'Arial',
+            fontSize: toPixels(20),
+            fill: '#ff0000'
+        });
+
+        switch (emoji.vAlign) {
+            case "center":
+                text.y = this.personSprite.height * 0.5 - text.height * 0.5;
+                break;
+            case "btm":
+                text.y = this.personSprite.height - text.height;
+                break;
+            case "top":
+                text.y = 0;
+                break;
+            default:
+                throw "Unsupported vAlign"
+        }
+
+        switch (emoji.hAlign) {
+            case "center":
+                text.x = this.personSprite.width * 0.5 - text.width * 0.5;
+                break;
+            case "right":
+                text.x = this.personSprite.width - text.width;
+                break;
+            case "left":
+                text.x = 0;
+                break;
+            default:
+                throw "Unsupported hAlign"
+        }
+
+        this.add(text);
     }
 }

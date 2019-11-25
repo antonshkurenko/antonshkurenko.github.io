@@ -1,6 +1,6 @@
 import {TalkingPerson} from "../talkingPerson";
 
-const emojis = [
+export const FRIENDS_EMOJIS = [
     {
         ch: '🍺',
         vAlign: 'center',
@@ -100,7 +100,7 @@ export class FriendsFactory {
     create(x, y) {
         return new TalkingPerson(this.scene, x, y, Phaser.Math.RND.pick([
             0xF44336, 0xE91E63, 0x9C27B0, 0x2196F3, 0x00BCD4, 0x4CAF50, 0xFFEB3B, 0xFFC107
-        ]), emojis, false, {
+        ]), FRIENDS_EMOJIS, false, {
             start: START_PHRASES,
             late: LATE_PHRASES,
             rare: RARE_PHRASES
