@@ -8,7 +8,7 @@ export class Player extends Phaser.GameObjects.Container {
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
 
-        this.personSprite = this.scene.add.image(0, 0, 'shapes', meta.frames);
+        this.personSprite = this.scene.add.image(0, 0, 'shapes', meta.frame);
         this.personSprite.x = this.personSprite.width * 0.5;
         this.personSprite.y = this.personSprite.height * 0.5;
         this.personSprite.setRotation(Phaser.Math.RND.rotation());
