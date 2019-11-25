@@ -26,7 +26,6 @@ export const CONFIG = {
  * TODO:
  * 1) Particles
  * 2) Shining
- * 5) Game Over Scene: https://gamedevacademy.org/how-to-create-a-turn-based-rpg-game-in-phaser-3-part-2/
  *
  * 3) FIX ROTATING a hexagon
  */
@@ -44,7 +43,7 @@ export const BIRTHDAY_2019_CONFIG = {
         default: 'arcade',
         arcade: {
             gravity: {y: 0},
-            debug: true
+            debug: false
         }
     }
 };
