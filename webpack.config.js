@@ -7,7 +7,6 @@ module.exports = {
         main: './src/main.js',
         keys: './src/keys.js',
         birthday2019: './src/birthday2019.js',
-        birthday2019ts: './src/birthday2019ts.ts',
     },
     output: {
         filename: '[name].bundle.js',
@@ -21,12 +20,7 @@ module.exports = {
                 query: {
                     presets: ['@babel/preset-env']
                 }
-            },
-            {
-                test: /\.tsx?$/,
-                use: 'ts-loader',
-                exclude: /node_modules/,
-            },
+            }
         ]
     },
     resolve: {

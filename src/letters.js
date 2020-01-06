@@ -39,9 +39,55 @@ function getActualCoord(element, elementSize) {
 
 window.addEventListener('load', function (e) {
 
-    let i;
     let letters = document.getElementsByClassName('letter');
     let body = document.getElementsByTagName('body')[0];
+
+    let letterIds = Array.from(letters).map((el) => el.parentElement.id);
+
+    letterIds.sort((a, b) => {
+        return a.replace('letter_','') - b.replace('letter_','');
+    });
+
+    if (Math.random() < .1) {
+        const zalgo = [
+
+            // note double N everywhere
+
+            ['Ã̷͉͛ͅ','n̴̩̼͐̆','t̷̥̭̩͖̑͘͝ͅ','ø̷͍̊̈͊','n̸̥͑',' ̶̧̀','S̵̻̹͖̹͗͂̓͐̚','h̶̛̯͕̿̏̚͠','k̴̨̟̤̙̥̀̀̆̇̔̾ͅ','u̷̱͎̱̽͂̏̔͝','r̷̨̢̯̞̎̆̋̌̃͝','ḝ̴̙̭̯̋͜͜','n̵̻̘̈́̉͒̈́̕͝','n̵̻̘̈́̉͒̈́̕͝','k̶͈̓͝','ø̵͖̇͂̓'],
+            
+
+            ['Ä̸͈́','n̵̡̡̥͈͚̆͜','ț̴̟̉́͑̈́͝','ø̵͙̠͕̰̄̒̽̀̂̀','n̸̘̆̒',' ̴͎̫̩̬̳́̿̈́̓̐͂̈́','S̸̨͉̹͐͒̆̾͌','ḩ̶̛̙̮̱͔̑̇̍̔̀͠ͅ','k̸̡̙͙͕̯͈͐ͅ','u̵̢͌̔͠͝','r̵͖̤͔̞̫͒','è̸͖̬̞͙̅̌͘','n̸̨͖̤̔̋̆͆̅̕͝','n̸̨͖̤̔̋̆͆̅̕͝','k̷̰͖͔̺͉̆̋̌͜','ø̵̛̲̾͌̄́͝͝'],
+
+
+            ['Ā̸͙̏͝','n̶̝̪̰̦̒̌̾̇̂͒','t̴̺͍̝͓̆̄̍̈́̎','ø̶̛̘̝͓̫̥̫̍','n̴̝̣͌̃̎͐̓̚',' ̴̛̫̻̹̱̙͔͂̓͋̍͠','S̶͕͓͔̲̋','h̵̛̪̊','k̷̬͚͔̙̆͛͐','ȗ̶̡͕̱͊̓̂͂͝','r̷̯̙͚̭̰̆̓͠','ę̷̗̞̘̰̫̒͐̽̒̔','n̸͉̓̓́͐̀͝','n̸͉̓̓́͐̀͝','ķ̶̛͇̭̇̐̽̋','ø̴͉͖̭̣͠'],
+
+            
+            ['Ả̵̱̹̞͙͓̘͌͜','n̶̡̏͊͆','t̵̪̙̟͚̫͑̉̔͘͘','ø̴̼͖͉̙̄́̂','n̴͇̦̩̮̓͆̈͋͑͝',' ̴̼͎̃','S̷̢̺̒','h̵̩͍̳̜̝͉̫͋̽̈́̑','k̷͔̓͌͒̀','u̸̟͚̦̠̺̿̾','r̶̡͕̖̈́̌̕','e̵̠͆͑͂̈͝','n̵͈̥͇̜̤̻̮̆','n̵͈̥͇̜̤̻̮̆','k̴̩̝͊̑̑̚','ø̴͔̀̒̇̓̌͌͝'],
+
+
+            ['À̷̜̲̭̣́͊́̄̉̔','n̵̛̹̘̳̳̼͚̩͖̄̉̎̿̆͂ͅ','t̶̡̻̲̰͙̥̳̊̄̐̓͝','ǿ̴͚̬̠̥̝̠͇̳̗̹̩̝͂̓̊͜','ņ̸͚̳͉͙̭̫͍̙̮̃̋',' ̸̨͖̠̦̻͈̤̄̄͒̋̃̕','S̶̡̩͔͎̰̮̺̖͙̈́̈́̋̇̽̈́̍͝͝͝ͅ','ĥ̶̬͐̽','ḵ̴̢̞̣̫͔͖̖̲̠̉̇͋͝','u̵̡̦̳͔͇̦̘̞͈̼̔̓͛̔̇͒̃͝͝','ȑ̶̢̛͇̰̰̪̱̺̘̉̄̈͗ͅͅ','e̷͖̳͍͑̌̉͆͝','n̵̦͚͕̥͐̏̕','n̵̦͚͕̥͐̏̕','k̶̢̥̙̝̟̠̘̬̑ͅ','ø̶̩̲̲̞̫̲̫̑͑̏̿̀̋̃͛̉͗̓͋͛̓'],
+
+
+
+            ['A̶̝͍̋̅͂̇̿','n̵̫̜̳̤̯̤͍̲̩̹͈̽̉͂̓̎̐͐̕͝ͅ','ṱ̶̺̀̍̉','ø̶̛͕̠̑̓̍','n̸̘̠̘͔͎͖̟̙͔̩̈̀̆͛̓̈́͝͝ͅͅ',' ̷̡͔̱̹͈̞͂̔̒̈̐́̿̽̈́̿̇͘','Ş̶̗̰̯̱̋̑̓̋̐́̽̌́','h̴̺͉̣̝̆̊̓͒̐͒̊̋̚͜͝','k̸̠̭͝','ǘ̷̝̗͍̼͊͗̔͗̐','ȓ̴͇͙͚̭̟̣̥̦̠̦̮͑͊̚͜','e̶͉̪̠͔̱̫̫͙͈̤̳͠','n̷̲̘̒͑̃͒̅̏͊͂͊','n̷̲̘̒͑̃͒̅̏͊͂͊','ķ̵̯̿̆͋̏͒̾͑̎͆̿̕̕','ø̷͚̬̝̂͗̅̏̈́͆̕̚͜͠'],
+
+
+
+            ['A̶̢̛̺̰͉̥͓͖̠͓̠̲̹̠͚̜͉̜̾̅̈͂̐̑́͌̒̅̀̿̋̓́̍͑̎̿̀','ǹ̶̛̼̙͙̣̣̠̤̻̹̫̜̎̈́̂͂̇̀̕̚͘ͅ','ṫ̷͙̲̱̳̫͉͇̞͎͉̭̤̈́̈͌̀̈́̏̎̚͝','ø̷̧̨̮͕͖̖͉̳͖̈́̊́̒͛̍͑͂̓͜͜','n̸̛͖̹̗͔̗͖̥̱̐͌̈́́́̋̀̂̈̈́͊̉̌̒͘̚͜͠',' ̷̫͙͈͉̼̬̖̮̎̈͒̓̽̅̽̍͆̌̐͆̍̂̚͘','S̵̨̧̥̭͇̙̲͎̫̬̱̜̫̥͔͎̭̊̿̆̋̅̓̈̉͜','ḩ̴͇̲͍͔̮͕̬̲͈̹̝͓̪̩̟̺̝̩̯̈́̒͗̏͊̄̍̇','ķ̸̢̘͎̣̮̳͕̜̥̼̭̣͇͗͆̏̊͗̋̉̔̍̀͑̈́̒͘͝','u̸̻̗̙͑ͅ','r̸̨͈̬̫͖̻͓̺͙͈͖̩̥̳̪̞̫̱̰͂̈́́͒̌͋̕͜ͅ','ę̶̧̖͇̲̦͎̱̟͇̭̦̎̍̽̒̔̈́͋̎͑͘͜͠','n̷̳̘̙͔̈́̌̊͐͗̾͌̄͒͝͠','n̷̳̘̙͔̈́̌̊͐͗̾͌̄͒͝͠','k̷̛̛̹̄̀̎̉͌͛̿͘̚̚͠','ø̵̨̘̉͒̓̍͛̌̂͛̈͠͝']
+
+
+
+        ];
+
+        let randomZalgo = zalgo[Math.floor(Math.random() * zalgo.length)];
+
+        letterIds
+            .map((id) => document.getElementById(id))
+            .map((el) => el.getElementsByClassName("letter")[0])
+            .forEach((el, idx) => {
+                el.innerHTML = randomZalgo[idx];
+            });
+    }
 
     // const
     let letterSizes = [];
@@ -108,11 +154,11 @@ window.addEventListener('load', function (e) {
     for (let i = 0; i < letters.length; i++) {
         let current = letters[i];
 
-        if (current.parentElement.id === "first_n") {
+        if (current.parentElement.id === "letter_13") {
             firstNOffset = (negativeOffset + offset)
         }
 
-        if (current.parentElement.id === "second_n") {
+        if (current.parentElement.id === "letter_14") {
             current.parentElement.style.left = firstNOffset + "px";
         } else {
             current.parentElement.style.left = (negativeOffset + offset) + "px";
