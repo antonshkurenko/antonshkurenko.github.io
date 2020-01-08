@@ -273,6 +273,29 @@ export const KEYS = {
             "city": "🇲🇽Tulum",
             "additional": "Sorry, who lost it"
         },
+        {
+            "pic": "keys/52_new_york.jpg",
+            "year": 2019,
+            "city": "🇺🇸New York City",
+            "additional": "🍎🗽"
+        },
+        {
+            "pic": "keys/53_new_york_public_library.jpg",
+            "year": 2019,
+            "city": "🇺🇸New York Public Library",
+            "additional": "Main Branch 📚"
+        },
+        {
+            "pic": "keys/54_new_york_top_of_the_rock.jpg",
+            "year": 2019,
+            "city": "🇺🇸New York, Top of the Rock",
+            "additional": "In Ukrainian it's a key."
+        },
+        {
+            "pic": "keys/55_larnaca.jpg",
+            "year": 2020,
+            "city": "🇨🇾Larnaca"
+        },
     ],
     "couldbe": [
         {
