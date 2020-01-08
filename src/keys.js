@@ -18,7 +18,7 @@ window.addEventListener('load', () => {
         let title = el.city + ".";
         let subtitle = `<br /><small><i>Acquired in ${el.year}.`;
         if (el.additional != null) {
-            subtitle += " " + el.additional;
+            subtitle += " " + el.additional + ".";
         }
 
         subtitle += "</i></small>";
@@ -46,7 +46,7 @@ window.addEventListener('load', () => {
         let title = el.city + ".";
         let subtitle = `<br /><small><i>Found in ${el.year}.`;
         if (el.additional != null) {
-            subtitle += " " + el.additional;
+            subtitle += " " + el.additional + ".";
         }
 
         subtitle += "</i></small>";

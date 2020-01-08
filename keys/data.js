@@ -7,7 +7,7 @@ export const KEYS = {
             "pic": "keys/1_spb.jpg",
             "year": 2013,
             "city": "🇷🇺Saint Petersburg",
-            "additional": "First key."
+            "additional": "First key"
         },
         {
             "pic": "keys/2_vologda.jpg",
@@ -28,7 +28,7 @@ export const KEYS = {
             "pic": "keys/5_paris.jpg",
             "year": 2017,
             "city": "🇫🇷Paris",
-            "additional": "The only plastic key."
+            "additional": "The only plastic key"
         },
         {
             "pic": "keys/6_amsterdam.jpg",
@@ -79,7 +79,7 @@ export const KEYS = {
             "pic": "keys/15_edinburgh.jpg",
             "year": 2018,
             "city": "🇬🇧Edinburgh",
-            "additional": "My favourite ⚜️."
+            "additional": "My favourite ⚜️"
         },
         {
             "pic": "keys/16_copenhagen.jpg",
@@ -115,7 +115,7 @@ export const KEYS = {
             "pic": "keys/22_coimbra_university.jpg",
             "year": 2018,
             "city": "🇵🇹University of Coimbra",
-            "additional": "Every color means something."
+            "additional": "Every color means something"
         },
         {
             "pic": "keys/23_lisboa.jpg",
@@ -126,7 +126,7 @@ export const KEYS = {
             "pic": "keys/24_saint_vincent_cape.jpg",
             "year": 2018,
             "city": "🇵🇹Cape St. Vincent",
-            "additional": "The southwesternmost point of Portugal and of mainland Europe."
+            "additional": "The southwesternmost point of Portugal and of mainland Europe"
         },
         {
             "pic": "keys/25_vienna.jpg",
@@ -152,19 +152,19 @@ export const KEYS = {
             "pic": "keys/29_ireland_1.jpg",
             "year": 2019,
             "city": "🇮🇪Somewhere in Ireland",
-            "additional": "Irish souvenirs are the same all across the country."
+            "additional": "Irish souvenirs are the same all across the country"
         },
         {
             "pic": "keys/30_ireland_2.jpg",
             "year": 2019,
             "city": "🇮🇪Somewhere in Ireland",
-            "additional": "Irish souvenirs are the same all across the country."
+            "additional": "Irish souvenirs are the same all across the country"
         },
         {
             "pic": "keys/31_ireland_3.jpg",
             "year": 2019,
             "city": "🇮🇪Somewhere in Ireland",
-            "additional": "Irish souvenirs are the same all across the country."
+            "additional": "Irish souvenirs are the same all across the country"
         },
         {
             "pic": "keys/32_munich.jpg",
@@ -205,7 +205,7 @@ export const KEYS = {
             "pic": "keys/39_kutna_hora.jpg",
             "year": 2019,
             "city": "🇨🇿Kutná Hora",
-            "additional": "Key from the Sedlec Ossuary ☠️."
+            "additional": "Key from the Sedlec Ossuary ☠️"
         },
         {
             "pic": "keys/40_linz.jpg",
@@ -216,13 +216,13 @@ export const KEYS = {
             "pic": "keys/41_salzburg.jpg",
             "year": 2019,
             "city": "🇦🇹Salzburg",
-            "additional": "The Key 🎼."
+            "additional": "The Key 🎼"
         },
         {
             "pic": "keys/42_salzburg_castle.jpg",
             "year": 2019,
             "city": "🇦🇹Hohensalzburg Fortress",
-            "additional": "The biggest key."
+            "additional": "The biggest key"
         },
         {
             "pic": "keys/43_hallstatt.jpg",
@@ -289,7 +289,7 @@ export const KEYS = {
             "pic": "keys/54_new_york_top_of_the_rock.jpg",
             "year": 2019,
             "city": "🇺🇸New York, Top of the Rock",
-            "additional": "In Ukrainian it's a key."
+            "additional": "In Ukrainian it's a key 🔧"
         },
         {
             "pic": "keys/55_larnaca.jpg",
