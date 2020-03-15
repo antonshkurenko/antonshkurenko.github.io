@@ -1,3 +1,13 @@
+export const DESCRIPTION = `
+    <h3>About</h3>
+    <p>Back in 2013 I randomly bought a souvenir in my favorite city (at that moment): St.P.</p>
+    <p>Don't know, how it continued, but now I have a decent (IMO) collection of the souvenir keys from different cities and places all over the world.</p>
+    <p>I'm obsessed with keys and when I can't buy them, I take a picture and still post here (in the could be section).</>
+    <br />
+    <br />
+    Enjoy.
+`;
+
 export const KEYS = {
     "all": {
         "pic": "keys/all.jpg"
@@ -296,6 +306,60 @@ export const KEYS = {
             "year": 2020,
             "city": "🇨🇾Larnaca"
         },
+        {
+            "pic": "keys/56_jerusalem.jpg",
+            "year": 2020,
+            "city": "🇮🇱Jerusalem"
+        },
+        {
+            "pic": "keys/57_jerusalem_palestine.jpg",
+            "year": 2020,
+            "city": "🇮🇱Jerusalem",
+            "additional": "🇵🇸"
+        },
+        {
+            "pic": "keys/58_tel_aviv_yafo.jpg",
+            "year": 2020,
+            "city": "🇮🇱Tel Aviv, Jaffa Flea Market"
+        },
+        {
+            "pic": "keys/59_tel_aviv_yafo_2.jpg",
+            "year": 2020,
+            "city": "🇮🇱Tel Aviv",
+            "additional": "Was found on the ground right after buying the previous one"
+        },
+        {
+            "pic": "keys/60_qumran.jpg",
+            "year": 2020,
+            "city": "🇮🇱Qumran"
+        },
+        {
+            "pic": "keys/61_masada.jpg",
+            "year": 2020,
+            "city": "🇮🇱Masada",
+            "additional": "✨"
+        },
+        {
+            "pic": "keys/62_caesarea.jpg",
+            "year": 2020,
+            "city": "🇮🇱Caesarea"
+        },
+        {
+            "pic": "keys/63_acre.jpg",
+            "year": 2020,
+            "city": "🇮🇱Acre/Akko/Akka"
+        },
+        {
+            "pic": "keys/64_nazareth.jpg",
+            "year": 2020,
+            "city": "🇮🇱Nazareth"
+        },
+        {
+            "pic": "keys/65_river_jordan.jpg",
+            "year": 2020,
+            "city": "🇮🇱Jordan River",
+            "additional": "The most expensive key, ~$40"
+        },
     ],
     "couldbe": [
         {
@@ -327,6 +391,72 @@ export const KEYS = {
             "year": 2019,
             "city": "🇪🇬Sharm El Sheikh",
             "additional": "Key from this city is already owned"
-        }
+        },
+        {
+            "pic": "keys/couldbe/6_tel_aviv_carmel_market.jpg",
+            "year": 2020,
+            "city": "🇮🇱Tel Aviv, Carmel Market",
+            "additional": "Key from this city is already owned"
+        },
+        {
+            "pic": "keys/couldbe/7_tel_aviv_dizengoff.jpg",
+            "year": 2020,
+            "city": "🇮🇱Tel Aviv",
+            "additional": "Key from this city is already owned"
+        },
+        {
+            "pic": "keys/couldbe/8_tel_aviv_jaffa.jpg",
+            "year": 2020,
+            "city": "🇮🇱Tel Aviv",
+            "additional": "Key from this city is already owned"
+        },
+        {
+            "pic": "keys/couldbe/9_masada.jpg",
+            "year": 2020,
+            "city": "🇮🇱Masada",
+            "additional": "Another one was chosen"
+        },
+        {
+            "pic": "keys/couldbe/10_masada_2.jpg",
+            "year": 2020,
+            "city": "🇮🇱Masada",
+            "additional": "Another one was chosen"
+        },
+        {
+            "pic": "keys/couldbe/11_masada_3.jpg",
+            "year": 2020,
+            "city": "🇮🇱Masada",
+            "additional": "Another one was chosen"
+        },
+        {
+            "pic": "keys/couldbe/12_nazareth.jpg",
+            "year": 2020,
+            "city": "🇮🇱Nazareth",
+            "additional": "Another one was chosen"
+        },
+        {
+            "pic": "keys/couldbe/13_church_of_multiplication.jpg",
+            "year": 2020,
+            "city": "🇮🇱Church of the Multiplication",
+            "additional": "Shop was closed 😭"
+        },
+        {
+            "pic": "keys/couldbe/14_jordan_river.jpg",
+            "year": 2020,
+            "city": "🇮🇱Jordan River",
+            "additional": "Another one was chosen"
+        },
+        {
+            "pic": "keys/couldbe/15_jordan_river_2.jpg",
+            "year": 2020,
+            "city": "🇮🇱Jordan River",
+            "additional": "Another one was chosen"
+        },
+        {
+            "pic": "keys/couldbe/16_jordan_river_3.jpg",
+            "year": 2020,
+            "city": "🇮🇱Jordan River",
+            "additional": "Another one was chosen (square one was bought)"
+        },
     ]
 };

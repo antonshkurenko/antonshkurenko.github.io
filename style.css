@@ -106,6 +106,12 @@ a:hover .hover-underline {
     margin-bottom: 10px;
 }
 
+.description-item {
+    width: 500px;
+    height: 320px;
+    margin-bottom: 10px;
+}
+
 .key-title {
     margin-top: 8px;
     text-align: center;
@@ -145,4 +151,9 @@ a:hover .hover-underline {
 
 #couldbe {
     margin-bottom: 100px;
+}
+
+.pswp img {
+    max-width: none;
+    object-fit: contain;
 }

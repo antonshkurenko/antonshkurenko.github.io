@@ -1,4 +1,7 @@
-import {KEYS} from "../keys/data";
+import { DESCRIPTION } from "../keys/data";
+import { KEYS } from "../keys/data";
+
+const PICTURE_SIZE = 1280;
 
 window.addEventListener('load', () => {
 
@@ -27,16 +30,16 @@ window.addEventListener('load', () => {
 
         return {
             src: el.pic,
-            w: 960,
-            h: 1280,
+            w: PICTURE_SIZE,
+            h: PICTURE_SIZE,
             title: title,
         };
     });
 
     keysItems.unshift({
         src: KEYS.all.pic,
-        w: 960,
-        h: 1280,
+        w: PICTURE_SIZE,
+        h: PICTURE_SIZE,
         title: "All 🗝."
     });
 
@@ -55,8 +58,8 @@ window.addEventListener('load', () => {
 
         return {
             src: el.pic,
-            w: 960,
-            h: 1280,
+            w: PICTURE_SIZE,
+            h: PICTURE_SIZE,
             title: title,
         };
     });
@@ -66,9 +69,10 @@ window.addEventListener('load', () => {
     let clickFunc = idx => () => {
         let photoswipe = document.getElementsByClassName("pswp")[0];
 
-        let options = {index: idx};
+        let options = { index: idx };
 
         let gallery = new PhotoSwipe(photoswipe, PhotoSwipeUI_Default, items, options);
+
         gallery.init();
     };
 
@@ -84,6 +88,13 @@ window.addEventListener('load', () => {
         keysEl.appendChild(key);
 
         if (idx === 0) {
+
+            let description = document.createElement("div");
+            description.classList.add('description-item');
+            description.classList.add('grid-item');
+            description.innerHTML = DESCRIPTION;
+            keysEl.appendChild(description);
+
             let space = document.createElement("div");
             space.classList.add('grid-fullsize');
             space.classList.add('grid-item');
