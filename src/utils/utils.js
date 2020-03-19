@@ -19,6 +19,15 @@ export function throttle(type, name, obj) {
 export const REPEAT_COUNT_INVERSE = -1;
 export const REPEAT_COUNT_INFINITY = -2;
 
+/**
+ *
+ * @param options
+ *        - duration
+ *        - timing convert time to progress
+ *        - draw
+ *        - repeatCount
+ * @returns {{keepAnimating: boolean}} set keepAnimating to false, if you want to stop animation
+ */
 export function animate(options) {
 
     let animation = {

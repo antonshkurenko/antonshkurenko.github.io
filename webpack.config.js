@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
     entry: {
-        letters: './src/letters.js',
+        name: './src/name.js',
         bg: './src/background.js',
         main: './src/main.js',
         keys: './src/keys.js',
