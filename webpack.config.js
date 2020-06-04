@@ -7,6 +7,7 @@ module.exports = {
         main: './src/main.js',
         keys: './src/keys.js',
         birthday2019: './src/birthday2019.js',
+        cocktails: './src/cocktails.js',
     },
     output: {
         filename: '[name].bundle.js',

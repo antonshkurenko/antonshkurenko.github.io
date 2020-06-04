@@ -1,7 +1,7 @@
 export const DESCRIPTION = `
     <h3>About</h3>
     <p>Back in 2013 I randomly bought a souvenir in my favorite city (at that moment): St.P.</p>
-    <p>Don't know, how it continued, but now I have a decent (IMO) collection of the souvenir keys from different cities and places all over the world.</p>
+    <p>Don't know, how it continued, but now I have a decent (IMO) collection of souvenir keys from different cities and places all over the world.</p>
     <p>I'm obsessed with keys and when I can't buy them, I take a picture and still post here (in the could be section).</>
     <br />
     <br />
