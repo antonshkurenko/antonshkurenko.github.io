@@ -458,5 +458,11 @@ export const KEYS = {
             "city": "🇮🇱Jordan River",
             "additional": "Another one was chosen (square one was bought)"
         },
+        {
+            "pic": "keys/couldbe/17_kyiv.jpg",
+            "year": 2020,
+            "city": "🇺🇦Kyiv",
+            "additional": "Key from this city is already owned"
+        },
     ]
 };

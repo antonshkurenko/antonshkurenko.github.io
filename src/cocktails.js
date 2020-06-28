@@ -46,6 +46,12 @@ export const FAV_COCKTAILS = [
         "url": "https://www.liquor.com/recipes/cold-brew-negroni/",
         "notes": "Enjoy the Silence.",
         "emoji": "🔕"
+    },
+    {
+        "name": "Pisco Sour",
+        "url": "https://en.wikipedia.org/wiki/Pisco_sour",
+        "notes": "Sour.",
+        "emoji": "🗿"
     }
 ];
 
