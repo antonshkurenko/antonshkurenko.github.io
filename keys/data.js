@@ -360,6 +360,43 @@ export const KEYS = {
             "city": "🇮🇱Jordan River",
             "additional": "The most expensive key, ~$40"
         },
+        {
+            "pic": "keys/66_budva.jpg",
+            "year": 2020,
+            "city": "🇲🇪Budva",
+            "additional": "The only corkscrew"
+        },
+        {
+            "pic": "keys/67_tara_canyon.jpg",
+            "year": 2020,
+            "city": "🇲🇪Đurđevića Tara Bridge"
+        },
+        {
+            "pic": "keys/68_ostrog.jpg",
+            "year": 2020,
+            "city": "🇲🇪The Monastery of Ostrog",
+            "additional": "The only wooden key"
+        },
+        {
+            "pic": "keys/69_herceg_novi.jpg",
+            "year": 2020,
+            "city": "🇲🇪Herceg Novi"
+        },
+        {
+            "pic": "keys/70_kotor.jpg",
+            "year": 2020,
+            "city": "🇲🇪Kotor"
+        },
+        {
+            "pic": "keys/71_bar.jpg",
+            "year": 2020,
+            "city": "🇲🇪Stari Bar"
+        },
+        {
+            "pic": "keys/72_ulcinj.jpg",
+            "year": 2020,
+            "city": "🇲🇪Ulcinj"
+        },
     ],
     "couldbe": [
         {
