@@ -38,7 +38,7 @@ export const KEYS = {
             "pic": "keys/5_paris.jpg",
             "year": 2017,
             "city": "🇫🇷Paris",
-            "additional": "The only plastic key"
+            "additional": "First plastic key"
         },
         {
             "pic": "keys/6_amsterdam.jpg",
@@ -396,6 +396,22 @@ export const KEYS = {
             "pic": "keys/72_ulcinj.jpg",
             "year": 2020,
             "city": "🇲🇪Ulcinj"
+        },
+        {
+            "pic": "keys/73_sarigerme.jpg",
+            "year": 2020,
+            "city": "🇹🇷Sarigerme (Osmaniye)"
+        },
+        {
+            "pic": "keys/74_pamukkale.jpg",
+            "year": 2020,
+            "city": "🇹🇷Pamukkale",
+            "additional": "(It's plastic)"
+        },
+        {
+            "pic": "keys/75_kash.jpg",
+            "year": 2020,
+            "city": "🇹🇷Kaş"
         },
     ],
     "couldbe": [
