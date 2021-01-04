@@ -413,6 +413,16 @@ export const KEYS = {
             "year": 2020,
             "city": "🇹🇷Kaş"
         },
+        {
+            "pic": "keys/76_uzhhorod.jpg",
+            "year": 2020,
+            "city": "🇺🇦Uzhhorod"
+        },
+        {
+            "pic": "keys/77_polyanytsya_bukovel.jpg",
+            "year": 2020,
+            "city": "🇺🇦Polyanytsya (Bukovel)"
+        },
     ],
     "couldbe": [
         {
