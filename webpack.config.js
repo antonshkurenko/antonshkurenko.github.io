@@ -7,6 +7,7 @@ module.exports = {
         main: './src/main.js',
         keys: './src/keys.js',
         birthday2019: './src/birthday2019.js',
+        birthday2020: './src/birthday2020.js',
         cocktails: './src/cocktails.js',
     },
     output: {
@@ -17,9 +18,22 @@ module.exports = {
         rules: [
             {
                 test: /\.js$/,
-                loader: 'babel-loader',
-                query: {
-                    presets: ['@babel/preset-env']
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
+                }
+            },
+            {
+                test: /\.tsx?$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/typescript']
+                    }
                 }
             }
         ]
