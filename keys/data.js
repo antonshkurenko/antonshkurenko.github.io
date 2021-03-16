@@ -423,6 +423,26 @@ export const KEYS = {
             "year": 2020,
             "city": "🇺🇦Polyanytsya (Bukovel)"
         },
+        {
+            "pic": "keys/78_punta_cana.jpg",
+            "year": 2021,
+            "city": "🇩🇴Punta Cana"
+        },
+        {
+            "pic": "keys/79_saona.jpg",
+            "year": 2021,
+            "city": "🇩🇴Saona Island"
+        },
+        {
+            "pic": "keys/80_levantado.jpg",
+            "year": 2021,
+            "city": "🇩🇴Cayo Levantado"
+        },
+        {
+            "pic": "keys/81_santo_domingo.jpg",
+            "year": 2021,
+            "city": "🇩🇴Santo Domingo"
+        },
     ],
     "couldbe": [
         {
@@ -526,6 +546,12 @@ export const KEYS = {
             "year": 2020,
             "city": "🇺🇦Kyiv",
             "additional": "Key from this city is already owned"
+        },
+        {
+            "pic": "keys/couldbe/18_la_romana.jpg",
+            "year": 2021,
+            "city": "🇩🇴La Romana",
+            "additional": "It was at the airport, I wasn't truly in this city."
         },
     ]
 };
