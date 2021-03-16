@@ -39,12 +39,19 @@ export class ObjectsPool<T extends Phaser.GameObjects.GameObject> {
             let obj = this.pool.getFirst() as T;
             onGrab(obj);
             obj.active = true;
+            obj.visible = true;
 
             this.onRecycle(obj);
 
             this.pool.remove(obj);
         } else {
             let obj = this.factory(this.scene);
+
+            obj.active = true;
+            obj.visible = true;
+
+            onGrab(obj);
+
             this.group.add(obj);
         }
     }
