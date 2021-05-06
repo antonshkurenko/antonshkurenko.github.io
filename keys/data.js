@@ -445,12 +445,14 @@ export const KEYS = {
         {
             "pic": "keys/82_diani.jpg",
             "year": 2021,
-            "city": "🇰🇪Diani Beach"
+            "city": "🇰🇪Diani Beach",
+            "additional": "Made for me at some souvenir shop using custom blueprint"
         },
         {
             "pic": "keys/83_mombasa.jpg",
             "year": 2021,
-            "city": "🇰🇪Mombasa"
+            "city": "🇰🇪Mombasa",
+            "additional": "Chosen from a heap of keys in antique shop"
         },
         {
             "pic": "keys/84_tsavo.jpg",
