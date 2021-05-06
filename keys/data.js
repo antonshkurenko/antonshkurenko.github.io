@@ -374,8 +374,7 @@ export const KEYS = {
         {
             "pic": "keys/68_ostrog.jpg",
             "year": 2020,
-            "city": "🇲🇪The Monastery of Ostrog",
-            "additional": "The only wooden key"
+            "city": "🇲🇪The Monastery of Ostrog"
         },
         {
             "pic": "keys/69_herceg_novi.jpg",
@@ -442,6 +441,21 @@ export const KEYS = {
             "pic": "keys/81_santo_domingo.jpg",
             "year": 2021,
             "city": "🇩🇴Santo Domingo"
+        },
+        {
+            "pic": "keys/82_diani.jpg",
+            "year": 2021,
+            "city": "🇰🇪Diani Beach"
+        },
+        {
+            "pic": "keys/83_mombasa.jpg",
+            "year": 2021,
+            "city": "🇰🇪Mombasa"
+        },
+        {
+            "pic": "keys/84_tsavo.jpg",
+            "year": 2021,
+            "city": "🇰🇪Tsavo East/West National Park"
         },
     ],
     "couldbe": [
