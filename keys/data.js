@@ -459,6 +459,17 @@ export const KEYS = {
             "year": 2021,
             "city": "🇰🇪Tsavo East/West National Park"
         },
+        {
+            "pic": "keys/85_agios_nikolaos.jpg",
+            "year": 2021,
+            "city": "🇬🇷Agios Nikolaos"
+        },
+        {
+            "pic": "keys/86_heraklion.jpg",
+            "year": 2021,
+            "city": "🇬🇷Heraklion",
+            "additional": "🔦"
+        },
     ],
     "couldbe": [
         {
@@ -567,7 +578,19 @@ export const KEYS = {
             "pic": "keys/couldbe/18_la_romana.jpg",
             "year": 2021,
             "city": "🇩🇴La Romana",
-            "additional": "It was at the airport, I wasn't truly in this city."
+            "additional": "It was at the airport, I wasn't truly in this city"
+        },
+        {
+            "pic": "keys/couldbe/19_heraklion.jpg",
+            "year": 2021,
+            "city": "🇬🇷Heraklion",
+            "additional": "Key from this city is already owned"
+        },
+        {
+            "pic": "keys/couldbe/20_agios_nikolaos.jpg",
+            "year": 2021,
+            "city": "🇬🇷Agios Nikolaos",
+            "additional": "Key from this city is already owned. 🌡"
         },
     ]
 };
