@@ -14,6 +14,12 @@ export const KEYS = {
     },
     "keys": [
         {
+            "pic": "keys/0_kyiv.jpg",
+            "year": 2012,
+            "city": "💙💛Kyiv",
+            "additional": "I've found it only in 2021. Very first key. Was bought to serve as  bottle opener in dorm."
+        },
+        {
             "pic": "keys/1_spb.jpg",
             "year": 2013,
             "city": "🇷🇺Saint Petersburg",

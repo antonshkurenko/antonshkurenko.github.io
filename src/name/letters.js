@@ -75,7 +75,6 @@ function createLetters() {
         new Letter('r', 0.913),
         new Letter('e', 0.434),
         new Letter('n', 0.565),
-        new Letter('n', 0.500),
         new Letter('k', 0.956),
         new Letter('ø', 0.478),
     ];
