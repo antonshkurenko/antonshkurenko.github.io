@@ -16,8 +16,8 @@ export const KEYS = {
         {
             "pic": "keys/0_kyiv.jpg",
             "year": 2012,
-            "city": "💙💛Kyiv",
-            "additional": "I've found it only in 2021. Very first key. Was bought to serve as  bottle opener in dorm."
+            "city": "🇺🇦Kyiv",
+            "additional": "I've found it only in 2021. Very first key. Was bought to serve as a bottle opener in dorm"
         },
         {
             "pic": "keys/1_spb.jpg",
@@ -33,7 +33,7 @@ export const KEYS = {
         {
             "pic": "keys/3_odessa.jpg",
             "year": 2014,
-            "city": "🇺🇦Odessa"
+            "city": "🇺🇦Odesa"
         },
         {
             "pic": "keys/4_roma.jpg",
