@@ -476,6 +476,11 @@ export const KEYS = {
             "city": "🇬🇷Heraklion",
             "additional": "🔦"
         },
+        {
+            "pic": "keys/87_berlin.jpg",
+            "year": 2021,
+            "city": "🇩🇪Berlin"
+        },
     ],
     "couldbe": [
         {
