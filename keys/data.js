@@ -370,7 +370,7 @@ export const KEYS = {
             "pic": "keys/66_budva.jpg",
             "year": 2020,
             "city": "🇲🇪Budva",
-            "additional": "The only corkscrew"
+            "additional": "First corkscrew"
         },
         {
             "pic": "keys/67_tara_canyon.jpg",
@@ -480,6 +480,16 @@ export const KEYS = {
             "pic": "keys/87_berlin.jpg",
             "year": 2021,
             "city": "🇩🇪Berlin"
+        },
+        {
+            "pic": "keys/88_stockholm.jpg",
+            "year": 2021,
+            "city": "🇸🇪Stockholm"
+        },
+        {
+            "pic": "keys/89_stockholm_nk.jpg",
+            "year": 2021,
+            "city": "🇸🇪Stockholm, NK"
         },
     ],
     "couldbe": [
