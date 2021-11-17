@@ -613,5 +613,11 @@ export const KEYS = {
             "city": "🇬🇷Agios Nikolaos",
             "additional": "Key from this city is already owned. 🌡"
         },
+        {
+            "pic": "keys/couldbe/21_vienna.jpg",
+            "year": 2021,
+            "city": "🇦🇹Vienna",
+            "additional": "Key from this city is already owned. In Ukrainian it's a key 🔧"
+        },
     ]
 };
