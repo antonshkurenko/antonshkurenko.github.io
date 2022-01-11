@@ -491,6 +491,33 @@ export const KEYS = {
             "year": 2021,
             "city": "🇸🇪Stockholm, NK"
         },
+        {
+            "pic": "keys/90_zaandam.jpeg",
+            "year": 2021,
+            "city": "🇳🇱Zaandam",
+            "additional": "Due to lockdown, all souvenir shops in the Netherlands were closed. But they tend to have shoe/key repair shops right in the center."
+        },
+        {
+            "pic": "keys/91_haarlem.jpeg",
+            "year": 2021,
+            "city": "🇳🇱Haarlem"
+        },
+        {
+            "pic": "keys/92_utrecht.jpeg",
+            "year": 2021,
+            "city": "🇳🇱Utrecht"
+        },
+        {
+            "pic": "keys/93_hague.jpeg",
+            "year": 2022,
+            "city": "🇳🇱The Hague"
+        },
+        {
+            "pic": "keys/94_rotterdam.jpeg",
+            "year": 2022,
+            "city": "🇳🇱Rotterdam",
+            "additional": "The cheapest key. 1€"
+        },
     ],
     "couldbe": [
         {
