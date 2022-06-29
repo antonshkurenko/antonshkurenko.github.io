@@ -518,6 +518,24 @@ export const KEYS = {
             "city": "🇳🇱Rotterdam",
             "additional": "The cheapest key. 1€"
         },
+        {
+            "pic": "keys/95_ivano_frankivsk.jpg",
+            "year": 2022,
+            "city": "🇺🇦Ivano-Frankivsk",
+            "additional": "First key after 24.02.22"
+        },
+        {
+            "pic": "keys/96_lutsk.jpg",
+            "year": 2022,
+            "city": "🇺🇦Lutsk",
+            "additional": "The smallest key"
+        },
+        {
+            "pic": "keys/97_rivne.jpg",
+            "year": 2022,
+            "city": "🇺🇦Rivne",
+            "additional": "Liked them both at flea market"
+        },
     ],
     "couldbe": [
         {
