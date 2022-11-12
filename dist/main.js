@@ -1,0 +1,2 @@
+(()=>{"use strict";Math.PI,function(e,n,t){t=t||window;var i=!1;t.addEventListener("resize",(function(){i||(i=!0,requestAnimationFrame((function(){t.dispatchEvent(new CustomEvent("optimizedResize")),i=!1})))}))}(0,0,window)})();
+//# sourceMappingURL=main.js.map

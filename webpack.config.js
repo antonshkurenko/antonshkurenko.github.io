@@ -5,6 +5,7 @@ module.exports = {
         main: './src/main.js',
         keys: './src/keys.js',
         birthday2019: './src/birthday2019.js',
+        tsentry: './src/test-ts-file.ts',
     },
     module: {
         rules: [
@@ -12,6 +13,16 @@ module.exports = {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: ['babel-loader']
+            },
+            {
+                test: /\.tsx?$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/typescript']
+                    }
+                }
             }
         ]
     },
