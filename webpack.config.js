@@ -1,5 +1,3 @@
-const path = require('path');
-
 module.exports = {
     entry: {
         name: './src/name.js',
@@ -8,18 +6,12 @@ module.exports = {
         keys: './src/keys.js',
         birthday2019: './src/birthday2019.js',
     },
-    output: {
-        filename: '[name].bundle.js',
-        path: path.resolve(__dirname, 'dist/'),
-    },
     module: {
         rules: [
             {
                 test: /\.js$/,
-                loader: 'babel-loader',
-                query: {
-                    presets: ['@babel/preset-env']
-                }
+                exclude: /node_modules/,
+                use: ['babel-loader']
             }
         ]
     },
