@@ -1,4 +1,4 @@
-# tonyshkurenko.github.io
+# ashkurenko.com
 
 This is my personal website
 

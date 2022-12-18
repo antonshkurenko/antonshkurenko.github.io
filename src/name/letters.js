@@ -124,8 +124,6 @@ export function parallaxLetters() {
     if (Math.random() < .1) {
         const zalgo = [
 
-            // note double N everywhere
-
             ['Ã̷͉͛ͅ', 'n̴̩̼͐̆', 't̷̥̭̩͖̑͘͝ͅ', 'ø̷͍̊̈͊', 'n̸̥͑', ' ̶̧̀', 'S̵̻̹͖̹͗͂̓͐̚', 'h̶̛̯͕̿̏̚͠', 'k̴̨̟̤̙̥̀̀̆̇̔̾ͅ', 'u̷̱͎̱̽͂̏̔͝', 'r̷̨̢̯̞̎̆̋̌̃͝', 'ḝ̴̙̭̯̋͜͜', 'n̵̻̘̈́̉͒̈́̕͝', 'k̶͈̓͝', 'ø̵͖̇͂̓'],
 
 

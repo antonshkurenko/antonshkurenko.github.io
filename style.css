@@ -184,23 +184,6 @@ a:hover .hover-underline {
     object-fit: contain;
 }
 
-#cocktails {
-    margin-left: 100px;
-    margin-bottom: 100px;
-}
-
-.cocktail {
-    margin-top: 32px;
-}
-
-.cocktitle {
-    font-size: 22px;
-}
-
-.cocknote {
-    font-style: italic;
-}
-
-.cockmoji {
-    font-size: 32px;
+.scrambled-text {
+    color: #757575;
 }
