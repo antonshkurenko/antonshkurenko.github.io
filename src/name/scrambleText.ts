@@ -1,5 +1,3 @@
-import {animate, animateBetween, REPEAT_COUNT_INFINITY} from "../utils/utils";
-
 export function scrambleText() {
 
     const phrases = [

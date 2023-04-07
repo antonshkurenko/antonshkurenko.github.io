@@ -5,7 +5,7 @@ module.exports = {
         main: './src/main.js',
         keys: './src/keys.js',
         birthday2019: './src/birthday2019.js',
-        tsentry: './src/test-ts-file.ts',
+        drawingsv2: './src/drawingsv2/drawingsv2.ts',
     },
     module: {
         rules: [
