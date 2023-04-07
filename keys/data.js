@@ -536,6 +536,11 @@ export const KEYS = {
             "city": "🇺🇦Rivne",
             "additional": "Liked them both at flea market"
         },
+        {
+            "pic": "keys/98_zhytomyr.jpg",
+            "year": 2023,
+            "city": "🇺🇦Zhytomyr"
+        },
     ],
     "couldbe": [
         {
