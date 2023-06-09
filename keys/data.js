@@ -541,6 +541,11 @@ export const KEYS = {
             "year": 2023,
             "city": "🇺🇦Zhytomyr"
         },
+        {
+            "pic": "keys/99_cherkasy.jpg",
+            "year": 2023,
+            "city": "🇺🇦Cherkasy"
+        },
     ],
     "couldbe": [
         {
