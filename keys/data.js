@@ -556,6 +556,21 @@ export const KEYS = {
             "year": 2023,
             "city": "🇺🇦Vinnytsia"
         },
+        {
+            "pic": "keys/102_ternopil.jpeg",
+            "year": 2025,
+            "city": "🇺🇦Ternopil"
+        },
+        {
+            "pic": "keys/103_chernivtsi.jpeg",
+            "year": 2025,
+            "city": "🇺🇦Chernivtsi"
+        },
+        {
+            "pic": "keys/104_kamianets_podilskyi.jpeg",
+            "year": 2025,
+            "city": "🇺🇦Kamianets–Podilskyi"
+        },
     ],
     "couldbe": [
         {
