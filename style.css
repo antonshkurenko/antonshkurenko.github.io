@@ -187,3 +187,22 @@ a:hover .hover-underline {
 .scrambled-text {
     color: #757575;
 }
+
+.vibecoded-list {
+    margin: 40px 100px 100px;
+}
+
+.vibecoded-item {
+    margin-bottom: 24px;
+}
+
+.vibecoded-item a {
+    font-size: 20px;
+    font-style: italic;
+}
+
+.vibecoded-item .vibecoded-desc {
+    margin-top: 4px;
+    font-size: 14px;
+    color: #757575;
+}
