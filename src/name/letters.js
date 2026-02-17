@@ -1,3 +1,4 @@
+import Parallax from "parallax-js";
 import {
     animateBetween,
     clampToRadius,
