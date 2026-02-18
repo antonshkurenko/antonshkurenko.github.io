@@ -1,27 +1,11 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta property="og:title" content="Anton Shkurenko">
-    <meta property="og:description" content="Follow me on twitter: @a_shkrnk">
-    <meta property="og:url" content="https://ashkurenko.com">
-    <meta property="og:image" content="https://ashkurenko.com/star_big.png">
-    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'/>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="icon" type="image/png" href="star.png">
-    <script src="dist/main.js"></script>
-    <script src="dist/name.js"></script>
-    <script src="dist/bg.js"></script>
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4E8D6YSF4Y"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-4E8D6YSF4Y');
-    </script>
-
+    {{> head}}
+    <script type="module" src="./src/main.js"></script>
+    <script type="module" src="./src/name.js"></script>
+    <script type="module" src="./src/background.js"></script>
+    {{> analytics}}
     <title>Here I am.</title>
 </head>
 
@@ -40,18 +24,7 @@
     <a href="vibecoded.html">🤖 <i>Vibecoded</i></a>
 </div>
 
-<div class="table-wrapper">
-    <a href="https://twitter.com/a_shkrnk" class="div-table-row">
-        <div class="div-table-col left-column hover-underline">twitter.com/</div>
-        <div class="div-table-col middle-column hover-underline">a_shkrnk</div>
-        <div class="div-table-col right-column">&nbsp;</div>
-    </a>
-    <a href="https://github.com/antonshkurenko" class="div-table-row">
-        <div class="div-table-col left-column hover-underline">github.com/</div>
-        <div class="div-table-col middle-column hover-underline">antonshkurenko</div>
-        <div class="div-table-col right-column">&nbsp;</div>
-    </a>
-</div>
+{{> social-footer}}
 </body>
 
 </html>

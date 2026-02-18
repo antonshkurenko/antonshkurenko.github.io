@@ -1,30 +1,14 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta property="og:title" content="Anton Shkurenko">
-    <meta property="og:description" content="Follow me on twitter: @a_shkrnk">
-    <meta property="og:url" content="https://ashkurenko.com">
-    <meta property="og:image" content="https://ashkurenko.com/star_big.png">
-    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'/>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    {{> head}}
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.3/photoswipe.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.3/default-skin/default-skin.css">
-    <link rel="icon" type="image/png" href="star.png">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.3/photoswipe.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
-    <script src="dist/keys.js"></script>
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4E8D6YSF4Y"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-4E8D6YSF4Y');
-    </script>
-
+    <script type="module" src="./src/keys.js"></script>
+    {{> analytics}}
     <title>Keys.</title>
 </head>
 
@@ -40,18 +24,7 @@
 </div>
 <div id="couldbe" class="keys-table"></div>
 
-<div class="table-wrapper">
-    <a href="https://twitter.com/a_shkrnk" class="div-table-row">
-        <div class="div-table-col left-column hover-underline">twitter.com/</div>
-        <div class="div-table-col middle-column hover-underline">a_shkrnk</div>
-        <div class="div-table-col right-column">&nbsp;</div>
-    </a>
-    <a href="https://github.com/antonshkurenko" class="div-table-row">
-        <div class="div-table-col left-column hover-underline">github.com/</div>
-        <div class="div-table-col middle-column hover-underline">antonshkurenko</div>
-        <div class="div-table-col right-column">&nbsp;</div>
-    </a>
-</div>
+{{> social-footer}}
 
 <!-- Root element of PhotoSwipe. Must have class pswp. -->
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
