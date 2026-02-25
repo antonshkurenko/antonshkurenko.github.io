@@ -76,12 +76,27 @@ window.addEventListener('load', () => {
         gallery.init();
     };
 
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const el = entry.target;
+            const src = el.dataset.bg;
+            const img = new Image();
+            img.onload = () => {
+                el.style.backgroundImage = `url('${src}')`;
+                el.classList.add('loaded');
+            };
+            img.src = src;
+            observer.unobserve(el);
+        });
+    }, { rootMargin: '200px' });
+
     let keysEl = document.getElementById("keys");
 
     keysItems.forEach((el, idx) => {
         let key = document.createElement("div");
         key.classList.add('grid-item');
-        key.innerHTML = `<div class="center-cropped" style="background-image: url('${el.src}');"></div><div class="key-title">${el.title}</div>`;
+        key.innerHTML = `<div class="center-cropped" data-bg="${el.src}"></div><div class="key-title">${el.title}</div>`;
 
         key.addEventListener("click", clickFunc(idx));
 
@@ -107,12 +122,14 @@ window.addEventListener('load', () => {
     couldBeItems.forEach((el, idx) => {
         let key = document.createElement("div");
         key.classList.add('grid-item');
-        key.innerHTML = `<div class="center-cropped" style="background-image: url('${el.src}');"></div><div class="key-title">${el.title}</div>`;
+        key.innerHTML = `<div class="center-cropped" data-bg="${el.src}"></div><div class="key-title">${el.title}</div>`;
 
         key.addEventListener("click", clickFunc(keysItems.length + idx));
 
         couldbeEl.appendChild(key);
     });
+
+    document.querySelectorAll('.center-cropped[data-bg]').forEach(el => observer.observe(el));
 
     let msnry = new Masonry(keysEl, {
         // options

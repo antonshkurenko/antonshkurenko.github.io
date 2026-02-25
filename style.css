@@ -150,7 +150,12 @@ a:hover .hover-underline {
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    transition: transform .2s;
+    transition: transform .2s, opacity .4s ease;
+    opacity: 0;
+}
+
+.center-cropped.loaded {
+    opacity: 1;
 }
 
 .center-cropped:hover {
