@@ -159,7 +159,7 @@ export const KEYS = {
     {
       pic: "keys/27_malmo.jpg",
       year: 2019,
-      city: "🇸🇪Malmo",
+      city: "🇸🇪Malmö",
     },
     {
       pic: "keys/28_vilnius.jpg",
@@ -407,7 +407,7 @@ export const KEYS = {
     {
       pic: "keys/73_sarigerme.jpg",
       year: 2020,
-      city: "🇹🇷Sarigerme (Osmaniye)",
+      city: "🇹🇷Sarıgerme (Osmaniye)",
     },
     {
       pic: "keys/74_pamukkale.jpg",
@@ -428,7 +428,7 @@ export const KEYS = {
     {
       pic: "keys/77_polyanytsya_bukovel.jpg",
       year: 2020,
-      city: "🇺🇦Polyanytsya (Bukovel)",
+      city: "🇺🇦Polianytsia (Bukovel)",
     },
     {
       pic: "keys/78_punta_cana.jpg",
@@ -572,7 +572,8 @@ export const KEYS = {
     {
       pic: "keys/104_kamianets_podilskyi.jpeg",
       year: 2025,
-      city: "🇺🇦Kamianets–Podilskyi",
+      city: "🇺🇦Kamianets-Podilskyi",
+      additional: "Camino Podolico 🥾",
     },
     {
       pic: "keys/105_budapest.jpeg",
@@ -614,6 +615,73 @@ export const KEYS = {
       pic: "keys/112_santa_monica.jpeg",
       year: 2026,
       city: "🇺🇸Santa Monica",
+    },
+    {
+      pic: "keys/113_wroclaw.jpeg",
+      year: 2026,
+      city: "🇵🇱Wrocław",
+      additional: "🧙🏻‍♂️",
+    },
+    {
+      pic: "keys/114_barcelos.jpeg",
+      year: 2026,
+      city: "🇵🇹Barcelos",
+      additional: "Camino Portugués 🥾",
+    },
+    {
+      pic: "keys/115_valenca.jpeg",
+      year: 2026,
+      city: "🇵🇹Valença",
+      additional: "Camino Portugués 🥾",
+    },
+    {
+      pic: "keys/116_tui.jpeg",
+      year: 2026,
+      city: "🇪🇸Tui",
+      additional: "Camino Portugués 🥾",
+    },
+    {
+      pic: "keys/117_mos.jpeg",
+      year: 2026,
+      city: "🇪🇸Mos",
+      additional: "Camino Portugués 🥾",
+    },
+    {
+      pic: "keys/118_redondela.jpeg",
+      year: 2026,
+      city: "🇪🇸Redondela",
+      additional: "Camino Portugués 🥾",
+    },
+    {
+      pic: "keys/119_arcade_soutomaior.jpeg",
+      year: 2026,
+      city: "🇪🇸Arcade, Soutomaior",
+      additional: "Camino Portugués 🥾",
+    },
+    {
+      pic: "keys/120_pontevedra.jpeg",
+      year: 2026,
+      city: "🇪🇸Pontevedra",
+      additional:
+        "Camino Portugués 🥾. Verbena (night, July 26th → July 27th)",
+    },
+    {
+      pic: "keys/121_caldas_de_reis.jpeg",
+      year: 2026,
+      city: "🇪🇸Caldas de Reis",
+      additional: "Camino Portugués 🥾",
+    },
+    {
+      pic: "keys/122_santiago.jpeg",
+      year: 2026,
+      city: "🇪🇸Santiago de Compostela",
+      additional: "Camino Portugués 🥾",
+    },
+    {
+      pic: "keys/123_santiago_2.jpeg",
+      year: 2026,
+      city: "🇪🇸Santiago de Compostela",
+      additional: "IVANA❤️🥇",
     },
   ],
   couldbe: [
